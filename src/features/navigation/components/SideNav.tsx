@@ -25,7 +25,7 @@ export function SideNav({ items, publish, user }: SideNavProps) {
   return (
     <nav
       aria-label="Principal"
-      className="hidden h-dvh w-[275px] shrink-0 flex-col border-r border-massa-border/70 bg-massa-bg px-3.5 py-4 lg:flex"
+      className="hidden h-dvh w-[275px] min-w-[275px] max-w-[275px] shrink-0 flex-col border-r border-massa-border/70 bg-massa-bg px-3.5 py-4 lg:flex"
     >
       <div className="mb-7 px-2">
         <BrandLogo />

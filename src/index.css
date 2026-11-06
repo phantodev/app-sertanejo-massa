@@ -11,11 +11,51 @@
 
 html {
   color-scheme: dark;
+  scrollbar-gutter: stable;
+  /* NÃO usar scrollbar-width aqui: no Chromium/Windows ele herda e
+     ignora ::-webkit-scrollbar { width }, deixando a barra larga com setas. */
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+}
+
+/* Firefox */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #e9b36f transparent;
+  }
+}
+
+/* Chromium / Edge / Safari — largura real em px */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e9b36f;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #f8cd90;
+}
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 /* Itálicos de título — design system Massa */

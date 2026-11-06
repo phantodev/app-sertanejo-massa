@@ -54,6 +54,12 @@
     --massa-gold: #e9b36f;
     --massa-gold-light: #f8cd90;
     --massa-panel: #14110f;
+
+    /* HeroUI scrollbar tokens → ouro Massa */
+    --scrollbar: #e9b36f;
+    --scrollbar-thumb: #e9b36f;
+    --scrollbar-track: transparent;
+    --scrollbar-color: #e9b36f transparent;
   }
 
   html {
