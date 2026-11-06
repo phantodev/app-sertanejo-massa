@@ -66,7 +66,10 @@ export function SideNav({ items, publish, user }: SideNavProps) {
       </ul>
 
       <div className="mt-4 space-y-2">
-        <Button className="btn-fm-blue w-full justify-center bg-fm-blue text-white" fullWidth>
+        <Button
+          className="btn-fm-blue w-full justify-center rounded-full bg-fm-blue text-white"
+          fullWidth
+        >
           <NavIcon name="publish" className="size-4" />
           {publish.label}
         </Button>

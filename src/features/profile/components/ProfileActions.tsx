@@ -56,32 +56,29 @@ export function ProfileActions({ status: initialStatus, displayName }: ProfileAc
 
       {status === "friends" ? (
         <Button
-          className="flex-1 border border-massa-border bg-fm-yellow-light font-semibold text-massa-text"
+          className="btn-fm-teal flex-1 rounded-full bg-fm-teal-dark font-semibold text-white"
           fullWidth
-          variant="secondary"
         >
-          <Check className="size-4 text-massa-gold" />
+          <Check className="size-4 text-white" />
           Amigos
         </Button>
       ) : null}
 
       <Button
-        className="flex-1 border border-massa-border bg-fm-yellow-light font-semibold text-massa-text"
+        className="btn-fm-purple flex-1 rounded-full bg-fm-purple font-semibold text-white"
         fullWidth
-        variant="secondary"
         aria-label={`Mensagem para ${displayName}`}
       >
-        <MessageCircle className="size-4" />
+        <MessageCircle className="size-4 text-white" />
         Mensagem
       </Button>
 
       <Button
         isIconOnly
-        variant="secondary"
         aria-label="Mais opções"
-        className="shrink-0 border border-massa-border bg-fm-yellow-light"
+        className="btn-fm-blue size-10 shrink-0 rounded-full bg-fm-blue text-white"
       >
-        <Ellipsis className="size-4" />
+        <Ellipsis className="size-4 text-white" />
       </Button>
     </div>
   );

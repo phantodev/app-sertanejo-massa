@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { Clock, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import { formatEventBadge, formatEventCardWhen } from "../lib/format-event-date.ts";
@@ -52,13 +52,13 @@ export function EventCard({ event, featured = false }: EventCardProps) {
       <div className="space-y-2.5 px-3.5 py-3.5">
         <div>
           <Link to={`/events/${event.id}`} className="block">
-            <h3 className="text-[17px] font-bold leading-tight tracking-tight text-massa-text">
+            <h3 className="text-[17px] font-bold leading-tight tracking-tight text-fm-blue">
               {event.title}
             </h3>
           </Link>
           <Link
             to={`/${event.organizer.handle}`}
-            className="mt-1.5 flex items-center gap-2 text-sm text-massa-muted hover:text-massa-gold"
+            className="mt-1.5 flex items-center gap-2 text-sm font-semibold text-massa-muted hover:text-fm-blue"
           >
             <img
               src={event.organizer.avatarUrl}
@@ -67,19 +67,24 @@ export function EventCard({ event, featured = false }: EventCardProps) {
             />
             <span>
               {hostPrefix}{" "}
-              <span className="font-semibold text-massa-text">{event.organizer.displayName}</span>
+              <span className="font-bold text-fm-blue">{event.organizer.displayName}</span>
             </span>
             {event.organizer.verified ? <VerifiedBadge size="sm" /> : null}
           </Link>
         </div>
 
-        <p className="text-[13px] text-massa-muted">{formatEventCardWhen(event.startsAt)}</p>
-        <p className="flex items-start gap-1.5 text-[13px] text-massa-muted">
-          <MapPin className="mt-0.5 size-3.5 shrink-0 text-massa-gold/80" />
-          <span>
-            {event.venueName} — {event.city}/{event.state}
-          </span>
-        </p>
+        <div className="space-y-1">
+          <p className="grid grid-cols-[14px_1fr] items-center gap-x-1.5 text-[13px] font-semibold text-massa-muted">
+            <Clock className="size-3.5 shrink-0 text-fm-blue" aria-hidden />
+            <span>{formatEventCardWhen(event.startsAt)}</span>
+          </p>
+          <p className="grid grid-cols-[14px_1fr] items-center gap-x-1.5 text-[13px] font-semibold text-massa-muted">
+            <MapPin className="size-3.5 shrink-0 text-fm-blue" aria-hidden />
+            <span>
+              {event.venueName} — {event.city}/{event.state}
+            </span>
+          </p>
+        </div>
 
         <div className="flex items-center justify-between gap-3 pt-1">
           <EventGoingRow count={event.goingCount} preview={event.goingPreview} />

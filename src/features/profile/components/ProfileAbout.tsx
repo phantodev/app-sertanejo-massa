@@ -22,10 +22,12 @@ export function ProfileAbout({ profile }: ProfileAboutProps) {
         <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-massa-gold/80">
           Sobre
         </h3>
-        <p className="mt-2 text-[15px] leading-relaxed text-massa-text/90">{profile.bio}</p>
+        <p className="mt-2 text-[15px] font-semibold leading-relaxed text-massa-text/90">
+          {profile.bio}
+        </p>
       </section>
 
-      <ul className="space-y-3 border-t border-massa-border pt-4 text-sm text-massa-muted">
+      <ul className="space-y-3 border-t border-massa-border pt-4 text-sm font-semibold text-massa-muted">
         <li className="flex items-center gap-2.5">
           <MapPin className="size-4 shrink-0 text-massa-gold" />
           <span>{locationLabel(user.city, user.state)}</span>
@@ -42,15 +44,15 @@ export function ProfileAbout({ profile }: ProfileAboutProps) {
         </p>
         <dl className="mt-3 grid grid-cols-3 gap-2 text-center">
           <div>
-            <dt className="text-[11px] text-massa-muted">Publicações</dt>
+            <dt className="text-[11px] font-semibold text-massa-muted">Publicações</dt>
             <dd className="mt-1 text-lg font-semibold text-massa-text">{profile.stats.posts}</dd>
           </div>
           <div>
-            <dt className="text-[11px] text-massa-muted">Amigos</dt>
+            <dt className="text-[11px] font-semibold text-massa-muted">Amigos</dt>
             <dd className="mt-1 text-lg font-semibold text-massa-text">{profile.stats.friends}</dd>
           </div>
           <div>
-            <dt className="text-[11px] text-massa-muted">Mídia</dt>
+            <dt className="text-[11px] font-semibold text-massa-muted">Mídia</dt>
             <dd className="mt-1 text-lg font-semibold text-massa-text">{profile.stats.media}</dd>
           </div>
         </dl>

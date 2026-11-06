@@ -10,11 +10,11 @@ export function SuggestionsPanel({ suggestions }: SuggestionsPanelProps) {
   return (
     <div className="flex flex-col gap-4 px-1 py-1">
       <SearchField aria-label="Pesquisar" className="w-full">
-        <SearchField.Group className="h-[45px] w-full rounded-[7px] border border-solid border-fm-purple/25 bg-fm-yellow-light shadow-none">
-          <SearchField.SearchIcon className="text-fm-purple/55" />
+        <SearchField.Group className="h-12 w-full rounded-xl border border-solid border-fm-purple/25 bg-fm-yellow-bright shadow-none">
+          <SearchField.SearchIcon className="text-fm-purple" />
           <SearchField.Input
             placeholder="Pesquisar"
-            className="text-[11px] text-fm-purple placeholder:text-fm-purple/45"
+            className="text-[15px] font-semibold text-fm-purple placeholder:font-semibold placeholder:text-fm-purple"
           />
         </SearchField.Group>
       </SearchField>

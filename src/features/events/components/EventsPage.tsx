@@ -72,29 +72,27 @@ export function EventsPage() {
 
             <div className="hidden items-center justify-between gap-3 border-b border-massa-border px-4 py-4 lg:flex">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-massa-gold/80">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-fm-blue">
                   Agenda Massa
                 </p>
-                <h1 className="text-2xl font-bold tracking-tight text-massa-text">Eventos</h1>
+                <h1 className="text-2xl font-bold tracking-tight text-fm-purple">Eventos</h1>
               </div>
               <div className="flex items-center gap-2">
-                <Button
-                  variant="secondary"
-                  className="border border-massa-border bg-fm-yellow-light"
-                  onPress={() => {
+                <button
+                  type="button"
+                  className="inline-flex h-10 items-center gap-2 rounded-full border border-massa-border bg-fm-yellow-light px-4 text-sm font-semibold text-fm-purple"
+                  onClick={() => {
                     setDraft(filters);
                     setFiltersOpen(true);
                   }}
                 >
                   <SlidersHorizontal className="size-4" />
                   Filtros
-                  {filterActive ? (
-                    <span className="ml-1 size-1.5 rounded-full bg-massa-gold" />
-                  ) : null}
-                </Button>
+                  {filterActive ? <span className="size-1.5 rounded-full bg-massa-gold" /> : null}
+                </button>
                 <Link
                   to="/events/create"
-                  className="inline-flex h-10 items-center gap-2 rounded-[var(--radius)] bg-massa-gold px-4 text-sm font-semibold text-[#1a100b]"
+                  className="inline-flex h-10 items-center gap-2 rounded-full bg-fm-blue px-4 text-sm font-semibold text-white"
                 >
                   <Plus className="size-4" />
                   Criar
@@ -103,7 +101,7 @@ export function EventsPage() {
             </div>
 
             <div className="border-b border-massa-border px-4 py-4">
-              <p className="text-[15px] leading-relaxed text-massa-muted">
+              <p className="text-[15px] font-semibold leading-relaxed text-massa-muted">
                 Shows, rodeios, encontros e noites da comunidade. Filtre por período e cidade e
                 marque presença com um toque.
               </p>
@@ -117,8 +115,8 @@ export function EventsPage() {
 
             {!sections.isLoading && (sections.data?.length ?? 0) === 0 ? (
               <div className="space-y-3 px-6 py-16 text-center">
-                <p className="text-lg font-semibold text-massa-text">Nenhum evento por aqui</p>
-                <p className="text-sm text-massa-muted">
+                <p className="text-lg font-bold text-fm-blue">Nenhum evento por aqui</p>
+                <p className="text-sm font-semibold text-massa-muted">
                   Ajuste os filtros ou limpe pra ver a agenda completa da Massa.
                 </p>
                 {filterActive ? (
@@ -138,11 +136,11 @@ export function EventsPage() {
                   <div className="mb-3 flex items-end justify-between gap-3">
                     <h2
                       id={`events-${section.id}`}
-                      className="text-sm font-semibold uppercase tracking-[0.14em] text-massa-gold/85"
+                      className="text-sm font-bold tracking-tight text-fm-purple"
                     >
                       {section.title}
                     </h2>
-                    <span className="text-xs text-massa-muted">
+                    <span className="text-xs font-semibold text-massa-muted">
                       {section.events.length} {section.events.length === 1 ? "evento" : "eventos"}
                     </span>
                   </div>

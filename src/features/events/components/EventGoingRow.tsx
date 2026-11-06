@@ -24,13 +24,15 @@ export function EventGoingRow({ count, preview, compact = false }: EventGoingRow
               key={`${person.displayName}-${person.avatarUrl}`}
               src={person.avatarUrl}
               alt=""
-              className="size-6 rounded-full object-cover ring-2 ring-[#0e0c0b]"
+              className="size-6 rounded-full object-cover ring-2 ring-fm-yellow-light"
               loading="lazy"
             />
           ))}
         </div>
       ) : null}
-      <span className="truncate text-[13px] text-massa-muted">{goingLabel(count)}</span>
+      <span className="truncate text-[13px] font-semibold text-massa-muted">
+        {goingLabel(count)}
+      </span>
     </div>
   );
 }

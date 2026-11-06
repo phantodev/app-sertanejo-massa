@@ -43,10 +43,12 @@ export function EventFiltersSheet({
       >
         <header className="flex items-start justify-between gap-3 border-b border-massa-border px-5 py-4">
           <div>
-            <h2 id="event-filters-title" className="text-lg font-bold text-massa-text">
+            <h2 id="event-filters-title" className="text-lg font-bold text-fm-blue">
               Filtros
             </h2>
-            <p className="mt-0.5 text-sm text-massa-muted">Filtrar por período e cidade.</p>
+            <p className="mt-0.5 text-sm font-semibold text-massa-muted">
+              Filtrar por período e cidade.
+            </p>
           </div>
           <button
             type="button"

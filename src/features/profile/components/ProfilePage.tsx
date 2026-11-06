@@ -71,7 +71,7 @@ export function ProfilePage() {
           {reserved ? (
             <div className="space-y-4 px-6 py-16 text-center">
               <p className="text-lg font-semibold text-massa-text">Em breve na Massa</p>
-              <p className="text-sm text-massa-muted">
+              <p className="text-sm font-semibold text-massa-muted">
                 Essa área ainda está sendo afinada. Volte logo pra curtir o lançamento.
               </p>
               <Link
@@ -92,7 +92,7 @@ export function ProfilePage() {
           {!reserved && (profile.isError || (!profile.isLoading && !profile.data)) ? (
             <div className="space-y-4 px-6 py-16 text-center">
               <p className="text-lg font-semibold text-massa-text">Perfil não encontrado</p>
-              <p className="text-sm text-massa-muted">
+              <p className="text-sm font-semibold text-massa-muted">
                 Não achamos @{handle} na Massa. Confira o nome e tente de novo.
               </p>
               <Link
@@ -111,12 +111,12 @@ export function ProfilePage() {
               <div className="hidden items-center gap-3 border-b border-massa-border px-4 py-3 lg:flex">
                 <Link
                   to="/feed"
-                  className="text-sm font-semibold text-massa-gold transition-colors hover:text-massa-gold-light"
+                  className="text-sm font-bold text-fm-blue transition-colors hover:text-fm-blue/80"
                 >
                   ← Feed
                 </Link>
-                <span className="text-massa-muted">/</span>
-                <span className="truncate text-sm font-semibold text-massa-text">
+                <span className="font-bold text-massa-muted">/</span>
+                <span className="truncate text-sm font-bold text-massa-text">
                   {profile.data.user.displayName}
                 </span>
               </div>
@@ -131,7 +131,7 @@ export function ProfilePage() {
                 profile.data.posts.length > 0 ? (
                   <FeedList posts={profile.data.posts} />
                 ) : (
-                  <div className="px-4 py-16 text-center text-sm text-massa-muted">
+                  <div className="px-4 py-16 text-center text-sm font-semibold text-massa-muted">
                     Nenhuma publicação ainda.
                   </div>
                 )

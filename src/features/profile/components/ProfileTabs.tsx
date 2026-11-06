@@ -24,7 +24,7 @@ export function ProfileTabs({ tabs, selected, onChange }: ProfileTabsProps) {
             onClick={() => onChange(tab.id)}
             className={`-mb-px flex h-12 min-w-0 flex-1 items-center justify-center border-b-2 px-2 text-[13px] font-semibold transition-colors sm:text-[15px] ${
               isSelected
-                ? "border-massa-gold text-massa-text"
+                ? "border-fm-purple text-massa-text"
                 : "border-transparent text-massa-muted hover:text-massa-text"
             }`}
           >

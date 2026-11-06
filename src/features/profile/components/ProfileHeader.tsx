@@ -46,27 +46,29 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
                 </h1>
                 {user.verified ? <VerifiedBadge size="lg" /> : null}
               </div>
-              <p className="mt-0.5 text-sm text-massa-muted">@{user.handle}</p>
-              <p className="mt-1.5 flex items-center gap-1.5 text-sm text-massa-muted">
-                <MapPin className="size-3.5 shrink-0 text-massa-gold/80" />
+              <p className="mt-0.5 text-sm font-semibold text-massa-muted">@{user.handle}</p>
+              <p className="mt-1.5 flex items-center gap-1.5 text-sm font-semibold text-massa-muted">
+                <MapPin className="size-3.5 shrink-0 text-fm-blue" />
                 {locationLabel(user.city, user.state)}
               </p>
             </div>
 
-            <p className="text-[15px] leading-relaxed text-massa-text/90">{profile.bio}</p>
+            <p className="text-[15px] font-semibold leading-relaxed text-massa-text/90">
+              {profile.bio}
+            </p>
 
             <dl className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
               <div className="flex items-baseline gap-1.5">
-                <dt className="font-semibold text-massa-text">{formatCount(stats.posts)}</dt>
-                <dd className="text-massa-muted">publicações</dd>
+                <dt className="font-bold text-massa-text">{formatCount(stats.posts)}</dt>
+                <dd className="font-bold text-fm-blue">publicações</dd>
               </div>
               <div className="flex items-baseline gap-1.5">
-                <dt className="font-semibold text-massa-text">{formatCount(stats.friends)}</dt>
-                <dd className="text-massa-muted">amigos</dd>
+                <dt className="font-bold text-massa-text">{formatCount(stats.friends)}</dt>
+                <dd className="font-bold text-fm-blue">amigos</dd>
               </div>
               <div className="flex items-baseline gap-1.5">
-                <dt className="font-semibold text-massa-text">{formatCount(stats.media)}</dt>
-                <dd className="text-massa-muted">fotos e vídeos</dd>
+                <dt className="font-bold text-massa-text">{formatCount(stats.media)}</dt>
+                <dd className="font-bold text-fm-blue">fotos e vídeos</dd>
               </div>
             </dl>
 

@@ -111,14 +111,14 @@ h2 em {
     background: var(--fm-purple) !important;
     color: #ffffff !important;
     border-color: transparent !important;
-    box-shadow: 0 8px 27px color-mix(in srgb, var(--fm-purple) 22%, transparent) !important;
+    box-shadow: none !important;
   }
 
   .button--primary:hover,
   .button--primary[data-hovered="true"] {
     background: var(--fm-purple-dark) !important;
     color: #ffffff !important;
-    box-shadow: 0 8px 30px color-mix(in srgb, var(--fm-purple) 30%, transparent) !important;
+    box-shadow: none !important;
   }
 
   .button--outline,
@@ -185,14 +185,15 @@ h2 em {
     color: #ffffff !important;
   }
 
-  /* CTA azul oficial (Publicar / Ver perfil) */
+  /* CTA azul oficial (Publicar / Criar) — pill como menu active */
   .btn-fm-blue.button,
   .btn-fm-blue.button--primary,
   .btn-fm-blue.button--secondary {
     background: var(--fm-blue) !important;
     color: #ffffff !important;
     border-color: transparent !important;
-    box-shadow: 0 8px 22px color-mix(in srgb, var(--fm-blue) 28%, transparent) !important;
+    border-radius: 9999px !important;
+    box-shadow: none !important;
   }
 
   .btn-fm-blue.button:hover,
@@ -200,6 +201,44 @@ h2 em {
   .btn-fm-blue.button--secondary:hover,
   .btn-fm-blue.button[data-hovered="true"] {
     background: var(--fm-blue-dark) !important;
+    color: #ffffff !important;
+  }
+
+  /* CTA roxo (Ver perfil / Mensagem) — pill como menu active */
+  .btn-fm-purple.button,
+  .btn-fm-purple.button--primary,
+  .btn-fm-purple.button--secondary {
+    background: var(--fm-purple) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+    border-radius: 9999px !important;
+    box-shadow: none !important;
+  }
+
+  .btn-fm-purple.button:hover,
+  .btn-fm-purple.button--primary:hover,
+  .btn-fm-purple.button--secondary:hover,
+  .btn-fm-purple.button[data-hovered="true"] {
+    background: var(--fm-purple-dark) !important;
+    color: #ffffff !important;
+  }
+
+  /* CTA verde escuro (Amigos) — pill como menu active */
+  .btn-fm-teal.button,
+  .btn-fm-teal.button--primary,
+  .btn-fm-teal.button--secondary {
+    background: var(--fm-teal-dark) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+    border-radius: 9999px !important;
+    box-shadow: none !important;
+  }
+
+  .btn-fm-teal.button:hover,
+  .btn-fm-teal.button--primary:hover,
+  .btn-fm-teal.button--secondary:hover,
+  .btn-fm-teal.button[data-hovered="true"] {
+    background: var(--fm-teal) !important;
     color: #ffffff !important;
   }
 

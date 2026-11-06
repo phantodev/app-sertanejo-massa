@@ -55,7 +55,7 @@ export function SuggestionCard({ suggestion, onDismiss, compact = false }: Sugge
         </div>
       </Link>
       <div className="relative px-3 pb-3">
-        <Button size="sm" fullWidth className="btn-fm-blue bg-fm-blue text-white">
+        <Button size="sm" fullWidth className="btn-fm-purple rounded-full bg-fm-purple text-white">
           Ver perfil
         </Button>
         <Link

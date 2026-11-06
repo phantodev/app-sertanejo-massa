@@ -31,7 +31,7 @@ export function EventsMobileBar({
         <ArrowLeft className="size-5" />
       </button>
 
-      <h1 className="min-w-0 flex-1 truncate text-center text-[17px] font-bold text-massa-text">
+      <h1 className="min-w-0 flex-1 truncate text-center text-[17px] font-bold text-fm-purple">
         {title}
       </h1>
 
