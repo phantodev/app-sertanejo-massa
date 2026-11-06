@@ -1,0 +1,162 @@
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/dm-sans";
+@import "tailwindcss";
+@import "@heroui/styles";
+@import "./styles/massa-theme.css";
+
+@theme inline {
+  --font-sans: "Manrope Variable", Manrope, "DM Sans Variable", "DM Sans", system-ui, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Itálicos de título — design system Massa */
+h1 em,
+h2 em,
+em {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.065em;
+}
+
+h1 em,
+h2 em {
+  color: #e9b36f;
+}
+
+/* HeroUI → medidas e cores do design system Massa */
+@layer components {
+  .button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 14px !important;
+    min-height: 53px !important;
+    height: auto !important;
+    padding: 0 25px !important;
+    border-radius: 9px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.01em !important;
+    font-weight: 800 !important;
+    transition:
+      transform 0.2s,
+      background 0.2s,
+      border-color 0.2s,
+      box-shadow 0.2s !important;
+  }
+
+  .button:hover,
+  .button[data-hovered="true"] {
+    transform: translateY(-2px);
+  }
+
+  .button--sm {
+    min-height: 41px !important;
+    font-size: 11px !important;
+    padding: 0 18px !important;
+  }
+
+  .button--primary {
+    background: #e9b36f !important;
+    color: #1a100b !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 27px #c6883514 !important;
+  }
+
+  .button--primary:hover,
+  .button--primary[data-hovered="true"] {
+    background: #f8cd90 !important;
+    box-shadow: 0 8px 30px #d9933c2f !important;
+  }
+
+  .button--outline,
+  .button--secondary {
+    background: transparent !important;
+    color: #f6f0e9 !important;
+    border: 1px solid #61503f !important;
+  }
+
+  .button--outline:hover,
+  .button--outline[data-hovered="true"],
+  .button--secondary:hover,
+  .button--secondary[data-hovered="true"] {
+    border-color: #e9b36f !important;
+    background: #e9b36f0b !important;
+  }
+
+  .input,
+  .input--primary,
+  .textarea,
+  .textarea--primary {
+    border: 1px solid #44372d !important;
+    border-radius: 7px !important;
+    background: #120f0d !important;
+    color: #f7e7da !important;
+    font-size: 13px !important;
+    box-shadow: none !important;
+  }
+
+  .input,
+  .input--primary {
+    height: 45px !important;
+    min-height: 45px !important;
+  }
+
+  .input:focus,
+  .input[data-focus-visible="true"],
+  .input--primary:focus,
+  .textarea:focus,
+  .textarea[data-focus-visible="true"] {
+    border-color: #a87945 !important;
+    box-shadow: 0 0 0 2px #f3bb7020 !important;
+    outline: none !important;
+  }
+
+  .input::placeholder,
+  .textarea::placeholder {
+    color: #6c6159 !important;
+  }
+
+  .search-field__group .input,
+  [data-slot="search-field-group"] .input {
+    height: auto !important;
+    min-height: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .checkbox {
+    accent-color: #e9b36f;
+  }
+
+  .tabs__indicator,
+  [data-slot="tab-indicator"] {
+    background: #e9b36f !important;
+  }
+
+  /* Composer do feed: textarea sem “caixa” de form */
+  .composer-textarea.textarea,
+  .composer-textarea {
+    min-height: 40px !important;
+    height: auto !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 4px 0 !important;
+    font-size: 15px !important;
+    color: #f6f0e9 !important;
+  }
+}

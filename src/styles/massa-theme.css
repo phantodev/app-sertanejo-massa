@@ -1,0 +1,91 @@
+/* Tokens alinhados 1:1 com 14-sertanejo-massa / massa-theme.css */
+@layer base {
+  :root,
+  .dark,
+  [data-theme="dark"] {
+    color-scheme: dark;
+
+    --bg: #0e0c0b;
+    --bg2: #14110f;
+    --panel: #1b1714;
+    --gold: #e9b36f;
+    --gold2: #f8cd90;
+    --gold-dark: #a87945;
+    --text: #f6f0e9;
+    --muted: #a9a19a;
+    --muted2: #796e66;
+    --border: #39302a;
+    --line: rgba(255, 255, 255, 0.09);
+
+    /* HeroUI semantic bridge */
+    --background: #0e0c0b;
+    --foreground: #f6f0e9;
+    --surface: #1b1714;
+    --surface-foreground: #f6f0e9;
+    --overlay: #201914;
+    --overlay-foreground: #f6f0e9;
+    --accent: #e9b36f;
+    --accent-foreground: #1a100b;
+    --primary: #e9b36f;
+    --primary-foreground: #1a100b;
+    --primary-hover: #f8cd90;
+    --secondary: #181411;
+    --secondary-foreground: #f6f0e9;
+    --muted-foreground: #a9a19a;
+    --separator: #3a302a;
+    --default: #181411;
+    --default-foreground: #f6f0e9;
+    --field-background: #120f0d;
+    --field-foreground: #f7e7da;
+    --field-border: #44372d;
+    --field-placeholder: #6c6159;
+    --focus: #e9b36f;
+    --ring: #e9b36f;
+    --link: #e9b36f;
+
+    --success: oklch(0.65 0.15 155);
+    --success-foreground: #1a100b;
+    --danger: oklch(0.55 0.2 25);
+    --danger-foreground: #f6f0e9;
+
+    --radius: 0.5625rem;
+    --field-radius: 0.4375rem;
+
+    --massa-gold: #e9b36f;
+    --massa-gold-light: #f8cd90;
+    --massa-panel: #14110f;
+  }
+
+  html {
+    background: #0e0c0b;
+  }
+
+  body {
+    background: #0e0c0b;
+    color: #f6f0e9;
+    font-family: "Manrope Variable", Manrope, "DM Sans Variable", "DM Sans", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@theme inline {
+  --color-massa-gold: #e9b36f;
+  --color-massa-gold-light: #f8cd90;
+  --color-massa-panel: #14110f;
+  --color-massa-bg: #0e0c0b;
+  --color-massa-text: #f6f0e9;
+  --color-massa-muted: #a9a19a;
+  --color-massa-border: #39302a;
+  --color-massa-gold-dark: #a87945;
+
+  --color-background: #0e0c0b;
+  --color-foreground: #f6f0e9;
+  --color-muted: #a9a19a;
+  --color-accent: #e9b36f;
+  --color-accent-foreground: #1a100b;
+  --color-border: #39302a;
+  --color-surface: #1b1714;
+  --color-overlay: #201914;
+}

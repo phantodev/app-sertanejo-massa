@@ -1,0 +1,5 @@
+export function delay(ms = 280): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
