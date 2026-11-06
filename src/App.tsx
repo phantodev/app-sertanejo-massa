@@ -7,6 +7,8 @@ import { EventDetailPage } from "./features/events/components/EventDetailPage.ts
 import { EventPlaceholderPage } from "./features/events/components/EventPlaceholderPage.tsx";
 import { EventsPage } from "./features/events/components/EventsPage.tsx";
 import { FeedPage } from "./features/feed/components/FeedPage.tsx";
+import { ExploreGroupsPage } from "./features/messages/components/ExploreGroupsPage.tsx";
+import { GroupInfoPage } from "./features/messages/components/GroupInfoPage.tsx";
 import { MessagesPage } from "./features/messages/components/MessagesPage.tsx";
 import { ProfilePage } from "./features/profile/components/ProfilePage.tsx";
 
@@ -22,6 +24,8 @@ export function App() {
           <Route element={<RequireAuth />}>
             <Route path="/feed" element={<FeedPage />} />
             <Route path="/messages" element={<MessagesPage />} />
+            <Route path="/messages/explore" element={<ExploreGroupsPage />} />
+            <Route path="/messages/:conversationId/info" element={<GroupInfoPage />} />
             <Route path="/messages/:conversationId" element={<MessagesPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route

@@ -5,6 +5,10 @@ import type {
   ConversationDetail,
   ConversationFilter,
   ConversationSummary,
+  ExploreGroup,
+  GroupInfo,
+  GroupMemberRole,
+  MessageReplyPreview,
 } from "../types/messages.types.ts";
 
 function user(id: string) {
@@ -54,6 +58,8 @@ const conversations: ConversationDetail[] = [
     muted: false,
     favorite: true,
     typing: false,
+    description: "Grupo oficial da galera Massa de Curitiba. Churrasco, rodeio, viola e rolê.",
+    pinnedMessageId: "m4",
     messages: [
       {
         id: "m1",
@@ -86,7 +92,7 @@ const conversations: ConversationDetail[] = [
         body: "Eu vou! Levo a viola.",
         createdAt: daysAgo(3, 18, 20),
         mine: false,
-        reactions: [{ emoji: "🔥", count: 4 }],
+        reactions: [{ emoji: "🔥", count: 4, reactedByMe: true }],
       },
       {
         id: "m4",
@@ -100,7 +106,8 @@ const conversations: ConversationDetail[] = [
         mediaUrl: unsplash.photo("1492684223066-81342ee5ff30", 900, 1200),
         createdAt: daysAgo(2, 21, 5),
         mine: false,
-        reactions: [{ emoji: "❤️", count: 12 }],
+        pinned: true,
+        reactions: [{ emoji: "❤️", count: 12, reactedByMe: false }],
       },
       {
         id: "m5",
@@ -211,6 +218,7 @@ const conversations: ConversationDetail[] = [
     pinned: false,
     muted: false,
     favorite: false,
+    description: "Modão na estrada, carona e playlist da viagem.",
     messages: [
       {
         id: "g1",
@@ -392,9 +400,46 @@ const conversations: ConversationDetail[] = [
   },
 ];
 
+const exploreGroups: ExploreGroup[] = [
+  {
+    id: "explore-viola-vivo",
+    title: "Viola ao Vivo BR",
+    avatarUrl: unsplash.photo("1511671782779-c97d3d27a1d4", 200, 200),
+    description: "Encontros, lives e open mic de viola caipira.",
+    memberCount: 842,
+    joined: false,
+  },
+  {
+    id: "explore-rodeio-sp",
+    title: "Rodeio SP",
+    avatarUrl: unsplash.photo("1540039154509-5cddc0b15f19", 200, 200),
+    description: "Agenda de rodeios e camarotes no interior paulista.",
+    memberCount: 1204,
+    joined: false,
+  },
+  {
+    id: "explore-churrasco-modao",
+    title: "Churrasco & Modão",
+    avatarUrl: unsplash.photo("1555939594-58d7cb561ad1", 200, 200),
+    description: "Quem leva a carne, quem leva a caixinha de som.",
+    memberCount: 356,
+    joined: true,
+  },
+  {
+    id: "conv-grupo-massa-cwb",
+    title: "Massa Curitiba",
+    avatarUrl: unsplash.photo("1514525253161-7a46d19cd819", 200, 200),
+    description: "Já está nas suas conversas — grupo oficial CWB.",
+    memberCount: 128,
+    joined: true,
+  },
+];
+
 export function getMockConversations(): ConversationSummary[] {
   return conversations
-    .map(({ messages: _messages, ...summary }) => summary)
+    .map(
+      ({ messages: _messages, pinnedMessageId: _pin, description: _desc, ...summary }) => summary,
+    )
     .sort((a, b) => {
       if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
       return +new Date(b.lastMessageAt) - +new Date(a.lastMessageAt);
@@ -406,7 +451,11 @@ export function getMockConversation(id: string): ConversationDetail | null {
   return found ? structuredClone(found) : null;
 }
 
-export function appendMockMessage(conversationId: string, body: string): ChatMessage | null {
+export function appendMockMessage(
+  conversationId: string,
+  body: string,
+  replyTo?: MessageReplyPreview,
+): ChatMessage | null {
   const conversation = conversations.find((item) => item.id === conversationId);
   if (!conversation) return null;
 
@@ -419,6 +468,7 @@ export function appendMockMessage(conversationId: string, body: string): ChatMes
     authorName: me.displayName,
     authorAvatarUrl: me.avatarUrl,
     body,
+    replyTo,
     createdAt: new Date().toISOString(),
     mine: true,
   };
@@ -427,5 +477,194 @@ export function appendMockMessage(conversationId: string, body: string): ChatMes
   conversation.lastMessagePreview = `Você: ${body}`;
   conversation.lastMessageAt = message.createdAt;
   conversation.unreadCount = 0;
+  conversation.typing = false;
   return structuredClone(message);
+}
+
+export function appendMockAudioMessage(
+  conversationId: string,
+  durationSec = 8,
+): ChatMessage | null {
+  const conversation = conversations.find((item) => item.id === conversationId);
+  if (!conversation) return null;
+
+  const message: ChatMessage = {
+    id: `local-audio-${Date.now()}`,
+    conversationId,
+    kind: "audio",
+    authorId: me.id,
+    authorHandle: me.handle,
+    authorName: me.displayName,
+    authorAvatarUrl: me.avatarUrl,
+    audioDurationSec: durationSec,
+    createdAt: new Date().toISOString(),
+    mine: true,
+  };
+
+  conversation.messages.push(message);
+  conversation.lastMessagePreview = "Você: Áudio";
+  conversation.lastMessageAt = message.createdAt;
+  conversation.unreadCount = 0;
+  conversation.typing = false;
+  return structuredClone(message);
+}
+
+export function toggleMockReaction(
+  conversationId: string,
+  messageId: string,
+  emoji: string,
+): ChatMessage | null {
+  const conversation = conversations.find((item) => item.id === conversationId);
+  if (!conversation) return null;
+  const message = conversation.messages.find((item) => item.id === messageId);
+  if (!message || message.kind === "system") return null;
+
+  const reactions = [...(message.reactions ?? [])];
+  const index = reactions.findIndex((item) => item.emoji === emoji);
+
+  if (index >= 0) {
+    const current = reactions[index]!;
+    if (current.reactedByMe) {
+      if (current.count <= 1) reactions.splice(index, 1);
+      else reactions[index] = { ...current, count: current.count - 1, reactedByMe: false };
+    } else {
+      reactions[index] = { ...current, count: current.count + 1, reactedByMe: true };
+    }
+  } else {
+    reactions.push({ emoji, count: 1, reactedByMe: true });
+  }
+
+  message.reactions = reactions;
+  return structuredClone(message);
+}
+
+export function pinMockMessage(
+  conversationId: string,
+  messageId: string,
+): ConversationDetail | null {
+  const conversation = conversations.find((item) => item.id === conversationId);
+  if (!conversation) return null;
+  const message = conversation.messages.find((item) => item.id === messageId);
+  if (!message || message.kind === "system") return null;
+
+  for (const item of conversation.messages) item.pinned = false;
+  message.pinned = true;
+  conversation.pinnedMessageId = messageId;
+  return structuredClone(conversation);
+}
+
+export function unpinMockMessage(conversationId: string): ConversationDetail | null {
+  const conversation = conversations.find((item) => item.id === conversationId);
+  if (!conversation) return null;
+  for (const item of conversation.messages) item.pinned = false;
+  conversation.pinnedMessageId = null;
+  return structuredClone(conversation);
+}
+
+export function toggleMockMute(conversationId: string): ConversationSummary | null {
+  const conversation = conversations.find((item) => item.id === conversationId);
+  if (!conversation) return null;
+  conversation.muted = !conversation.muted;
+  const { messages: _m, pinnedMessageId: _p, description: _d, ...summary } = conversation;
+  return structuredClone(summary);
+}
+
+export function toggleMockFavorite(conversationId: string): ConversationSummary | null {
+  const conversation = conversations.find((item) => item.id === conversationId);
+  if (!conversation) return null;
+  conversation.favorite = !conversation.favorite;
+  const { messages: _m, pinnedMessageId: _p, description: _d, ...summary } = conversation;
+  return structuredClone(summary);
+}
+
+export function clearMockConversation(conversationId: string): ConversationDetail | null {
+  const conversation = conversations.find((item) => item.id === conversationId);
+  if (!conversation) return null;
+  conversation.messages = [];
+  conversation.pinnedMessageId = null;
+  conversation.lastMessagePreview = "Sem mensagens";
+  conversation.lastMessageAt = new Date().toISOString();
+  conversation.unreadCount = 0;
+  return structuredClone(conversation);
+}
+
+export function getMockGroupInfo(conversationId: string): GroupInfo | null {
+  const conversation = conversations.find(
+    (item) => item.id === conversationId && item.type === "group",
+  );
+  if (!conversation) return null;
+
+  const memberIds =
+    conversationId === "conv-grupo-massa-cwb"
+      ? [me.id, namu.id, andre.id, hotbar.id, jemhot.id, carlos.id]
+      : [me.id, sulsp.id, carlos.id, andre.id];
+
+  const members = memberIds.map((id, index) => {
+    const found = findMockUser(id) ?? me;
+    return {
+      id: found.id,
+      handle: found.handle,
+      displayName: found.displayName,
+      avatarUrl: found.avatarUrl,
+      role: (index === 0 ? "admin" : "member") as GroupMemberRole,
+    };
+  });
+
+  return {
+    conversationId,
+    title: conversation.title,
+    avatarUrl: conversation.avatarUrl,
+    description: conversation.description ?? "",
+    memberCount: conversation.memberCount ?? members.length,
+    members,
+    createdAt: daysAgo(40, 12, 0),
+  };
+}
+
+export function getMockExploreGroups(query = ""): ExploreGroup[] {
+  const normalized = query.trim().toLowerCase();
+  const list = exploreGroups.filter((group) => {
+    if (!normalized) return true;
+    return (
+      group.title.toLowerCase().includes(normalized) ||
+      group.description.toLowerCase().includes(normalized)
+    );
+  });
+  return structuredClone(list);
+}
+
+export function joinMockExploreGroup(exploreId: string): ExploreGroup | null {
+  const group = exploreGroups.find((item) => item.id === exploreId);
+  if (!group) return null;
+  group.joined = true;
+
+  if (!conversations.some((item) => item.id === exploreId)) {
+    conversations.unshift({
+      id: exploreId,
+      type: "group",
+      title: group.title,
+      avatarUrl: group.avatarUrl,
+      subtitle: `${group.memberCount} membros`,
+      memberCount: group.memberCount,
+      description: group.description,
+      lastMessagePreview: "Você entrou no grupo",
+      lastMessageAt: new Date().toISOString(),
+      unreadCount: 0,
+      pinned: false,
+      muted: false,
+      favorite: false,
+      messages: [
+        {
+          id: `sys-join-${Date.now()}`,
+          conversationId: exploreId,
+          kind: "system",
+          body: "Você entrou no grupo",
+          createdAt: new Date().toISOString(),
+          mine: false,
+        },
+      ],
+    });
+  }
+
+  return structuredClone(group);
 }

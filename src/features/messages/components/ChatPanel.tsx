@@ -1,11 +1,20 @@
 import { Spinner } from "@heroui/react";
-import { useEffect, useRef } from "react";
+import { Search, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useConversation } from "../hooks/use-conversation.ts";
+import {
+  useConversation,
+  usePinMessage,
+  useReactToMessage,
+  useUnpinMessage,
+} from "../hooks/use-conversation.ts";
 import { formatDateDivider, sameDay } from "../lib/format-chat-time.ts";
+import type { ChatMessage, MessageReplyPreview } from "../types/messages.types.ts";
 import { ChatHeader } from "./ChatHeader.tsx";
-import { MessageBubble } from "./MessageBubble.tsx";
+import { ChatPinnedBar } from "./ChatPinnedBar.tsx";
+import { MessageBubble, replyPreviewBody } from "./MessageBubble.tsx";
 import { MessageComposer } from "./MessageComposer.tsx";
+import { TypingIndicator } from "./TypingIndicator.tsx";
 
 type ChatPanelProps = {
   conversationId: string;
@@ -13,11 +22,39 @@ type ChatPanelProps = {
 
 export function ChatPanel({ conversationId }: ChatPanelProps) {
   const conversation = useConversation(conversationId);
+  const react = useReactToMessage(conversationId);
+  const pin = usePinMessage(conversationId);
+  const unpin = useUnpinMessage(conversationId);
   const endRef = useRef<HTMLDivElement>(null);
+  const [replyTo, setReplyTo] = useState<MessageReplyPreview | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    setReplyTo(null);
+    setSearchOpen(false);
+    setSearchQuery("");
+  }, [conversationId]);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [conversation.data?.messages.length, conversationId]);
+  }, [conversation.data?.messages.length, conversation.data?.typing, conversationId]);
+
+  const pinnedMessage = useMemo(() => {
+    const data = conversation.data;
+    if (!data?.pinnedMessageId) return null;
+    return data.messages.find((item) => item.id === data.pinnedMessageId) ?? null;
+  }, [conversation.data]);
+
+  const visibleMessages = useMemo(() => {
+    const messages = conversation.data?.messages ?? [];
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return messages;
+    return messages.filter((message) => {
+      if (message.kind === "system") return false;
+      return (message.body ?? "").toLowerCase().includes(q);
+    });
+  }, [conversation.data?.messages, searchQuery]);
 
   if (conversation.isLoading) {
     return (
@@ -38,11 +75,60 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
     );
   }
 
-  const { messages } = conversation.data;
+  function handleReply(message: ChatMessage) {
+    setReplyTo({
+      id: message.id,
+      authorName: message.mine ? "Você" : (message.authorName ?? "Contato"),
+      body: replyPreviewBody(message),
+    });
+  }
 
   return (
     <section className="flex h-full min-h-0 flex-col bg-[#120f0d]">
-      <ChatHeader conversation={conversation.data} />
+      <ChatHeader
+        conversation={conversation.data}
+        searchOpen={searchOpen}
+        onToggleSearch={() => {
+          setSearchOpen((open) => !open);
+          setSearchQuery("");
+        }}
+      />
+
+      {searchOpen ? (
+        <div className="flex items-center gap-2 border-b border-massa-border bg-[#14110f] px-3 py-2">
+          <Search className="size-4 shrink-0 text-massa-muted" />
+          <input
+            autoFocus
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder="Pesquisar nesta conversa"
+            className="h-9 w-full bg-transparent text-sm text-massa-text outline-none placeholder:text-massa-muted"
+          />
+          <button
+            type="button"
+            aria-label="Fechar busca"
+            onClick={() => {
+              setSearchOpen(false);
+              setSearchQuery("");
+            }}
+            className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-white/5"
+          >
+            <X className="size-4" />
+          </button>
+        </div>
+      ) : null}
+
+      {pinnedMessage ? (
+        <ChatPinnedBar
+          message={pinnedMessage}
+          onUnpin={() => unpin.mutate()}
+          onJump={() => {
+            document
+              .getElementById(`msg-${pinnedMessage.id}`)
+              ?.scrollIntoView({ behavior: "smooth", block: "center" });
+          }}
+        />
+      ) : null}
 
       <div
         className="relative min-h-0 flex-1 overflow-y-auto"
@@ -54,9 +140,10 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
         }}
       >
         <div className="space-y-1 py-3 pb-4">
-          {messages.map((message, index) => {
-            const previous = messages[index - 1];
-            const showDate = !previous || !sameDay(previous.createdAt, message.createdAt);
+          {visibleMessages.map((message, index) => {
+            const previous = visibleMessages[index - 1];
+            const showDate =
+              !searchQuery && (!previous || !sameDay(previous.createdAt, message.createdAt));
             const showAuthor =
               message.kind !== "system" &&
               !message.mine &&
@@ -67,7 +154,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
                 showDate);
 
             return (
-              <div key={message.id}>
+              <div key={message.id} id={`msg-${message.id}`}>
                 {showDate ? (
                   <div className="flex justify-center px-4 py-3">
                     <span className="rounded-full border border-massa-border bg-[#1b1714]/95 px-3 py-1 text-[11px] font-medium text-massa-muted shadow-sm">
@@ -75,16 +162,31 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
                     </span>
                   </div>
                 ) : null}
-                <MessageBubble message={message} showAuthor={showAuthor} />
+                <MessageBubble
+                  message={message}
+                  showAuthor={showAuthor}
+                  onReply={handleReply}
+                  onReact={(messageId, emoji) => react.mutate({ messageId, emoji })}
+                  onPin={(messageId) => pin.mutate(messageId)}
+                />
               </div>
             );
           })}
+
+          {conversation.data.typing ? (
+            <TypingIndicator
+              name={conversation.data.type === "dm" ? conversation.data.title : undefined}
+            />
+          ) : null}
+
           <div ref={endRef} />
         </div>
       </div>
 
       <MessageComposer
         conversationId={conversation.data.id}
+        replyTo={replyTo}
+        onCancelReply={() => setReplyTo(null)}
         placeholder={
           conversation.data.type === "group"
             ? `Mensagem para ${conversation.data.title}`

@@ -8,4 +8,6 @@ export const messagesKeys = {
     [...messagesKeys.lists(), filter, query] as const,
   details: () => [...messagesKeys.all, "detail"] as const,
   detail: (id: string) => [...messagesKeys.details(), id] as const,
+  groupInfo: (id: string) => [...messagesKeys.all, "group-info", id] as const,
+  explore: (query: string) => [...messagesKeys.all, "explore", query] as const,
 };

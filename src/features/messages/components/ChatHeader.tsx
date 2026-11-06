@@ -1,18 +1,40 @@
 import { Dropdown, Label } from "@heroui/react";
-import { ArrowLeft, BellOff, EllipsisVertical, Info, Search, Trash2, Users } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  ArrowLeft,
+  Bell,
+  BellOff,
+  EllipsisVertical,
+  Info,
+  Search,
+  Star,
+  Trash2,
+  Users,
+} from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  useClearConversation,
+  useToggleFavorite,
+  useToggleMute,
+} from "../hooks/use-conversation.ts";
 import type { ConversationDetail } from "../types/messages.types.ts";
 
 type ChatHeaderProps = {
   conversation: ConversationDetail;
+  searchOpen: boolean;
+  onToggleSearch: () => void;
 };
 
-export function ChatHeader({ conversation }: ChatHeaderProps) {
+export function ChatHeader({ conversation, searchOpen, onToggleSearch }: ChatHeaderProps) {
+  const navigate = useNavigate();
   const isGroup = conversation.type === "group";
+  const mute = useToggleMute(conversation.id);
+  const favorite = useToggleFavorite(conversation.id);
+  const clear = useClearConversation(conversation.id);
+
   const profileHref =
     conversation.type === "dm" && conversation.peerHandle
       ? `/${conversation.peerHandle}`
-      : `/messages/${conversation.id}`;
+      : `/messages/${conversation.id}/info`;
 
   return (
     <header className="flex h-14 items-center gap-2 border-b border-massa-border bg-[#14110f]/95 px-2 backdrop-blur-md">
@@ -49,13 +71,20 @@ export function ChatHeader({ conversation }: ChatHeaderProps) {
         <Dropdown.Popover className="min-w-52 border border-massa-border bg-[#181411]">
           <Dropdown.Menu
             onAction={(key) => {
-              // Phase 1: ações mock — hooks reais na Phase 2
-              void key;
+              if (typeof key !== "string") return;
+              if (key === "search") onToggleSearch();
+              if (key === "members" || key === "info") {
+                if (isGroup) navigate(`/messages/${conversation.id}/info`);
+                else if (conversation.peerHandle) navigate(`/${conversation.peerHandle}`);
+              }
+              if (key === "mute") mute.mutate();
+              if (key === "favorite") favorite.mutate();
+              if (key === "clear") clear.mutate();
             }}
           >
-            <Dropdown.Item id="search" textValue="Pesquisar">
+            <Dropdown.Item id="search" textValue={searchOpen ? "Fechar busca" : "Pesquisar"}>
               <Search className="size-4 shrink-0 text-massa-gold" />
-              <Label>Pesquisar</Label>
+              <Label>{searchOpen ? "Fechar busca" : "Pesquisar"}</Label>
             </Dropdown.Item>
             {isGroup ? (
               <Dropdown.Item id="members" textValue="Membros">
@@ -67,9 +96,25 @@ export function ChatHeader({ conversation }: ChatHeaderProps) {
               <Info className="size-4 shrink-0 text-massa-gold" />
               <Label>{isGroup ? "Dados do grupo" : "Dados do contato"}</Label>
             </Dropdown.Item>
-            <Dropdown.Item id="mute" textValue="Silenciar">
-              <BellOff className="size-4 shrink-0 text-massa-gold" />
-              <Label>Silenciar</Label>
+            <Dropdown.Item
+              id="mute"
+              textValue={conversation.muted ? "Ativar notificações" : "Silenciar"}
+            >
+              {conversation.muted ? (
+                <Bell className="size-4 shrink-0 text-massa-gold" />
+              ) : (
+                <BellOff className="size-4 shrink-0 text-massa-gold" />
+              )}
+              <Label>{conversation.muted ? "Ativar notificações" : "Silenciar"}</Label>
+            </Dropdown.Item>
+            <Dropdown.Item
+              id="favorite"
+              textValue={conversation.favorite ? "Remover dos favoritos" : "Favoritar"}
+            >
+              <Star
+                className={`size-4 shrink-0 text-massa-gold ${conversation.favorite ? "fill-massa-gold" : ""}`}
+              />
+              <Label>{conversation.favorite ? "Remover dos favoritos" : "Favoritar"}</Label>
             </Dropdown.Item>
             <Dropdown.Item id="clear" textValue="Limpar conversa" variant="danger">
               <Trash2 className="size-4 shrink-0" />

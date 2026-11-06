@@ -1,6 +1,7 @@
-import { MessageSquarePlus, Search } from "lucide-react";
-import { useState } from "react";
 import { Spinner } from "@heroui/react";
+import { Compass, Search } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useConversationFilters, useConversations } from "../hooks/use-conversations.ts";
 import type { ConversationFilterId } from "../types/messages.types.ts";
 import { ConversationFilters } from "./ConversationFilters.tsx";
@@ -22,13 +23,13 @@ export function ConversationList({ className = "" }: ConversationListProps) {
     >
       <header className="flex items-center justify-between gap-2 px-4 pb-2 pt-4">
         <h1 className="text-xl font-bold tracking-tight text-massa-text">Conversas</h1>
-        <button
-          type="button"
-          aria-label="Nova conversa"
+        <Link
+          to="/messages/explore"
+          aria-label="Explorar grupos"
           className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5"
         >
-          <MessageSquarePlus className="size-5" />
-        </button>
+          <Compass className="size-5" />
+        </Link>
       </header>
 
       <div className="px-3 pb-3">
