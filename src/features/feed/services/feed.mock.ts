@@ -1,6 +1,6 @@
 import { unsplash } from "../../../shared/lib/unsplash.ts";
 import { findMockUser } from "../../session/services/session.mock.ts";
-import type { FeedPost, FeedTab, SurveyBanner } from "../types/feed.types.ts";
+import type { FeedPost, FeedTab, PostLikePreview, SurveyBanner } from "../types/feed.types.ts";
 
 function authorFrom(userId: string) {
   const user = findMockUser(userId);
@@ -17,6 +17,19 @@ function authorFrom(userId: string) {
     city: user.city,
     state: user.state,
   };
+}
+
+function likesFrom(userIds: string[]): PostLikePreview[] {
+  return userIds.map((id) => {
+    const user = findMockUser(id);
+    if (!user) {
+      throw new Error(`Mock user not found: ${id}`);
+    }
+    return {
+      displayName: user.displayName,
+      avatarUrl: user.avatarUrl,
+    };
+  });
 }
 
 export const mockFeedTabs: FeedTab[] = [
@@ -47,6 +60,24 @@ export const mockFeedPosts: FeedPost[] = [
     likedByPreview: [],
   },
   {
+    id: "post-media-namu",
+    kind: "media",
+    author: authorFrom("u-namu"),
+    createdAt: new Date(Date.now() - 2.5 * 60 * 60 * 1000).toISOString(),
+    title: "",
+    body: "Tem noite que o sertanejo não é só música — é memória.\nAquele verso que puxa o coração pra estrada e pra roça ao mesmo tempo.\nHoje o som tá alto e a mesa tá posta. Massa demais.",
+    coverUrl: unsplash.photo("1511671782779-c97d3d27a1d4", 1080, 1350),
+    likes: 128,
+    comments: 14,
+    bookmarked: false,
+    likedByPreview: likesFrom(["u-andre", "u-gold", "u-ljsecret"]),
+    latestComment: {
+      authorHandle: "andre-daniel",
+      authorDisplayName: "Andre Daniel",
+      text: "Isso aí! Sertanejo raiz no talo 🔥",
+    },
+  },
+  {
     id: "post-verified-andre",
     kind: "verified",
     author: authorFrom("u-andre"),
@@ -61,6 +92,24 @@ export const mockFeedPosts: FeedPost[] = [
     likedByPreview: [],
   },
   {
+    id: "post-media-carlos",
+    kind: "media",
+    author: authorFrom("u-carlos"),
+    createdAt: new Date(Date.now() - 3.5 * 60 * 60 * 1000).toISOString(),
+    title: "",
+    body: "Show no fim de semana e o peito já aperta de saudade do palco.\nBotina limpa, chapéu na mão e playlist do Massa no repeat.\nQuem mais vive o sertanejo assim, de verdade?",
+    coverUrl: unsplash.photo("1470225620780-dba8ba36b745", 1080, 1350),
+    likes: 86,
+    comments: 9,
+    bookmarked: true,
+    likedByPreview: likesFrom(["u-namu", "u-hotbar", "u-admin"]),
+    latestComment: {
+      authorHandle: "gold",
+      authorDisplayName: "GOLD",
+      text: "Essa vibe é pura Massa. Marca o próximo show!",
+    },
+  },
+  {
     id: "post-welcome-andre",
     kind: "welcome",
     author: authorFrom("u-andre"),
@@ -71,7 +120,7 @@ export const mockFeedPosts: FeedPost[] = [
     likes: 1,
     comments: 0,
     bookmarked: false,
-    likedByPreview: ["Admin Massa"],
+    likedByPreview: likesFrom(["u-admin"]),
   },
   {
     id: "post-welcome-carlos",
@@ -84,7 +133,7 @@ export const mockFeedPosts: FeedPost[] = [
     likes: 6,
     comments: 0,
     bookmarked: false,
-    likedByPreview: ["Admin Massa", "GOLD"],
+    likedByPreview: likesFrom(["u-admin", "u-gold", "u-namu"]),
   },
   {
     id: "post-welcome-namu",
@@ -97,6 +146,6 @@ export const mockFeedPosts: FeedPost[] = [
     likes: 3,
     comments: 0,
     bookmarked: false,
-    likedByPreview: ["Admin Massa"],
+    likedByPreview: likesFrom(["u-admin", "u-andre"]),
   },
 ];

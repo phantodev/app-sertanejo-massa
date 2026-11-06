@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type BrandLogoProps = {
   href?: string;
   className?: string;
@@ -28,12 +30,12 @@ export function BrandLogo({ href = "/", className = "", compact = false }: Brand
   );
 
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       aria-label="Sertanejo Massa, voltar ao início"
       className={`inline-flex min-w-max items-center gap-3 ${className}`}
     >
       {content}
-    </a>
+    </Link>
   );
 }

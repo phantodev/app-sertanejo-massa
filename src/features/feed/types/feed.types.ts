@@ -14,6 +14,18 @@ export type PostAuthor = Pick<
   "id" | "handle" | "displayName" | "avatarUrl" | "verified" | "city" | "state"
 >;
 
+export type PostLikePreview = {
+  displayName: string;
+  avatarUrl: string;
+};
+
+/** Último comentário exibido no feed (só um). */
+export type PostCommentPreview = {
+  authorHandle: string;
+  authorDisplayName: string;
+  text: string;
+};
+
 export type FeedPost = {
   id: string;
   kind: PostKind;
@@ -26,7 +38,8 @@ export type FeedPost = {
   likes: number;
   comments: number;
   bookmarked: boolean;
-  likedByPreview: string[];
+  likedByPreview: PostLikePreview[];
+  latestComment?: PostCommentPreview;
 };
 
 export type SurveyBanner = {

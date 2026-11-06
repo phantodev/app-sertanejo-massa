@@ -120,3 +120,8 @@ export const mockCurrentUser: CurrentUser = {
 export function findMockUser(id: string): User | undefined {
   return mockUsers.find((user) => user.id === id);
 }
+
+export function findMockUserByHandle(handle: string): User | undefined {
+  const normalized = handle.toLowerCase();
+  return mockUsers.find((user) => user.handle.toLowerCase() === normalized);
+}

@@ -1,4 +1,5 @@
 import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import { UserAvatar } from "../../../shared/ui/UserAvatar.tsx";
 import type { CurrentUser } from "../../session/types/session.types.ts";
 
@@ -9,8 +10,8 @@ type AccountMenuProps = {
 
 export function AccountMenu({ user, compact = false }: AccountMenuProps) {
   return (
-    <button
-      type="button"
+    <Link
+      to={`/${user.handle}`}
       className={`flex min-h-11 items-center gap-3 rounded-full px-3.5 py-3 text-left transition-colors hover:bg-white/5 ${
         compact ? "mx-auto size-11 justify-center p-0" : "w-full"
       }`}
@@ -28,6 +29,6 @@ export function AccountMenu({ user, compact = false }: AccountMenuProps) {
           <ChevronDown aria-hidden className="size-4 shrink-0 text-massa-muted" />
         </>
       ) : null}
-    </button>
+    </Link>
   );
 }

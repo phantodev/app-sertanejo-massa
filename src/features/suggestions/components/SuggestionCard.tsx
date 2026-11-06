@@ -1,5 +1,6 @@
 import { Button } from "@heroui/react";
 import { BadgeCheck, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { locationLabel } from "../../../shared/lib/location-label.ts";
 import type { Suggestion } from "../types/suggestions.types.ts";
 
@@ -29,8 +30,8 @@ export function SuggestionCard({ suggestion, onDismiss, compact = false }: Sugge
         </button>
       ) : null}
 
-      <a
-        href={`/${user.handle}`}
+      <Link
+        to={`/${user.handle}`}
         className="block"
         aria-label={`Ver perfil de ${user.displayName}`}
       >
@@ -53,11 +54,16 @@ export function SuggestionCard({ suggestion, onDismiss, compact = false }: Sugge
             {locationLabel(user.city, user.state)}
           </p>
         </div>
-      </a>
-      <div className="px-3 pb-3">
+      </Link>
+      <div className="relative px-3 pb-3">
         <Button size="sm" fullWidth variant="secondary">
           Ver perfil
         </Button>
+        <Link
+          to={`/${user.handle}`}
+          className="absolute inset-0"
+          aria-label={`Ver perfil de ${user.displayName}`}
+        />
       </div>
     </div>
   );
