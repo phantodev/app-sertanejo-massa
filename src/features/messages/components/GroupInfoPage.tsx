@@ -35,12 +35,12 @@ export function GroupInfoPage() {
       }
       bottomNav={<MobileBottomNav items={mobileNav.data} />}
       main={
-        <div className="min-h-dvh bg-[#0e0c0b]">
-          <header className="sticky top-0 z-10 flex items-center gap-2 border-b border-massa-border bg-[#14110f]/95 px-2 py-2 backdrop-blur-md">
+        <div className="min-h-dvh bg-fm-yellow-light">
+          <header className="sticky top-0 z-10 flex items-center gap-2 border-b border-massa-border bg-fm-yellow-light/95 px-2 py-2 backdrop-blur-md">
             <Link
               to={`/messages/${conversationId}`}
               aria-label="Voltar ao chat"
-              className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5"
+              className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10"
             >
               <ArrowLeft className="size-5" />
             </Link>
@@ -71,7 +71,7 @@ export function GroupInfoPage() {
                 </div>
               </div>
 
-              <section className="rounded-2xl border border-massa-border bg-[#181411] p-4">
+              <section className="rounded-2xl border border-massa-border bg-fm-yellow-light p-4">
                 <h3 className="text-sm font-semibold text-massa-gold">Descrição</h3>
                 <p className="mt-2 text-sm leading-relaxed text-massa-text">
                   {info.data.description || "Sem descrição."}
@@ -90,12 +90,12 @@ export function GroupInfoPage() {
                     Explorar grupos
                   </Link>
                 </div>
-                <ul className="divide-y divide-massa-border/60 overflow-hidden rounded-2xl border border-massa-border bg-[#181411]">
+                <ul className="divide-y divide-massa-border/60 overflow-hidden rounded-2xl border border-massa-border bg-fm-yellow-light">
                   {info.data.members.map((member) => (
                     <li key={member.id}>
                       <Link
                         to={`/${member.handle}`}
-                        className="flex items-center gap-3 px-3 py-3 transition hover:bg-white/5"
+                        className="flex items-center gap-3 px-3 py-3 transition hover:bg-fm-purple/10"
                       >
                         <img
                           src={member.avatarUrl}

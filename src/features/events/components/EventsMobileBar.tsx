@@ -26,7 +26,7 @@ export function EventsMobileBar({
           }
           navigate("/feed");
         }}
-        className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5"
+        className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10"
       >
         <ArrowLeft className="size-5" />
       </button>
@@ -41,7 +41,7 @@ export function EventsMobileBar({
             type="button"
             aria-label="Filtros"
             onClick={onOpenFilters}
-            className={`relative grid size-10 place-items-center rounded-full transition-colors hover:bg-white/5 ${
+            className={`relative grid size-10 place-items-center rounded-full transition-colors hover:bg-fm-purple/10 ${
               filterActive ? "text-massa-gold" : "text-massa-gold/90"
             }`}
           >
@@ -54,7 +54,7 @@ export function EventsMobileBar({
         <Link
           to="/events/create"
           aria-label="Criar evento"
-          className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5"
+          className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10"
         >
           <Plus className="size-5" />
         </Link>

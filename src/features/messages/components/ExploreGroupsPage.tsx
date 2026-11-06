@@ -38,13 +38,13 @@ export function ExploreGroupsPage() {
       }
       bottomNav={<MobileBottomNav items={mobileNav.data} />}
       main={
-        <div className="min-h-dvh bg-[#0e0c0b]">
-          <header className="sticky top-0 z-10 space-y-3 border-b border-massa-border bg-[#14110f]/95 px-3 py-3 backdrop-blur-md">
+        <div className="min-h-dvh bg-fm-yellow-light">
+          <header className="sticky top-0 z-10 space-y-3 border-b border-massa-border bg-fm-yellow-light/95 px-3 py-3 backdrop-blur-md">
             <div className="flex items-center gap-2">
               <Link
                 to="/messages"
                 aria-label="Voltar"
-                className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5"
+                className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10"
               >
                 <ArrowLeft className="size-5" />
               </Link>
@@ -57,7 +57,7 @@ export function ExploreGroupsPage() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Buscar grupos Massa"
-                className="h-10 w-full rounded-full border border-massa-border bg-[#181411] py-2 pr-3 pl-10 text-sm text-massa-text outline-none placeholder:text-massa-muted focus:border-massa-gold/40"
+                className="h-10 w-full rounded-full border border-massa-border bg-fm-yellow-light py-2 pr-3 pl-10 text-sm text-massa-text outline-none placeholder:text-massa-muted focus:border-massa-gold/40"
               />
             </label>
           </header>
@@ -77,7 +77,7 @@ export function ExploreGroupsPage() {
               {groups.data?.map((group) => (
                 <li
                   key={group.id}
-                  className="rounded-2xl border border-massa-border bg-[#181411] p-3"
+                  className="rounded-2xl border border-massa-border bg-fm-yellow-light p-3"
                 >
                   <div className="flex gap-3">
                     <img

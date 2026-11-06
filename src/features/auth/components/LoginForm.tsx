@@ -1,8 +1,11 @@
-import { Button, Input, Label, Spinner } from "@heroui/react";
+import { Button, Spinner } from "@heroui/react";
 import { Eye, EyeOff } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth.ts";
+
+const fieldClass =
+  "h-12 w-full rounded-xl border border-fm-purple/25 bg-fm-yellow-light px-3 text-[15px] text-black outline-none placeholder:text-black/40 focus:border-fm-purple focus:ring-2 focus:ring-fm-purple/25";
 
 export function LoginForm() {
   const auth = useAuth();
@@ -39,10 +42,10 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-md space-y-5" noValidate>
       <div className="space-y-1.5">
-        <Label htmlFor="login-email" className="text-sm text-massa-muted">
+        <label htmlFor="login-email" className="block text-sm font-semibold text-fm-purple">
           E-mail ou usuário
-        </Label>
-        <Input
+        </label>
+        <input
           id="login-email"
           name="email"
           type="text"
@@ -50,25 +53,24 @@ export function LoginForm() {
           placeholder="seu@email.com"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          fullWidth
-          className="h-12 border-massa-border bg-[#120f0d] text-massa-text"
+          className={fieldClass}
         />
       </div>
 
       <div className="space-y-1.5">
         <div className="flex items-center justify-between gap-3">
-          <Label htmlFor="login-password" className="text-sm text-massa-muted">
+          <label htmlFor="login-password" className="block text-sm font-semibold text-fm-purple">
             Senha
-          </Label>
+          </label>
           <button
             type="button"
-            className="text-xs font-semibold text-massa-gold hover:text-massa-gold-light"
+            className="text-xs font-bold text-fm-purple underline-offset-2 hover:underline"
           >
             Esqueceu sua senha?
           </button>
         </div>
         <div className="relative">
-          <Input
+          <input
             id="login-password"
             name="password"
             type={showPassword ? "text" : "password"}
@@ -76,14 +78,13 @@ export function LoginForm() {
             placeholder="Sua senha"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            fullWidth
-            className="h-12 border-massa-border bg-[#120f0d] pr-12 text-massa-text"
+            className={`${fieldClass} pr-12`}
           />
           <button
             type="button"
             aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
             onClick={() => setShowPassword((value) => !value)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-massa-muted hover:text-massa-text"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-fm-purple/70 hover:text-fm-purple"
           >
             {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
           </button>
@@ -93,7 +94,7 @@ export function LoginForm() {
       {error ? (
         <p
           role="alert"
-          className="rounded-xl border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-200"
+          className="rounded-xl border border-red-700/40 bg-fm-yellow-light/80 px-3 py-2 text-sm font-medium text-red-700"
         >
           {error}
         </p>
@@ -103,7 +104,7 @@ export function LoginForm() {
         type="submit"
         fullWidth
         isPending={pending}
-        className="h-12 bg-massa-gold text-base font-bold text-[#1a100b]"
+        className="login-fm-submit h-12 bg-fm-purple text-base font-bold text-white"
       >
         {({ isPending }) => (
           <>
@@ -113,9 +114,12 @@ export function LoginForm() {
         )}
       </Button>
 
-      <p className="text-center text-sm text-massa-muted">
+      <p className="text-center text-sm font-medium text-fm-purple/85">
         Ainda não tem conta?{" "}
-        <Link to="/signup" className="font-semibold text-massa-gold hover:text-massa-gold-light">
+        <Link
+          to="/signup"
+          className="font-extrabold text-fm-purple underline-offset-2 hover:underline"
+        >
           Criar conta
         </Link>
       </p>

@@ -31,8 +31,8 @@ export function FeedTabs({
               onClick={() => onChange(tab.id)}
               className={`-mb-px flex h-full min-w-0 flex-1 items-center justify-center border-b-2 px-1 text-[13px] font-semibold transition-colors ${
                 isSelected
-                  ? "border-massa-gold text-massa-text"
-                  : "border-transparent text-massa-muted hover:text-massa-text"
+                  ? "border-fm-purple text-fm-purple"
+                  : "border-transparent text-massa-muted hover:text-fm-purple"
               }`}
             >
               <span className="truncate">{tab.label}</span>

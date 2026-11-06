@@ -1,6 +1,7 @@
-import { BadgeCheck, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { locationLabel } from "../../../shared/lib/location-label.ts";
 import { UserAvatar } from "../../../shared/ui/UserAvatar.tsx";
+import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import type { UserProfile } from "../types/profile.types.ts";
 import { ProfileActions } from "./ProfileActions.tsx";
 
@@ -27,7 +28,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
         <div className="relative px-4 pb-4">
           <div className="-mt-12 flex items-end justify-between gap-3 sm:-mt-14">
             <div className="relative">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-massa-gold via-[#a87945] to-transparent opacity-90 blur-[1px]" />
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-fm-yellow via-fm-purple to-transparent opacity-90 blur-[1px]" />
               <UserAvatar
                 name={user.displayName}
                 size="lg"
@@ -43,12 +44,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
                 <h1 className="text-xl font-bold tracking-tight text-massa-text sm:text-2xl">
                   {user.displayName}
                 </h1>
-                {user.verified ? (
-                  <BadgeCheck
-                    aria-label="Conta verificada"
-                    className="size-5 shrink-0 fill-massa-gold text-accent-foreground"
-                  />
-                ) : null}
+                {user.verified ? <VerifiedBadge size="lg" /> : null}
               </div>
               <p className="mt-0.5 text-sm text-massa-muted">@{user.handle}</p>
               <p className="mt-1.5 flex items-center gap-1.5 text-sm text-massa-muted">

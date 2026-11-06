@@ -1,5 +1,6 @@
-import { BadgeCheck, Pin, VolumeX } from "lucide-react";
+import { Pin, VolumeX } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import { formatInboxTime } from "../lib/format-chat-time.ts";
 import type { ConversationSummary } from "../types/messages.types.ts";
 
@@ -13,7 +14,7 @@ export function ConversationListItem({ conversation }: ConversationListItemProps
       to={`/messages/${conversation.id}`}
       className={({ isActive }) =>
         `flex items-center gap-3 px-3 py-3 transition-colors ${
-          isActive ? "bg-massa-gold/12" : "hover:bg-white/[0.03]"
+          isActive ? "bg-massa-gold/12" : "hover:bg-fm-yellow-light/[0.03]"
         }`
       }
     >
@@ -35,9 +36,7 @@ export function ConversationListItem({ conversation }: ConversationListItemProps
             <p className="truncate text-[15px] font-semibold text-massa-text">
               {conversation.title}
             </p>
-            {conversation.verified ? (
-              <BadgeCheck className="size-3.5 shrink-0 fill-massa-gold text-accent-foreground" />
-            ) : null}
+            {conversation.verified ? <VerifiedBadge size="md" /> : null}
             {conversation.muted ? <VolumeX className="size-3.5 shrink-0 text-massa-muted" /> : null}
             {conversation.pinned ? (
               <Pin className="size-3 shrink-0 fill-massa-muted text-massa-muted" />

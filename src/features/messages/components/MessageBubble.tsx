@@ -28,7 +28,7 @@ export function MessageBubble({
   if (message.kind === "system") {
     return (
       <div className="flex justify-center px-4 py-2">
-        <p className="rounded-full bg-[#1b1714]/90 px-3 py-1 text-center text-[11px] text-massa-muted">
+        <p className="rounded-full bg-fm-yellow-light/90 px-3 py-1 text-center text-[11px] text-massa-muted">
           {message.body}
         </p>
       </div>
@@ -36,8 +36,8 @@ export function MessageBubble({
   }
 
   const bubbleClass = message.mine
-    ? "rounded-2xl rounded-br-md bg-gradient-to-br from-[#3a2a1c] to-[#241910] text-massa-text"
-    : "rounded-2xl rounded-bl-md border border-massa-border bg-[#181411] text-massa-text";
+    ? "rounded-2xl rounded-br-md bg-fm-purple text-white"
+    : "rounded-2xl rounded-bl-md border border-fm-purple/20 bg-fm-yellow-light text-massa-text";
 
   return (
     <div
@@ -59,7 +59,7 @@ export function MessageBubble({
           {!message.mine && showAuthor && message.authorName ? (
             <Link
               to={message.authorHandle ? `/${message.authorHandle}` : "#"}
-              className="block px-3 pt-2 text-[12px] font-semibold text-massa-gold hover:underline"
+              className="block px-3 pt-2 text-[12px] font-semibold text-fm-purple hover:underline"
             >
               {message.authorName}
             </Link>
@@ -126,7 +126,7 @@ export function MessageBubble({
                     className={`rounded-full border px-1.5 py-0.5 text-[11px] transition ${
                       reaction.reactedByMe
                         ? "border-massa-gold/50 bg-massa-gold/15 text-massa-text"
-                        : "border-massa-border bg-[#0e0c0b]/70 text-massa-text hover:border-massa-gold/40"
+                        : "border-massa-border bg-fm-yellow-light/70 text-massa-text hover:border-massa-gold/40"
                     }`}
                   >
                     {reaction.emoji} {reaction.count}
@@ -134,7 +134,7 @@ export function MessageBubble({
                 ))}
               </div>
             ) : null}
-            <span className="text-[10px] text-massa-muted">
+            <span className={`text-[10px] ${message.mine ? "text-white/70" : "text-massa-muted"}`}>
               {formatMessageTime(message.createdAt)}
             </span>
           </div>
@@ -149,7 +149,7 @@ export function MessageBubble({
             type="button"
             aria-label="Responder"
             onClick={() => onReply(message)}
-            className="grid size-7 place-items-center rounded-full bg-[#1b1714] text-massa-gold shadow hover:bg-[#241e1a]"
+            className="grid size-7 place-items-center rounded-full bg-fm-yellow-light text-massa-gold shadow hover:bg-[#241e1a]"
           >
             <Reply className="size-3.5" />
           </button>
@@ -157,11 +157,11 @@ export function MessageBubble({
             <button
               type="button"
               aria-label="Ações da mensagem"
-              className="grid size-7 place-items-center rounded-full bg-[#1b1714] text-massa-gold shadow hover:bg-[#241e1a]"
+              className="grid size-7 place-items-center rounded-full bg-fm-yellow-light text-massa-gold shadow hover:bg-[#241e1a]"
             >
               <EllipsisVertical className="size-3.5" />
             </button>
-            <Dropdown.Popover className="min-w-44 border border-massa-border bg-[#181411]">
+            <Dropdown.Popover className="min-w-44 border border-massa-border bg-fm-yellow-light">
               <Dropdown.Menu
                 onAction={(key) => {
                   if (typeof key !== "string") return;

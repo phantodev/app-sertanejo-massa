@@ -34,7 +34,7 @@ export function MessageComposer({
   }
 
   return (
-    <div className="border-t border-massa-border bg-[#14110f]">
+    <div className="border-t border-massa-border bg-fm-yellow-light">
       {replyTo ? (
         <div className="flex items-center gap-2 border-b border-massa-border/70 px-3 py-2">
           <div className="min-w-0 flex-1 rounded-lg border-l-2 border-massa-gold bg-black/20 px-2.5 py-1.5">
@@ -47,7 +47,7 @@ export function MessageComposer({
             type="button"
             aria-label="Cancelar resposta"
             onClick={onCancelReply}
-            className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-white/5 hover:text-massa-gold"
+            className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10 hover:text-massa-gold"
           >
             <X className="size-4" />
           </button>
@@ -58,12 +58,12 @@ export function MessageComposer({
         <button
           type="button"
           aria-label="Emoji"
-          className="mb-1 grid size-10 place-items-center rounded-full text-massa-muted hover:bg-white/5 hover:text-massa-gold"
+          className="mb-1 grid size-10 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10 hover:text-massa-gold"
         >
           <Smile className="size-5" />
         </button>
 
-        <div className="flex min-w-0 flex-1 items-end rounded-3xl border border-massa-border bg-[#1b1714] px-2">
+        <div className="flex min-w-0 flex-1 items-end rounded-3xl border border-massa-border bg-fm-yellow-light px-2">
           <button
             type="button"
             aria-label="Anexar"
@@ -91,7 +91,7 @@ export function MessageComposer({
             type="submit"
             disabled={!canSend}
             aria-label="Enviar"
-            className="mb-1 grid size-11 place-items-center rounded-full bg-massa-gold text-[#1a100b] transition disabled:opacity-40"
+            className="mb-1 grid size-11 place-items-center rounded-full bg-fm-purple text-white transition disabled:opacity-40"
           >
             <SendHorizontal className="size-5" />
           </button>
@@ -101,7 +101,7 @@ export function MessageComposer({
             aria-label="Enviar áudio (mock)"
             disabled={sendAudio.isPending}
             onClick={() => sendAudio.mutate(8 + Math.floor(Math.random() * 12))}
-            className="mb-1 grid size-11 place-items-center rounded-full bg-massa-gold text-[#1a100b] transition disabled:opacity-40"
+            className="mb-1 grid size-11 place-items-center rounded-full bg-fm-purple text-white transition disabled:opacity-40"
           >
             <Mic className="size-5" />
           </button>

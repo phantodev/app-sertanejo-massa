@@ -22,8 +22,8 @@ export function ConversationFilters({ filters, selected, onChange }: Conversatio
             onClick={() => onChange(filter.id)}
             className={`shrink-0 rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition-colors ${
               active
-                ? "bg-massa-gold text-[#1a100b]"
-                : "border border-massa-border bg-[#181411] text-massa-muted hover:text-massa-text"
+                ? "bg-fm-purple text-white"
+                : "border border-fm-purple/20 bg-fm-yellow-light text-massa-muted hover:text-fm-purple"
             }`}
           >
             {filter.label}

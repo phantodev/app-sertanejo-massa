@@ -48,7 +48,7 @@ export function ProfileMediaGrid({ items }: ProfileMediaGridProps) {
   return (
     <ul className="grid grid-cols-3 gap-0.5 bg-massa-border/40">
       {items.map((item) => (
-        <li key={item.id} className="relative aspect-square overflow-hidden bg-[#1b1714]">
+        <li key={item.id} className="relative aspect-square overflow-hidden bg-fm-yellow-light">
           <MediaThumb item={item} />
         </li>
       ))}

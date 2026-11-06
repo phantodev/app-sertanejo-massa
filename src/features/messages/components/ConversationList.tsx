@@ -19,14 +19,14 @@ export function ConversationList({ className = "" }: ConversationListProps) {
 
   return (
     <aside
-      className={`flex h-full min-h-0 w-full flex-col border-r border-massa-border bg-[#0e0c0b] ${className}`}
+      className={`flex h-full min-h-0 w-full flex-col border-r border-massa-border bg-fm-yellow-light ${className}`}
     >
       <header className="flex items-center justify-between gap-2 px-4 pb-2 pt-4">
         <h1 className="text-xl font-bold tracking-tight text-massa-text">Conversas</h1>
         <Link
           to="/messages/explore"
           aria-label="Explorar grupos"
-          className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5"
+          className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10"
         >
           <Compass className="size-5" />
         </Link>
@@ -40,7 +40,7 @@ export function ConversationList({ className = "" }: ConversationListProps) {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Pesquisar ou começar uma nova conversa"
-            className="h-10 w-full rounded-full border border-massa-border bg-[#181411] py-2 pr-3 pl-10 text-sm text-massa-text outline-none placeholder:text-massa-muted focus:border-massa-gold/40"
+            className="h-10 w-full rounded-full border border-massa-border bg-fm-yellow-light py-2 pr-3 pl-10 text-sm text-massa-text outline-none placeholder:text-massa-muted focus:border-massa-gold/40"
           />
         </label>
       </div>

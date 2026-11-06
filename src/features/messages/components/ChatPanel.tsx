@@ -58,7 +58,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
 
   if (conversation.isLoading) {
     return (
-      <div className="flex h-full items-center justify-center bg-[#120f0d] text-massa-muted">
+      <div className="flex h-full items-center justify-center bg-fm-yellow-light text-massa-muted">
         <Spinner color="current" size="sm" />
       </div>
     );
@@ -66,7 +66,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
 
   if (conversation.isError || !conversation.data) {
     return (
-      <div className="flex h-full flex-col items-center justify-center gap-3 bg-[#120f0d] px-6 text-center">
+      <div className="flex h-full flex-col items-center justify-center gap-3 bg-fm-yellow-light px-6 text-center">
         <p className="text-lg font-semibold text-massa-text">Conversa não encontrada</p>
         <Link to="/messages" className="text-sm font-semibold text-massa-gold">
           Voltar às mensagens
@@ -84,7 +84,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
   }
 
   return (
-    <section className="flex h-full min-h-0 flex-col bg-[#120f0d]">
+    <section className="flex h-full min-h-0 flex-col bg-fm-yellow-light">
       <ChatHeader
         conversation={conversation.data}
         searchOpen={searchOpen}
@@ -95,7 +95,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
       />
 
       {searchOpen ? (
-        <div className="flex items-center gap-2 border-b border-massa-border bg-[#14110f] px-3 py-2">
+        <div className="flex items-center gap-2 border-b border-massa-border bg-fm-yellow-light px-3 py-2">
           <Search className="size-4 shrink-0 text-massa-muted" />
           <input
             autoFocus
@@ -111,7 +111,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
               setSearchOpen(false);
               setSearchQuery("");
             }}
-            className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-white/5"
+            className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10"
           >
             <X className="size-4" />
           </button>
@@ -157,7 +157,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
               <div key={message.id} id={`msg-${message.id}`}>
                 {showDate ? (
                   <div className="flex justify-center px-4 py-3">
-                    <span className="rounded-full border border-massa-border bg-[#1b1714]/95 px-3 py-1 text-[11px] font-medium text-massa-muted shadow-sm">
+                    <span className="rounded-full border border-massa-border bg-fm-yellow-light/95 px-3 py-1 text-[11px] font-medium text-massa-muted shadow-sm">
                       {formatDateDivider(message.createdAt)}
                     </span>
                   </div>

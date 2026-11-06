@@ -27,7 +27,7 @@ export function PostComposer({ user, actions }: PostComposerProps) {
       <div className="min-w-0 flex-1">
         <TextArea
           aria-label="Texto da publicação"
-          className="composer-textarea min-h-10 w-full resize-none"
+          className="composer-textarea min-h-10 w-full resize-none font-semibold placeholder:font-semibold"
           placeholder={`O que está acontecendo, ${user.displayName}?`}
           value={text}
           onChange={(event) => setText(event.target.value)}
@@ -41,7 +41,7 @@ export function PostComposer({ user, actions }: PostComposerProps) {
                   key={action.id}
                   type="button"
                   aria-label={action.label}
-                  className="grid size-9 place-items-center rounded-full text-massa-gold transition-colors hover:bg-massa-gold/10"
+                  className="grid size-9 place-items-center rounded-full text-fm-purple transition-colors hover:bg-fm-purple/10"
                 >
                   <Icon className="size-4" strokeWidth={1.75} />
                 </button>

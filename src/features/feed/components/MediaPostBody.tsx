@@ -26,8 +26,8 @@ export function MediaPostBody({ post }: MediaPostBodyProps) {
 
       <LikedByRow likes={post.likedByPreview} totalLikes={post.likes} />
 
-      <p className="whitespace-pre-line px-1 text-[14px] leading-relaxed text-massa-text">
-        <Link to={`/${post.author.handle}`} className="font-semibold hover:underline">
+      <p className="whitespace-pre-line px-1 text-[14px] font-semibold leading-relaxed text-massa-text">
+        <Link to={`/${post.author.handle}`} className="font-semibold text-fm-blue hover:underline">
           {post.author.displayName}
         </Link>{" "}
         {post.body}
@@ -38,7 +38,7 @@ export function MediaPostBody({ post }: MediaPostBodyProps) {
       {post.comments > 1 ? (
         <Link
           to={`/${post.author.handle}/status/${post.id}`}
-          className="block px-1 text-[13px] text-massa-muted hover:text-massa-text"
+          className="block px-1 text-[13px] font-semibold text-massa-muted hover:text-massa-text"
         >
           Ver todos os {post.comments} comentários
         </Link>

@@ -1,0 +1,62 @@
+/*
+ * Paleta oficial Massa FM (Pantone)
+ * Fonte: guia de marca — NÃO confundir com a escala default do Tailwind
+ * (yellow-500, purple-700, blue-600 etc. são outras cores).
+ *
+ * Uso Tailwind:  bg-fm-yellow  text-fm-purple  border-fm-blue/40
+ * Uso CSS var:   var(--fm-yellow)  var(--fm-purple-dark)
+ */
+
+:root {
+  /* —— Amarelo · Pantone 1375 C —— */
+  --fm-yellow: #f6a719;
+  --fm-yellow-light: #ffbe48;
+  --fm-yellow-bright: #f6cb19;
+
+  /* —— Roxo · Pantone 2612 C —— */
+  --fm-purple: #732280;
+  --fm-purple-light: #843b91;
+  --fm-purple-dark: #5a1167;
+
+  /* —— Azul · Pantone 285 C —— */
+  --fm-blue: #0059da;
+  --fm-blue-light: #287efc;
+  --fm-blue-dark: #0041a1;
+
+  /* —— Rosa (secundária) —— */
+  --fm-pink: #ff57bb;
+  --fm-pink-light: #ec7fcb;
+  --fm-pink-dark: #d136a2;
+
+  /* —— Verde/teal (secundária) —— */
+  --fm-teal: #4ce0b3;
+  --fm-teal-light: #a9f6df;
+  --fm-teal-dark: #06c088;
+}
+
+@theme inline {
+  /* Amarelo */
+  --color-fm-yellow: var(--fm-yellow);
+  --color-fm-yellow-light: var(--fm-yellow-light);
+  --color-fm-yellow-bright: var(--fm-yellow-bright);
+
+  /* Roxo */
+  --color-fm-purple: var(--fm-purple);
+  --color-fm-purple-light: var(--fm-purple-light);
+  --color-fm-purple-dark: var(--fm-purple-dark);
+
+  /* Azul */
+  --color-fm-blue: var(--fm-blue);
+  --color-fm-blue-light: var(--fm-blue-light);
+  --color-fm-blue-dark: var(--fm-blue-dark);
+
+  /* Rosa */
+  --color-fm-pink: var(--fm-pink);
+  --color-fm-pink-light: var(--fm-pink-light);
+  --color-fm-pink-dark: var(--fm-pink-dark);
+
+  /* Teal */
+  --color-fm-teal: var(--fm-teal);
+  --color-fm-teal-light: var(--fm-teal-light);
+  --color-fm-teal-dark: var(--fm-teal-dark);
+}

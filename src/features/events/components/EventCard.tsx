@@ -1,5 +1,6 @@
-import { BadgeCheck, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import { formatEventBadge, formatEventCardWhen } from "../lib/format-event-date.ts";
 import type { EventSummary } from "../types/events.types.ts";
 import { EventGoingRow } from "./EventGoingRow.tsx";
@@ -16,7 +17,7 @@ export function EventCard({ event, featured = false }: EventCardProps) {
 
   return (
     <article
-      className={`overflow-hidden border border-massa-border bg-[#14110f] transition-colors hover:border-massa-gold/35 ${
+      className={`overflow-hidden border border-massa-border bg-fm-yellow-light transition-colors hover:border-massa-gold/35 ${
         featured ? "rounded-2xl" : "rounded-xl"
       }`}
     >
@@ -36,7 +37,7 @@ export function EventCard({ event, featured = false }: EventCardProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0b]/via-transparent to-black/25" />
           <div className="absolute left-3 top-3 flex items-center gap-2">
-            <span className="rounded-md bg-[#0e0c0b]/80 px-2 py-1 text-[11px] font-bold tracking-wide text-massa-text backdrop-blur-sm">
+            <span className="rounded-md bg-fm-yellow-light/80 px-2 py-1 text-[11px] font-bold tracking-wide text-massa-text backdrop-blur-sm">
               {badge.day} {badge.month}
             </span>
             {featured ? (
@@ -68,9 +69,7 @@ export function EventCard({ event, featured = false }: EventCardProps) {
               {hostPrefix}{" "}
               <span className="font-semibold text-massa-text">{event.organizer.displayName}</span>
             </span>
-            {event.organizer.verified ? (
-              <BadgeCheck className="size-3.5 fill-massa-gold text-accent-foreground" />
-            ) : null}
+            {event.organizer.verified ? <VerifiedBadge size="sm" /> : null}
           </Link>
         </div>
 

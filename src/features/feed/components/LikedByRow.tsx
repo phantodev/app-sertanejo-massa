@@ -26,8 +26,8 @@ export function LikedByRow({ likes, totalLikes }: LikedByRowProps) {
           />
         ))}
       </div>
-      <p className="min-w-0 text-[13px] leading-snug text-massa-muted">
-        Curtido por <span className="font-semibold text-massa-text">{highlight}</span>
+      <p className="min-w-0 text-[13px] font-semibold leading-snug text-massa-muted">
+        Curtido por <span className="font-semibold text-fm-blue">{highlight}</span>
         {hasOthers ? " e outras pessoas" : null}
       </p>
     </div>

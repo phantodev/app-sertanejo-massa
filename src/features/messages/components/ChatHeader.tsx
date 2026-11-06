@@ -37,11 +37,11 @@ export function ChatHeader({ conversation, searchOpen, onToggleSearch }: ChatHea
       : `/messages/${conversation.id}/info`;
 
   return (
-    <header className="flex h-14 items-center gap-2 border-b border-massa-border bg-[#14110f]/95 px-2 backdrop-blur-md">
+    <header className="flex h-14 items-center gap-2 border-b border-massa-border bg-fm-yellow-light/95 px-2 backdrop-blur-md">
       <Link
         to="/messages"
         aria-label="Voltar para conversas"
-        className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5 lg:hidden"
+        className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10 lg:hidden"
       >
         <ArrowLeft className="size-5" />
       </Link>
@@ -64,11 +64,11 @@ export function ChatHeader({ conversation, searchOpen, onToggleSearch }: ChatHea
         <button
           type="button"
           aria-label="Mais opções"
-          className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5"
+          className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10"
         >
           <EllipsisVertical className="size-5" />
         </button>
-        <Dropdown.Popover className="min-w-52 border border-massa-border bg-[#181411]">
+        <Dropdown.Popover className="min-w-52 border border-massa-border bg-fm-yellow-light">
           <Dropdown.Menu
             onAction={(key) => {
               if (typeof key !== "string") return;

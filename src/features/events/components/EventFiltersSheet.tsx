@@ -39,7 +39,7 @@ export function EventFiltersSheet({
         role="dialog"
         aria-modal="true"
         aria-labelledby="event-filters-title"
-        className="relative z-10 w-full max-w-lg overflow-hidden rounded-t-3xl border border-massa-border bg-[#14110f] shadow-2xl sm:rounded-3xl"
+        className="relative z-10 w-full max-w-lg overflow-hidden rounded-t-3xl border border-massa-border bg-fm-yellow-light shadow-2xl sm:rounded-3xl"
       >
         <header className="flex items-start justify-between gap-3 border-b border-massa-border px-5 py-4">
           <div>
@@ -52,7 +52,7 @@ export function EventFiltersSheet({
             type="button"
             aria-label="Fechar filtros"
             onClick={onClose}
-            className="grid size-9 place-items-center rounded-full text-massa-muted hover:bg-white/5 hover:text-massa-text"
+            className="grid size-9 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10 hover:text-massa-text"
           >
             <X className="size-5" />
           </button>
@@ -77,7 +77,7 @@ export function EventFiltersSheet({
                     className={`rounded-full px-3.5 py-2 text-sm font-semibold transition-colors ${
                       selected
                         ? "bg-massa-gold text-[#1a100b]"
-                        : "border border-massa-border bg-[#1b1714] text-massa-muted hover:text-massa-text"
+                        : "border border-massa-border bg-fm-yellow-light text-massa-muted hover:text-massa-text"
                     }`}
                   >
                     {period.label}
@@ -99,7 +99,7 @@ export function EventFiltersSheet({
                     city: null,
                   })
                 }
-                className="h-11 w-full rounded-xl border border-massa-border bg-[#1b1714] px-3 text-sm text-massa-text outline-none focus:border-massa-gold/50"
+                className="h-11 w-full rounded-xl border border-massa-border bg-fm-yellow-light px-3 text-sm text-massa-text outline-none focus:border-massa-gold/50"
               >
                 <option value="">Todos os estados</option>
                 {options.states.map((state) => (
@@ -121,7 +121,7 @@ export function EventFiltersSheet({
                     city: event.target.value || null,
                   })
                 }
-                className="h-11 w-full rounded-xl border border-massa-border bg-[#1b1714] px-3 text-sm text-massa-text outline-none enabled:focus:border-massa-gold/50 disabled:cursor-not-allowed disabled:opacity-45"
+                className="h-11 w-full rounded-xl border border-massa-border bg-fm-yellow-light px-3 text-sm text-massa-text outline-none enabled:focus:border-massa-gold/50 disabled:cursor-not-allowed disabled:opacity-45"
               >
                 <option value="">
                   {draft.state ? "Todas as cidades" : "Selecione o estado primeiro"}

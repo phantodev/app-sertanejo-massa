@@ -16,7 +16,7 @@ export function ChatPinnedBar({ message, onUnpin, onJump }: ChatPinnedBarProps) 
         : (message.body ?? "");
 
   return (
-    <div className="flex items-center gap-2 border-b border-massa-border bg-[#1b1714] px-3 py-2">
+    <div className="flex items-center gap-2 border-b border-massa-border bg-fm-yellow-light px-3 py-2">
       <button
         type="button"
         onClick={onJump}
@@ -35,7 +35,7 @@ export function ChatPinnedBar({ message, onUnpin, onJump }: ChatPinnedBarProps) 
         type="button"
         aria-label="Desafixar"
         onClick={onUnpin}
-        className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-white/5 hover:text-massa-gold"
+        className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10 hover:text-massa-gold"
       >
         <X className="size-4" />
       </button>

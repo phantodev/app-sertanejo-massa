@@ -2,7 +2,7 @@ import { MessagesSquare } from "lucide-react";
 
 export function ChatEmptyState() {
   return (
-    <div className="flex h-full min-w-0 flex-col items-center justify-center gap-4 bg-[#120f0d] px-8 text-center">
+    <div className="flex h-full min-w-0 flex-col items-center justify-center gap-4 bg-fm-yellow-light px-8 text-center">
       <div className="grid size-20 place-items-center rounded-3xl border border-massa-gold/25 bg-massa-gold/10 text-massa-gold">
         <MessagesSquare className="size-9" />
       </div>

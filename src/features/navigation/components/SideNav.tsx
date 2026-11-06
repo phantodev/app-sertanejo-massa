@@ -25,10 +25,10 @@ export function SideNav({ items, publish, user }: SideNavProps) {
   return (
     <nav
       aria-label="Principal"
-      className="hidden h-dvh w-[275px] min-w-[275px] max-w-[275px] shrink-0 flex-col border-r border-massa-border/70 bg-massa-bg px-3.5 py-4 lg:flex"
+      className="hidden h-dvh w-[275px] min-w-[275px] max-w-[275px] shrink-0 flex-col border-r border-fm-purple/20 bg-massa-bg px-3.5 py-4 lg:flex"
     >
-      <div className="mb-7 px-2">
-        <BrandLogo />
+      <div className="mb-7 px-1">
+        <BrandLogo variant="transparent" />
       </div>
 
       <ul className="flex flex-1 flex-col gap-1 overflow-y-auto">
@@ -40,7 +40,7 @@ export function SideNav({ items, publish, user }: SideNavProps) {
                 onClick={() => {
                   void handleLogout();
                 }}
-                className="flex min-h-12 w-fit max-w-full items-center gap-3 rounded-full px-3.5 py-2.5 text-[15px] font-bold text-[#dfd5cc] transition-colors hover:bg-white/5 hover:text-massa-gold"
+                className="flex min-h-10 w-full items-center gap-3 rounded-full px-3.5 py-2 text-[15px] font-bold text-fm-purple transition-colors hover:bg-fm-yellow-light/60 hover:text-fm-purple-dark"
               >
                 <NavIcon name={item.icon} className="size-5 shrink-0" />
                 <span>{item.label}</span>
@@ -50,10 +50,10 @@ export function SideNav({ items, publish, user }: SideNavProps) {
                 to={item.href}
                 end={item.href === "/feed"}
                 className={({ isActive }) =>
-                  `flex min-h-12 w-fit max-w-full items-center gap-3 rounded-full px-3.5 py-2.5 text-[15px] font-bold transition-colors ${
+                  `flex min-h-10 w-full items-center gap-3 rounded-full px-3.5 py-2 text-[15px] font-bold transition-colors ${
                     isActive
-                      ? "bg-massa-gold/15 text-massa-gold"
-                      : "text-[#dfd5cc] hover:bg-white/5 hover:text-massa-gold"
+                      ? "bg-fm-purple text-white"
+                      : "text-fm-purple hover:bg-fm-yellow-light/60 hover:text-fm-purple-dark"
                   }`
                 }
               >
@@ -66,7 +66,7 @@ export function SideNav({ items, publish, user }: SideNavProps) {
       </ul>
 
       <div className="mt-4 space-y-2">
-        <Button className="w-full justify-center bg-massa-gold text-[#1a100b]" fullWidth>
+        <Button className="btn-fm-blue w-full justify-center bg-fm-blue text-white" fullWidth>
           <NavIcon name="publish" className="size-4" />
           {publish.label}
         </Button>

@@ -20,7 +20,7 @@ export function MobileTopBar({
       <a
         href="/create"
         aria-label="Publicar"
-        className="grid w-11 shrink-0 place-items-center self-center text-massa-gold transition-colors hover:text-massa-gold-light"
+        className="grid w-11 shrink-0 place-items-center self-center text-fm-purple transition-colors hover:text-fm-purple-dark"
       >
         <Plus className="size-6" strokeWidth={2} />
       </a>
@@ -34,7 +34,7 @@ export function MobileTopBar({
         aria-label={
           notificationCount > 0 ? `Notificações, ${notificationCount} novas` : "Notificações"
         }
-        className="relative grid w-11 shrink-0 place-items-center self-center text-massa-gold transition-colors hover:text-massa-gold-light"
+        className="relative grid w-11 shrink-0 place-items-center self-center text-fm-purple transition-colors hover:text-fm-purple-dark"
       >
         <Bell className="size-5" strokeWidth={1.75} />
         {notificationCount > 0 ? (

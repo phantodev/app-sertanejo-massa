@@ -22,7 +22,7 @@ export function ProfileActions({ status: initialStatus, displayName }: ProfileAc
           isIconOnly
           variant="secondary"
           aria-label="Mais opções"
-          className="shrink-0 border border-massa-border bg-[#181411]"
+          className="shrink-0 border border-massa-border bg-fm-yellow-light"
         >
           <Ellipsis className="size-4" />
         </Button>
@@ -56,7 +56,7 @@ export function ProfileActions({ status: initialStatus, displayName }: ProfileAc
 
       {status === "friends" ? (
         <Button
-          className="flex-1 border border-massa-border bg-[#181411] font-semibold text-massa-text"
+          className="flex-1 border border-massa-border bg-fm-yellow-light font-semibold text-massa-text"
           fullWidth
           variant="secondary"
         >
@@ -66,7 +66,7 @@ export function ProfileActions({ status: initialStatus, displayName }: ProfileAc
       ) : null}
 
       <Button
-        className="flex-1 border border-massa-border bg-[#181411] font-semibold text-massa-text"
+        className="flex-1 border border-massa-border bg-fm-yellow-light font-semibold text-massa-text"
         fullWidth
         variant="secondary"
         aria-label={`Mensagem para ${displayName}`}
@@ -79,7 +79,7 @@ export function ProfileActions({ status: initialStatus, displayName }: ProfileAc
         isIconOnly
         variant="secondary"
         aria-label="Mais opções"
-        className="shrink-0 border border-massa-border bg-[#181411]"
+        className="shrink-0 border border-massa-border bg-fm-yellow-light"
       >
         <Ellipsis className="size-4" />
       </Button>

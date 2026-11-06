@@ -20,7 +20,7 @@ export function ProfileMobileBar({ displayName }: ProfileMobileBarProps) {
           }
           navigate("/feed");
         }}
-        className="grid size-10 place-items-center rounded-full text-massa-text transition-colors hover:bg-white/5"
+        className="grid size-10 place-items-center rounded-full text-massa-text transition-colors hover:bg-fm-purple/10"
       >
         <ArrowLeft className="size-5" />
       </button>
@@ -35,7 +35,7 @@ export function ProfileMobileBar({ displayName }: ProfileMobileBarProps) {
       <button
         type="button"
         aria-label="Compartilhar perfil"
-        className="grid size-10 place-items-center rounded-full text-massa-gold transition-colors hover:bg-white/5"
+        className="grid size-10 place-items-center rounded-full text-massa-gold transition-colors hover:bg-fm-purple/10"
       >
         <Share2 className="size-4" />
       </button>

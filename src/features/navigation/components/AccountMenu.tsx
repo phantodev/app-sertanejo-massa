@@ -12,7 +12,7 @@ export function AccountMenu({ user, compact = false }: AccountMenuProps) {
   return (
     <Link
       to={`/${user.handle}`}
-      className={`flex min-h-11 items-center gap-3 rounded-full px-3.5 py-3 text-left transition-colors hover:bg-white/5 ${
+      className={`flex min-h-11 items-center gap-3 rounded-full px-3.5 py-3 text-left transition-colors hover:bg-fm-purple/10 ${
         compact ? "mx-auto size-11 justify-center p-0" : "w-full"
       }`}
       aria-label={`Conta de ${user.displayName}`}

@@ -1,6 +1,7 @@
 import { Spinner } from "@heroui/react";
-import { BadgeCheck, Building2, CalendarDays, Ellipsis, MapPin, Share2, Users } from "lucide-react";
+import { Building2, CalendarDays, Ellipsis, MapPin, Share2, Users } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import { MobileBottomNav } from "../../navigation/components/MobileBottomNav.tsx";
 import { SideNav } from "../../navigation/components/SideNav.tsx";
 import { useMobileNavigation } from "../../navigation/hooks/use-mobile-navigation.ts";
@@ -87,7 +88,7 @@ export function EventDetailPage() {
                 <button
                   type="button"
                   aria-label="Opções do evento"
-                  className="grid size-9 place-items-center rounded-full text-massa-muted hover:bg-white/5"
+                  className="grid size-9 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10"
                 >
                   <Ellipsis className="size-4" />
                 </button>
@@ -106,7 +107,7 @@ export function EventDetailPage() {
 
               <div className="relative z-10 -mt-10 space-y-5 px-4">
                 <div className="flex items-start gap-3">
-                  <div className="grid size-14 shrink-0 place-items-center rounded-xl border border-massa-gold/35 bg-[#1b1714] text-center shadow-lg shadow-black/30">
+                  <div className="grid size-14 shrink-0 place-items-center rounded-xl border border-massa-gold/35 bg-fm-yellow-light text-center shadow-lg shadow-black/30">
                     <span className="text-[10px] font-bold tracking-[0.12em] text-massa-gold">
                       {badge.month}
                     </span>
@@ -128,7 +129,7 @@ export function EventDetailPage() {
 
                 <Link
                   to={`/${event.organizer.handle}`}
-                  className="flex items-center gap-3 rounded-2xl border border-massa-border bg-[#14110f] p-3 transition-colors hover:border-massa-gold/35"
+                  className="flex items-center gap-3 rounded-2xl border border-massa-border bg-fm-yellow-light p-3 transition-colors hover:border-massa-gold/35"
                 >
                   <img
                     src={event.organizer.avatarUrl}
@@ -141,9 +142,7 @@ export function EventDetailPage() {
                     </p>
                     <p className="flex items-center gap-1.5 truncate font-semibold text-massa-text">
                       {event.organizer.displayName}
-                      {event.organizer.verified ? (
-                        <BadgeCheck className="size-4 fill-massa-gold text-accent-foreground" />
-                      ) : null}
+                      {event.organizer.verified ? <VerifiedBadge size="md" /> : null}
                     </p>
                     <p className="truncate text-xs text-massa-muted">
                       {event.organizer.kind === "venue" ? "Conta de empresa" : "Perfil Massa"} ·{" "}
@@ -155,7 +154,7 @@ export function EventDetailPage() {
                   ) : null}
                 </Link>
 
-                <ul className="space-y-3 rounded-2xl border border-massa-border bg-[#14110f] p-4">
+                <ul className="space-y-3 rounded-2xl border border-massa-border bg-fm-yellow-light p-4">
                   <li className="flex gap-3">
                     <CalendarDays className="mt-0.5 size-5 shrink-0 text-massa-gold" />
                     <div>
@@ -193,7 +192,7 @@ export function EventDetailPage() {
                   href={event.mapUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex h-11 items-center justify-center rounded-full border border-massa-border bg-[#181411] text-sm font-semibold text-massa-gold transition-colors hover:border-massa-gold/40"
+                  className="flex h-11 items-center justify-center rounded-full border border-massa-border bg-fm-yellow-light text-sm font-semibold text-massa-gold transition-colors hover:border-massa-gold/40"
                 >
                   Abrir no mapa
                 </a>
@@ -216,7 +215,7 @@ export function EventDetailPage() {
                       {event.gallery.map((url) => (
                         <li
                           key={url}
-                          className="aspect-square overflow-hidden rounded-lg bg-[#1b1714]"
+                          className="aspect-square overflow-hidden rounded-lg bg-fm-yellow-light"
                         >
                           <img src={url} alt="" className="size-full object-cover" loading="lazy" />
                         </li>
@@ -228,13 +227,13 @@ export function EventDetailPage() {
                 <p className="pb-2 text-xs leading-relaxed text-massa-muted">{event.disclaimer}</p>
               </div>
 
-              <div className="fixed inset-x-0 bottom-13 z-30 border-t border-massa-border bg-[#14110f]/95 px-4 py-3 backdrop-blur-md lg:sticky lg:bottom-0 lg:inset-x-auto">
+              <div className="fixed inset-x-0 bottom-13 z-30 border-t border-massa-border bg-fm-yellow-light/95 px-4 py-3 backdrop-blur-md lg:sticky lg:bottom-0 lg:inset-x-auto">
                 <div className="mx-auto flex w-full max-w-[598px] items-center gap-2">
                   <EventRsvpButton eventId={event.id} status={event.userRsvp} fullWidth />
                   <button
                     type="button"
                     aria-label="Compartilhar evento"
-                    className="grid size-11 shrink-0 place-items-center rounded-full border border-massa-border bg-[#181411] text-massa-gold hover:border-massa-gold/40"
+                    className="grid size-11 shrink-0 place-items-center rounded-full border border-massa-border bg-fm-yellow-light text-massa-gold hover:border-massa-gold/40"
                   >
                     <Share2 className="size-4" />
                   </button>

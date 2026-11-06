@@ -1,74 +1,87 @@
-/* Tokens alinhados 1:1 com 14-sertanejo-massa / massa-theme.css */
+/*
+ * Tema da plataforma — Massa FM light
+ * Canvas amarelo · painéis brancos · texto/CTA roxo · acentos amarelo
+ * Depende de massa-fm-palette.css (--fm-*)
+ */
 @layer base {
   :root,
   .dark,
   [data-theme="dark"] {
-    color-scheme: dark;
+    color-scheme: light;
 
-    --bg: #0e0c0b;
-    --bg2: #14110f;
-    --panel: #1b1714;
-    --gold: #e9b36f;
-    --gold2: #f8cd90;
-    --gold-dark: #a87945;
-    --text: #f6f0e9;
-    --muted: #a9a19a;
-    --muted2: #796e66;
-    --border: #39302a;
-    --line: rgba(255, 255, 255, 0.09);
+    /* Canvas = amarelo claro dos cards (melhor leitura) */
+    --bg: var(--fm-yellow-light);
+    --bg2: var(--fm-yellow);
+    --panel: var(--fm-yellow-light);
+
+    --gold: var(--fm-yellow);
+    --gold2: var(--fm-yellow-light);
+    --gold-dark: #c48414;
+    --purple: var(--fm-purple);
+    --purple-light: var(--fm-purple-light);
+    --purple-dark: var(--fm-purple-dark);
+
+    --text: var(--fm-purple);
+    --muted: #843b91;
+    --muted2: #5a1167;
+    --border: color-mix(in srgb, var(--fm-purple) 22%, transparent);
+    --line: color-mix(in srgb, var(--fm-purple) 12%, transparent);
 
     /* HeroUI semantic bridge */
-    --background: #0e0c0b;
-    --foreground: #f6f0e9;
-    --surface: #1b1714;
-    --surface-foreground: #f6f0e9;
-    --overlay: #201914;
-    --overlay-foreground: #f6f0e9;
-    --accent: #e9b36f;
-    --accent-foreground: #1a100b;
-    --primary: #e9b36f;
-    --primary-foreground: #1a100b;
-    --primary-hover: #f8cd90;
-    --secondary: #181411;
-    --secondary-foreground: #f6f0e9;
-    --muted-foreground: #a9a19a;
-    --separator: #3a302a;
-    --default: #181411;
-    --default-foreground: #f6f0e9;
-    --field-background: #120f0d;
-    --field-foreground: #f7e7da;
-    --field-border: #44372d;
-    --field-placeholder: #6c6159;
-    --focus: #e9b36f;
-    --ring: #e9b36f;
-    --link: #e9b36f;
+    --background: var(--fm-yellow-light);
+    --foreground: var(--fm-purple);
+    --surface: var(--fm-yellow-light);
+    --surface-foreground: var(--fm-purple);
+    --overlay: var(--fm-yellow);
+    --overlay-foreground: var(--fm-purple);
+    --accent: var(--fm-purple);
+    --accent-foreground: #ffffff;
+    --primary: var(--fm-purple);
+    --primary-foreground: #ffffff;
+    --primary-hover: var(--fm-purple-dark);
+    --secondary: var(--fm-yellow-light);
+    --secondary-foreground: var(--fm-purple);
+    --muted-foreground: #843b91;
+    --separator: color-mix(in srgb, var(--fm-purple) 22%, transparent);
+    --default: var(--fm-yellow-light);
+    --default-foreground: var(--fm-purple);
+    --field-background: var(--fm-yellow);
+    --field-foreground: #111111;
+    --field-border: color-mix(in srgb, var(--fm-purple) 28%, transparent);
+    --field-placeholder: color-mix(in srgb, var(--fm-purple) 45%, transparent);
+    --focus: var(--fm-purple);
+    --ring: var(--fm-purple);
+    --link: var(--fm-purple-dark);
 
-    --success: oklch(0.65 0.15 155);
-    --success-foreground: #1a100b;
+    --success: var(--fm-teal-dark);
+    --success-foreground: #ffffff;
     --danger: oklch(0.55 0.2 25);
-    --danger-foreground: #f6f0e9;
+    --danger-foreground: #ffffff;
 
     --radius: 0.5625rem;
     --field-radius: 0.4375rem;
 
-    --massa-gold: #e9b36f;
-    --massa-gold-light: #f8cd90;
-    --massa-panel: #14110f;
+    --massa-gold: var(--fm-yellow);
+    --massa-gold-light: var(--fm-yellow-light);
+    --massa-gold-dark: #c48414;
+    --massa-purple: var(--fm-purple);
+    --massa-purple-light: var(--fm-purple-light);
+    --massa-purple-dark: var(--fm-purple-dark);
+    --massa-panel: var(--fm-yellow-light);
 
-    /* HeroUI scrollbar tokens → ouro Massa */
-    --scrollbar: #e9b36f;
-    --scrollbar-thumb: #e9b36f;
+    --scrollbar: var(--fm-purple);
+    --scrollbar-thumb: var(--fm-purple);
     --scrollbar-track: transparent;
-    --scrollbar-color: #e9b36f transparent;
+    --scrollbar-color: var(--fm-purple) transparent;
   }
 
   html {
-    background: #0e0c0b;
+    background: var(--fm-yellow-light);
   }
 
   body {
-    background: #0e0c0b;
-    color: #f6f0e9;
+    background: var(--fm-yellow-light);
+    color: var(--fm-purple);
     font-family: "Manrope Variable", Manrope, "DM Sans Variable", "DM Sans", system-ui, sans-serif;
     font-size: 15px;
     line-height: 1.65;
@@ -77,21 +90,24 @@
 }
 
 @theme inline {
-  --color-massa-gold: #e9b36f;
-  --color-massa-gold-light: #f8cd90;
-  --color-massa-panel: #14110f;
-  --color-massa-bg: #0e0c0b;
-  --color-massa-text: #f6f0e9;
-  --color-massa-muted: #a9a19a;
-  --color-massa-border: #39302a;
-  --color-massa-gold-dark: #a87945;
+  --color-massa-gold: var(--fm-yellow);
+  --color-massa-gold-light: var(--fm-yellow-light);
+  --color-massa-gold-dark: #c48414;
+  --color-massa-purple: var(--fm-purple);
+  --color-massa-purple-light: var(--fm-purple-light);
+  --color-massa-purple-dark: var(--fm-purple-dark);
+  --color-massa-panel: var(--fm-yellow-light);
+  --color-massa-bg: var(--fm-yellow-light);
+  --color-massa-text: var(--fm-purple);
+  --color-massa-muted: #843b91;
+  --color-massa-border: color-mix(in srgb, var(--fm-purple) 22%, #ffbe48);
 
-  --color-background: #0e0c0b;
-  --color-foreground: #f6f0e9;
-  --color-muted: #a9a19a;
-  --color-accent: #e9b36f;
-  --color-accent-foreground: #1a100b;
-  --color-border: #39302a;
-  --color-surface: #1b1714;
-  --color-overlay: #201914;
+  --color-background: var(--fm-yellow-light);
+  --color-foreground: var(--fm-purple);
+  --color-muted: #843b91;
+  --color-accent: var(--fm-purple);
+  --color-accent-foreground: #ffffff;
+  --color-border: color-mix(in srgb, var(--fm-purple) 22%, #ffbe48);
+  --color-surface: var(--fm-yellow-light);
+  --color-overlay: var(--fm-yellow);
 }

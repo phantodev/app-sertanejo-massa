@@ -1,7 +1,8 @@
 import { Button } from "@heroui/react";
-import { BadgeCheck, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { locationLabel } from "../../../shared/lib/location-label.ts";
+import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import type { Suggestion } from "../types/suggestions.types.ts";
 
 type SuggestionCardProps = {
@@ -15,7 +16,7 @@ export function SuggestionCard({ suggestion, onDismiss, compact = false }: Sugge
 
   return (
     <div
-      className={`relative overflow-hidden rounded-xl border border-[#3a302a] bg-[#181411] transition-all hover:border-[#99774f] ${
+      className={`relative overflow-hidden rounded-xl border border-fm-purple/25 bg-fm-yellow transition-all hover:border-fm-purple/50 ${
         compact ? "w-[160px] shrink-0" : ""
       }`}
     >
@@ -46,9 +47,7 @@ export function SuggestionCard({ suggestion, onDismiss, compact = false }: Sugge
         <div className="space-y-1 p-3">
           <div className="flex items-center gap-1">
             <p className="truncate text-sm font-semibold text-massa-text">{user.displayName}</p>
-            {user.verified ? (
-              <BadgeCheck className="size-3.5 shrink-0 fill-massa-gold text-accent-foreground" />
-            ) : null}
+            {user.verified ? <VerifiedBadge size="md" /> : null}
           </div>
           <p className="truncate text-[11px] text-massa-muted">
             {locationLabel(user.city, user.state)}
@@ -56,7 +55,7 @@ export function SuggestionCard({ suggestion, onDismiss, compact = false }: Sugge
         </div>
       </Link>
       <div className="relative px-3 pb-3">
-        <Button size="sm" fullWidth variant="secondary">
+        <Button size="sm" fullWidth className="btn-fm-blue bg-fm-blue text-white">
           Ver perfil
         </Button>
         <Link

@@ -80,7 +80,7 @@ export function EventsPage() {
               <div className="flex items-center gap-2">
                 <Button
                   variant="secondary"
-                  className="border border-massa-border bg-[#181411]"
+                  className="border border-massa-border bg-fm-yellow-light"
                   onPress={() => {
                     setDraft(filters);
                     setFiltersOpen(true);

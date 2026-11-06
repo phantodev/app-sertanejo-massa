@@ -1,9 +1,10 @@
 import { Button } from "@heroui/react";
-import { BadgeCheck, Ellipsis } from "lucide-react";
+import { Ellipsis } from "lucide-react";
 import { Link } from "react-router-dom";
 import { formatRelativeTime } from "../../../shared/lib/format-relative-time.ts";
 import { locationLabel } from "../../../shared/lib/location-label.ts";
 import { UserAvatar } from "../../../shared/ui/UserAvatar.tsx";
+import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import type { FeedPost } from "../types/feed.types.ts";
 import { MediaPostBody } from "./MediaPostBody.tsx";
 import { PostActions } from "./PostActions.tsx";
@@ -25,18 +26,15 @@ export function PostCard({ post }: PostCardProps) {
         <div className="min-w-0 flex-1">
           <Link to={`/${author.handle}`} className="block min-w-0">
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="truncate text-[15px] font-semibold text-massa-text">
+              <span className="truncate text-[15px] font-semibold text-fm-blue">
                 {author.displayName}
               </span>
-              {author.verified ? (
-                <BadgeCheck
-                  aria-label="Conta verificada"
-                  className="size-4 shrink-0 fill-massa-gold text-accent-foreground"
-                />
-              ) : null}
-              <span className="text-sm text-massa-muted">{formatRelativeTime(post.createdAt)}</span>
+              {author.verified ? <VerifiedBadge size="md" /> : null}
+              <span className="text-sm font-semibold text-massa-muted">
+                {formatRelativeTime(post.createdAt)}
+              </span>
             </div>
-            <p className="truncate text-xs text-massa-muted">
+            <p className="truncate text-xs font-semibold text-massa-muted">
               {locationLabel(author.city, author.state)}
             </p>
           </Link>
@@ -44,7 +42,7 @@ export function PostCard({ post }: PostCardProps) {
         <button
           type="button"
           aria-label="Abrir opções da publicação"
-          className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-white/5"
+          className="grid size-8 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10"
         >
           <Ellipsis className="size-4" />
         </button>

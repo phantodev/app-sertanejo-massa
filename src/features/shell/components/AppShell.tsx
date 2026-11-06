@@ -29,8 +29,8 @@ export function AppShell({
   stretchMain = false,
 }: AppShellProps) {
   const mainClasses = stretchMain
-    ? `flex h-dvh w-full min-w-0 flex-col overflow-hidden border-[#322923] bg-[#0e0c0b] lg:border-x ${APP_SHELL_STRETCH_MAIN_CLASS}`
-    : "w-full max-w-[598px] border-[#322923] bg-[#0e0c0b] lg:border-x";
+    ? `flex h-dvh w-full min-w-0 flex-col overflow-hidden border-fm-purple/20 bg-fm-yellow-light lg:border-x ${APP_SHELL_STRETCH_MAIN_CLASS}`
+    : "w-full max-w-[598px] border-fm-purple/20 bg-fm-yellow-light lg:border-x";
 
   return (
     <div className="min-h-dvh bg-massa-bg text-massa-text">
