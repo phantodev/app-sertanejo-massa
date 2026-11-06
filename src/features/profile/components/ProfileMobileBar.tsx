@@ -18,7 +18,7 @@ export function ProfileMobileBar({ displayName }: ProfileMobileBarProps) {
             navigate(-1);
             return;
           }
-          navigate("/");
+          navigate("/feed");
         }}
         className="grid size-10 place-items-center rounded-full text-massa-text transition-colors hover:bg-white/5"
       >
@@ -27,7 +27,7 @@ export function ProfileMobileBar({ displayName }: ProfileMobileBarProps) {
 
       <div className="min-w-0 flex-1">
         <p className="truncate text-[15px] font-semibold text-massa-text">{displayName}</p>
-        <Link to="/" className="text-[11px] text-massa-muted hover:text-massa-gold">
+        <Link to="/feed" className="text-[11px] text-massa-muted hover:text-massa-gold">
           Voltar ao feed
         </Link>
       </div>

@@ -16,7 +16,7 @@ export function MobileBottomNav({ items }: MobileBottomNavProps) {
         <NavLink
           key={item.id}
           to={item.href}
-          end={item.href === "/"}
+          end={item.href === "/feed"}
           aria-label={item.label}
           className={({ isActive }) =>
             `grid size-11 place-items-center rounded-xl transition-colors ${

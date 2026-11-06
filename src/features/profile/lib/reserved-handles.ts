@@ -1,5 +1,6 @@
 /** Paths da app que não devem ser tratados como handle de perfil. */
 export const RESERVED_HANDLES = new Set([
+  "feed",
   "create",
   "shorts",
   "messages",

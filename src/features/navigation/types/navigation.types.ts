@@ -9,6 +9,7 @@ export type NavIcon =
   | "ranking"
   | "bookmarks"
   | "settings"
+  | "logout"
   | "publish";
 
 export type NavItem = {
@@ -18,6 +19,8 @@ export type NavItem = {
   icon: NavIcon;
   badge?: number;
   active?: boolean;
+  /** Ação especial (ex.: logout) em vez de navegação. */
+  action?: "logout";
 };
 
 export type MobileNavItem = Pick<NavItem, "id" | "label" | "href" | "icon" | "active">;

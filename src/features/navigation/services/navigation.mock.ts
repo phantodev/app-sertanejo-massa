@@ -1,7 +1,7 @@
 import type { MobileNavItem, NavItem } from "../types/navigation.types.ts";
 
 export const mockSideNavItems: NavItem[] = [
-  { id: "for-you", label: "Para você", href: "/", icon: "home", active: true },
+  { id: "for-you", label: "Para você", href: "/feed", icon: "home", active: true },
   { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
   { id: "messages", label: "Mensagens", href: "/messages", icon: "messages" },
   { id: "notifications", label: "Notificações", href: "/notifications", icon: "notifications" },
@@ -11,6 +11,13 @@ export const mockSideNavItems: NavItem[] = [
   { id: "ranking", label: "Ranking", href: "/ranking", icon: "ranking" },
   { id: "bookmarks", label: "Salvos", href: "/bookmarks", icon: "bookmarks" },
   { id: "settings", label: "Configurações", href: "/settings", icon: "settings" },
+  {
+    id: "logout",
+    label: "Sair do app",
+    href: "/",
+    icon: "logout",
+    action: "logout",
+  },
 ];
 
 export const mockPublishItem: NavItem = {
@@ -21,7 +28,7 @@ export const mockPublishItem: NavItem = {
 };
 
 export const mockMobileNavItems: MobileNavItem[] = [
-  { id: "for-you", label: "Para você", href: "/", icon: "home", active: true },
+  { id: "for-you", label: "Para você", href: "/feed", icon: "home", active: true },
   { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
   { id: "messages", label: "Mensagens", href: "/messages", icon: "messages" },
   { id: "notifications", label: "Notificações", href: "/notifications", icon: "notifications" },

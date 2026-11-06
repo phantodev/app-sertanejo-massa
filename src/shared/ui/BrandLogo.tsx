@@ -6,7 +6,7 @@ type BrandLogoProps = {
   compact?: boolean;
 };
 
-export function BrandLogo({ href = "/", className = "", compact = false }: BrandLogoProps) {
+export function BrandLogo({ href = "/feed", className = "", compact = false }: BrandLogoProps) {
   const content = (
     <>
       <span className="flex h-11 w-[34px] items-center justify-center gap-[3px]">

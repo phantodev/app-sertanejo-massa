@@ -7,6 +7,7 @@ import {
   MessageCircle,
   Bell,
   Plus,
+  LogOut,
   Radar,
   Settings,
   Trophy,
@@ -25,6 +26,7 @@ const ICONS: Record<NavIconName, LucideIcon> = {
   ranking: Trophy,
   bookmarks: Bookmark,
   settings: Settings,
+  logout: LogOut,
   publish: Plus,
 };
 

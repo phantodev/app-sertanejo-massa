@@ -25,14 +25,16 @@ describe("App", () => {
 
   afterEach(() => {
     container?.remove();
+    localStorage.clear();
   });
 
-  it("renders feed shell loading state", () => {
+  it("renders login boot or form on root", () => {
     container = document.createElement("div");
     document.body.append(container);
 
     renderApp(container);
 
-    expect(container.textContent).toContain("Carregando feed");
+    const text = container.textContent ?? "";
+    expect(text.includes("Carregando") || text.includes("Entre na sua conta")).toBe(true);
   });
 });

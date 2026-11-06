@@ -24,7 +24,7 @@ export function EventsMobileBar({
             navigate(-1);
             return;
           }
-          navigate("/");
+          navigate("/feed");
         }}
         className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-white/5"
       >

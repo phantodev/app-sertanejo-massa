@@ -75,7 +75,7 @@ export function ProfilePage() {
                 Essa área ainda está sendo afinada. Volte logo pra curtir o lançamento.
               </p>
               <Link
-                to="/"
+                to="/feed"
                 className="inline-flex h-10 items-center justify-center rounded-full bg-massa-gold px-5 text-sm font-semibold text-[#1a100b]"
               >
                 Voltar ao feed
@@ -96,7 +96,7 @@ export function ProfilePage() {
                 Não achamos @{handle} na Massa. Confira o nome e tente de novo.
               </p>
               <Link
-                to="/"
+                to="/feed"
                 className="inline-flex h-10 items-center justify-center rounded-full bg-massa-gold px-5 text-sm font-semibold text-[#1a100b]"
               >
                 Voltar ao feed
@@ -110,7 +110,7 @@ export function ProfilePage() {
 
               <div className="hidden items-center gap-3 border-b border-massa-border px-4 py-3 lg:flex">
                 <Link
-                  to="/"
+                  to="/feed"
                   className="text-sm font-semibold text-massa-gold transition-colors hover:text-massa-gold-light"
                 >
                   ← Feed
