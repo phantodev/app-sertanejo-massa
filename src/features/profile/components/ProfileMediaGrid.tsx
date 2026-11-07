@@ -39,7 +39,7 @@ function MediaThumb({ item }: { item: ProfileMediaItem }) {
 export function ProfileMediaGrid({ items }: ProfileMediaGridProps) {
   if (items.length === 0) {
     return (
-      <div className="px-4 py-16 text-center text-sm font-semibold text-massa-muted">
+      <div className="px-4 py-16 text-center text-xs font-semibold text-massa-muted">
         Ainda não há fotos ou vídeos neste perfil.
       </div>
     );

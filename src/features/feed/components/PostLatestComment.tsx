@@ -7,7 +7,7 @@ type PostLatestCommentProps = {
 
 export function PostLatestComment({ comment }: PostLatestCommentProps) {
   return (
-    <p className="px-1 text-[13px] font-semibold leading-snug text-massa-text">
+    <p className="massa-description px-1 text-massa-text">
       <Link to={`/${comment.authorHandle}`} className="font-semibold text-fm-blue hover:underline">
         {comment.authorDisplayName}
       </Link>{" "}

@@ -46,7 +46,7 @@ export function EventFiltersSheet({
             <h2 id="event-filters-title" className="text-lg font-bold text-fm-blue">
               Filtros
             </h2>
-            <p className="mt-0.5 text-sm font-semibold text-massa-muted">
+            <p className="mt-0.5 text-xs font-semibold text-massa-muted">
               Filtrar por período e cidade.
             </p>
           </div>
@@ -101,7 +101,7 @@ export function EventFiltersSheet({
                     city: null,
                   })
                 }
-                className="h-11 w-full rounded-xl border border-massa-border bg-fm-yellow-light px-3 text-sm text-massa-text outline-none focus:border-massa-gold/50"
+                className="h-11 w-full rounded-xl border border-massa-border bg-fm-yellow-light px-3 text-xs font-semibold text-massa-text outline-none focus:border-massa-gold/50"
               >
                 <option value="">Todos os estados</option>
                 {options.states.map((state) => (
@@ -123,7 +123,7 @@ export function EventFiltersSheet({
                     city: event.target.value || null,
                   })
                 }
-                className="h-11 w-full rounded-xl border border-massa-border bg-fm-yellow-light px-3 text-sm text-massa-text outline-none enabled:focus:border-massa-gold/50 disabled:cursor-not-allowed disabled:opacity-45"
+                className="h-11 w-full rounded-xl border border-massa-border bg-fm-yellow-light px-3 text-xs font-semibold text-massa-text outline-none enabled:focus:border-massa-gold/50 disabled:cursor-not-allowed disabled:opacity-45"
               >
                 <option value="">
                   {draft.state ? "Todas as cidades" : "Selecione o estado primeiro"}

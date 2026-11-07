@@ -36,7 +36,7 @@ export function EventPlaceholderPage({ title, description }: EventPlaceholderPag
           <EventsMobileBar title={title} />
           <div className="space-y-4 px-6 py-16 text-center">
             <p className="text-lg font-semibold text-massa-text">{title}</p>
-            <p className="text-sm text-massa-muted">{description}</p>
+            <p className="text-xs font-semibold text-massa-muted">{description}</p>
             <Link
               to="/events"
               className="inline-flex h-10 items-center justify-center rounded-full bg-massa-gold px-5 text-sm font-semibold text-[#1a100b]"

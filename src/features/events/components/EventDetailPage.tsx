@@ -64,7 +64,7 @@ export function EventDetailPage() {
           {eventQuery.isError || (!eventQuery.isLoading && !event) ? (
             <div className="space-y-4 px-6 py-16 text-center">
               <p className="text-lg font-semibold text-massa-text">Evento não encontrado</p>
-              <p className="text-sm text-massa-muted">
+              <p className="text-xs font-semibold text-massa-muted">
                 Esse rolê pode ter saído da agenda. Volte pra lista e escolha outro.
               </p>
               <Link
@@ -161,7 +161,7 @@ export function EventDetailPage() {
                       <p className="text-xs font-black uppercase tracking-[0.12em] text-fm-purple">
                         Quando
                       </p>
-                      <p className="mt-0.5 text-[15px] font-semibold text-massa-text">
+                      <p className="mt-0.5 text-xs font-semibold text-massa-text">
                         {formatEventDetailWhen(event.startsAt)}
                       </p>
                     </div>
@@ -172,7 +172,7 @@ export function EventDetailPage() {
                       <p className="text-xs font-black uppercase tracking-[0.12em] text-fm-purple">
                         Onde
                       </p>
-                      <p className="mt-0.5 text-[15px] font-semibold text-massa-text">
+                      <p className="mt-0.5 text-xs font-semibold text-massa-text">
                         {event.addressLine}
                       </p>
                     </div>
@@ -221,7 +221,7 @@ export function EventDetailPage() {
                   <h2 className="text-xs font-black uppercase tracking-[0.14em] text-fm-purple">
                     Sobre
                   </h2>
-                  <p className="whitespace-pre-line text-[15px] font-semibold leading-relaxed text-massa-text/90">
+                  <p className="whitespace-pre-line massa-description text-massa-text/90">
                     {event.description}
                   </p>
                 </section>
@@ -255,9 +255,7 @@ export function EventDetailPage() {
                   </button>
                 </div>
 
-                <p className="pb-4 text-xs font-semibold leading-relaxed text-massa-muted">
-                  {event.disclaimer}
-                </p>
+                <p className="pb-4 massa-description text-massa-muted">{event.disclaimer}</p>
               </div>
             </div>
           ) : null}

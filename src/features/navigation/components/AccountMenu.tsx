@@ -24,7 +24,9 @@ export function AccountMenu({ user, compact = false }: AccountMenuProps) {
             <span className="block truncate text-sm font-semibold text-massa-text">
               {user.displayName}
             </span>
-            <span className="block truncate text-xs text-massa-muted">{user.accountLabel}</span>
+            <span className="block truncate text-xs font-semibold text-massa-muted">
+              {user.accountLabel}
+            </span>
           </span>
           <ChevronDown aria-hidden className="size-4 shrink-0 text-massa-muted" />
         </>

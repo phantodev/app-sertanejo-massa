@@ -47,7 +47,7 @@ export function EventCard({ event, featured = false }: EventCardProps) {
           </Link>
           <Link
             to={`/${event.organizer.handle}`}
-            className="mt-1.5 flex items-center gap-2 text-sm font-semibold text-massa-muted hover:text-fm-blue"
+            className="mt-1.5 flex items-center gap-2 text-xs font-semibold text-massa-muted hover:text-fm-blue"
           >
             <img
               src={event.organizer.avatarUrl}
@@ -63,11 +63,11 @@ export function EventCard({ event, featured = false }: EventCardProps) {
         </div>
 
         <div className="space-y-1">
-          <p className="grid grid-cols-[14px_1fr] items-center gap-x-1.5 text-[13px] font-bold text-massa-muted">
+          <p className="grid grid-cols-[14px_1fr] items-center gap-x-1.5 text-xs font-semibold text-massa-muted">
             <Clock className="size-3.5 shrink-0 text-fm-blue" aria-hidden />
             <span>{formatEventCardWhen(event.startsAt)}</span>
           </p>
-          <p className="grid grid-cols-[14px_1fr] items-center gap-x-1.5 text-[13px] font-bold text-massa-muted">
+          <p className="grid grid-cols-[14px_1fr] items-center gap-x-1.5 text-xs font-semibold text-massa-muted">
             <MapPin className="size-3.5 shrink-0 text-fm-blue" aria-hidden />
             <span>
               {event.venueName} — {event.city}/{event.state}

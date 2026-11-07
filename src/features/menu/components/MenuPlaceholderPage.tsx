@@ -39,7 +39,7 @@ export function MenuPlaceholderPage() {
             <Sparkles aria-hidden="true" className="size-6" />
           </span>
           <h2 className="mt-4 text-lg font-bold text-fm-purple">Estamos preparando esta área</h2>
-          <p className="mt-2 max-w-xs text-sm font-medium text-massa-muted">
+          <p className="mt-2 max-w-xs text-xs font-semibold text-massa-muted">
             {title} estará disponível em uma próxima atualização.
           </p>
           <Link

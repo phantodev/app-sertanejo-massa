@@ -67,7 +67,7 @@ export function NotificationsPage() {
               <p className="text-base font-semibold text-fm-purple">
                 Não foi possível carregar as notificações.
               </p>
-              <p className="mt-1 text-sm font-semibold text-massa-muted">
+              <p className="mt-1 text-xs font-semibold text-massa-muted">
                 Tente novamente em instantes.
               </p>
             </div>
@@ -79,7 +79,7 @@ export function NotificationsPage() {
                 <Bell aria-hidden="true" className="size-6" />
               </span>
               <h2 className="mt-4 text-base font-bold text-fm-purple">Você está em dia</h2>
-              <p className="mt-1 max-w-xs text-sm font-semibold text-massa-muted">
+              <p className="mt-1 max-w-xs text-xs font-semibold text-massa-muted">
                 Quando chegar uma solicitação ou convite, ele aparece aqui.
               </p>
             </div>

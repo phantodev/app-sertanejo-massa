@@ -44,7 +44,7 @@ export function ConversationListItem({ conversation }: ConversationListItemProps
 
         <div className="mt-0.5 flex items-center justify-between gap-2">
           <p
-            className={`truncate text-[13px] ${
+            className={`truncate text-xs ${
               conversation.typing
                 ? "font-semibold text-fm-purple"
                 : conversation.unreadCount > 0

@@ -71,7 +71,7 @@ export function ProfilePage() {
           {reserved ? (
             <div className="space-y-4 px-6 py-16 text-center">
               <p className="text-lg font-semibold text-massa-text">Em breve na Massa</p>
-              <p className="text-sm font-semibold text-massa-muted">
+              <p className="text-xs font-semibold text-massa-muted">
                 Essa área ainda está sendo afinada. Volte logo pra curtir o lançamento.
               </p>
               <Link
@@ -92,7 +92,7 @@ export function ProfilePage() {
           {!reserved && (profile.isError || (!profile.isLoading && !profile.data)) ? (
             <div className="space-y-4 px-6 py-16 text-center">
               <p className="text-lg font-semibold text-massa-text">Perfil não encontrado</p>
-              <p className="text-sm font-semibold text-massa-muted">
+              <p className="text-xs font-semibold text-massa-muted">
                 Não achamos @{handle} na Massa. Confira o nome e tente de novo.
               </p>
               <Link
@@ -131,7 +131,7 @@ export function ProfilePage() {
                 profile.data.posts.length > 0 ? (
                   <FeedList posts={profile.data.posts} />
                 ) : (
-                  <div className="px-4 py-16 text-center text-sm font-semibold text-massa-muted">
+                  <div className="px-4 py-16 text-center text-xs font-semibold text-massa-muted">
                     Nenhuma publicação ainda.
                   </div>
                 )

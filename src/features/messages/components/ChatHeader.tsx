@@ -68,7 +68,7 @@ export function ChatHeader({ conversation, searchOpen, onToggleSearch }: ChatHea
         <button
           type="button"
           aria-label="Mais opções"
-          className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10"
+          className="grid size-10 place-items-center rounded-full text-fm-blue hover:bg-fm-purple/10"
         >
           <EllipsisVertical className="size-5" />
         </button>

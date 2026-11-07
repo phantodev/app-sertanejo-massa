@@ -16,7 +16,7 @@ export function SurveyBanner({ survey }: SurveyBannerProps) {
       <Heart className="mt-0.5 size-6 shrink-0 fill-current text-fm-purple" aria-hidden />
       <div className="min-w-0 flex-1">
         <p className="text-sm font-semibold text-massa-text">{survey.title}</p>
-        <p className="mt-0.5 text-xs text-massa-muted">{survey.description}</p>
+        <p className="mt-0.5 text-xs font-semibold text-massa-muted">{survey.description}</p>
         <a
           href={survey.href}
           className="mt-2 inline-block text-sm font-semibold text-fm-purple hover:text-fm-purple-dark"

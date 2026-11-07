@@ -18,7 +18,7 @@ export function GroupInfoPage() {
 
   if (!currentUser.data || !sideNav.data || !mobileNav.data) {
     return (
-      <div className="grid min-h-dvh place-items-center bg-massa-bg text-sm text-massa-muted">
+      <div className="grid min-h-dvh place-items-center bg-massa-bg text-xs font-semibold text-massa-muted">
         Carregando…
       </div>
     );
@@ -54,7 +54,9 @@ export function GroupInfoPage() {
           ) : null}
 
           {info.isError || !info.data ? (
-            <p className="px-4 py-16 text-center text-sm text-massa-muted">Grupo não encontrado.</p>
+            <p className="px-4 py-16 text-center text-xs font-semibold text-massa-muted">
+              Grupo não encontrado.
+            </p>
           ) : (
             <div className="space-y-6 px-4 py-6">
               <div className="flex flex-col items-center gap-3 text-center">
@@ -65,7 +67,7 @@ export function GroupInfoPage() {
                 />
                 <div>
                   <h2 className="text-2xl font-bold text-massa-text">{info.data.title}</h2>
-                  <p className="mt-1 text-sm text-massa-muted">
+                  <p className="mt-1 text-xs font-semibold text-massa-muted">
                     Grupo · {info.data.memberCount} membros
                   </p>
                 </div>
@@ -73,7 +75,7 @@ export function GroupInfoPage() {
 
               <section className="rounded-2xl border border-massa-border bg-fm-yellow-light p-4">
                 <h3 className="text-sm font-semibold text-massa-gold">Descrição</h3>
-                <p className="mt-2 text-sm leading-relaxed text-massa-text">
+                <p className="mt-2 massa-description text-massa-text">
                   {info.data.description || "Sem descrição."}
                 </p>
               </section>
@@ -106,7 +108,9 @@ export function GroupInfoPage() {
                           <p className="truncate font-semibold text-massa-text">
                             {member.displayName}
                           </p>
-                          <p className="truncate text-xs text-massa-muted">@{member.handle}</p>
+                          <p className="truncate text-xs font-semibold text-massa-muted">
+                            @{member.handle}
+                          </p>
                         </div>
                         {member.role === "admin" ? (
                           <span className="inline-flex items-center gap-1 rounded-full bg-massa-gold/15 px-2 py-0.5 text-[10px] font-bold text-massa-gold">

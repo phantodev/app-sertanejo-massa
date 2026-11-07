@@ -46,16 +46,14 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
                 </h1>
                 {user.verified ? <VerifiedBadge size="lg" /> : null}
               </div>
-              <p className="mt-0.5 text-sm font-semibold text-massa-muted">@{user.handle}</p>
-              <p className="mt-1.5 flex items-center gap-1.5 text-sm font-semibold text-massa-muted">
+              <p className="mt-0.5 text-xs font-semibold text-massa-muted">@{user.handle}</p>
+              <p className="mt-1.5 flex items-center gap-1.5 text-xs font-semibold text-massa-muted">
                 <MapPin className="size-3.5 shrink-0 text-fm-blue" />
                 {locationLabel(user.city, user.state)}
               </p>
             </div>
 
-            <p className="text-[15px] font-semibold leading-relaxed text-massa-text/90">
-              {profile.bio}
-            </p>
+            <p className="massa-description text-massa-text/90">{profile.bio}</p>
 
             <dl className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
               <div className="flex items-baseline gap-1.5">

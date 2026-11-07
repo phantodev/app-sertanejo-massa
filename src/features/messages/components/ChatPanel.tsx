@@ -90,7 +90,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
             placeholder="Pesquisar nesta conversa"
-            className="h-9 w-full bg-transparent text-sm text-massa-text outline-none placeholder:text-massa-muted"
+            className="h-9 w-full bg-transparent text-xs font-semibold text-massa-text outline-none placeholder:font-semibold placeholder:text-massa-muted"
           />
           <button
             type="button"

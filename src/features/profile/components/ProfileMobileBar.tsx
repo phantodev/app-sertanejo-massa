@@ -27,10 +27,7 @@ export function ProfileMobileBar({ displayName }: ProfileMobileBarProps) {
 
       <div className="min-w-0 flex-1">
         <p className="truncate text-[15px] font-semibold text-massa-text">{displayName}</p>
-        <Link
-          to="/feed"
-          className="text-[11px] font-semibold text-massa-muted hover:text-massa-gold"
-        >
+        <Link to="/feed" className="text-xs font-semibold text-massa-muted hover:text-massa-gold">
           Voltar ao feed
         </Link>
       </div>

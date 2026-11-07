@@ -27,6 +27,30 @@ body {
   min-height: 100vh;
 }
 
+/* Campos de formulário — 12px semibold em toda a plataforma */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not(
+    [type="hidden"]
+  ),
+textarea,
+select {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@layer utilities {
+  .massa-description {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+}
+
 /* Firefox */
 @supports not selector(::-webkit-scrollbar) {
   * {
@@ -149,7 +173,8 @@ h2 em {
     border-radius: 7px !important;
     background: var(--fm-yellow) !important;
     color: #111111 !important;
-    font-size: 13px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
     box-shadow: none !important;
   }
 
@@ -172,6 +197,8 @@ h2 em {
   .input::placeholder,
   .textarea::placeholder {
     color: color-mix(in srgb, var(--fm-purple) 45%, transparent) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
   }
 
   /* Login — botão roxo oficial */
@@ -255,6 +282,8 @@ h2 em {
     border-radius: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
   }
 
   .checkbox {
@@ -276,7 +305,7 @@ h2 em {
     background: transparent !important;
     box-shadow: none !important;
     padding: 4px 0 !important;
-    font-size: 15px !important;
+    font-size: 12px !important;
     font-weight: 600 !important;
     color: var(--fm-purple) !important;
   }
@@ -294,6 +323,8 @@ h2 em {
   .chat-composer-textarea {
     overflow: hidden !important;
     scrollbar-width: none !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
   }
 
   .chat-composer-textarea::-webkit-scrollbar {

@@ -32,9 +32,7 @@ export function WelcomePostCard({ post }: WelcomePostCardProps) {
       <h3 className="mt-5 text-[22px] font-extrabold leading-tight tracking-tight text-white">
         Boas-vindas, <em className="text-fm-yellow">{name}</em>
       </h3>
-      <p className="mx-auto mt-2 max-w-[280px] text-sm leading-relaxed text-white/75">
-        {post.body}
-      </p>
+      <p className="massa-description mx-auto mt-2 max-w-[280px] text-white/75">{post.body}</p>
 
       <button
         type="button"

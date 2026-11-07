@@ -14,7 +14,7 @@ export function SuggestionsPanel({ suggestions }: SuggestionsPanelProps) {
           <SearchField.SearchIcon className="text-fm-purple" />
           <SearchField.Input
             placeholder="Pesquisar"
-            className="text-[15px] font-semibold text-fm-purple placeholder:font-semibold placeholder:text-fm-purple"
+            className="text-xs font-semibold text-fm-purple placeholder:font-semibold placeholder:text-fm-purple"
           />
         </SearchField.Group>
       </SearchField>

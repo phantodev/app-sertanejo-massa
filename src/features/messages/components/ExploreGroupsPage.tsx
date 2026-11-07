@@ -1,7 +1,8 @@
 import { Button, Spinner } from "@heroui/react";
-import { ArrowLeft, Search, Users } from "lucide-react";
+import { ArrowLeft, Users } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { MassaSearchField } from "../../../shared/ui/MassaSearchField.tsx";
 import { MobileBottomNav } from "../../navigation/components/MobileBottomNav.tsx";
 import { SideNav } from "../../navigation/components/SideNav.tsx";
 import { useMobileNavigation } from "../../navigation/hooks/use-mobile-navigation.ts";
@@ -21,7 +22,7 @@ export function ExploreGroupsPage() {
 
   if (!currentUser.data || !sideNav.data || !mobileNav.data) {
     return (
-      <div className="grid min-h-dvh place-items-center bg-massa-bg text-sm text-massa-muted">
+      <div className="grid min-h-dvh place-items-center bg-massa-bg text-xs font-semibold text-massa-muted">
         Carregando…
       </div>
     );
@@ -44,22 +45,18 @@ export function ExploreGroupsPage() {
               <Link
                 to="/messages"
                 aria-label="Voltar"
-                className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10"
+                className="grid size-10 place-items-center rounded-full text-fm-blue hover:bg-fm-purple/10"
               >
                 <ArrowLeft className="size-5" />
               </Link>
               <h1 className="text-lg font-bold text-massa-text">Explorar grupos</h1>
             </div>
-            <label className="relative block">
-              <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-massa-muted" />
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Buscar grupos Massa"
-                className="h-10 w-full rounded-full border border-massa-border bg-fm-yellow-light py-2 pr-3 pl-10 text-sm text-massa-text outline-none placeholder:text-massa-muted focus:border-massa-gold/40"
-              />
-            </label>
+            <MassaSearchField
+              aria-label="Buscar grupos Massa"
+              placeholder="Buscar grupos Massa"
+              value={query}
+              onChange={setQuery}
+            />
           </header>
 
           <div className="px-3 py-4">
@@ -70,15 +67,14 @@ export function ExploreGroupsPage() {
             ) : null}
 
             {!groups.isLoading && (groups.data?.length ?? 0) === 0 ? (
-              <p className="py-16 text-center text-sm text-massa-muted">Nenhum grupo encontrado.</p>
+              <p className="py-16 text-center text-xs font-semibold text-massa-muted">
+                Nenhum grupo encontrado.
+              </p>
             ) : null}
 
             <ul className="space-y-3">
               {groups.data?.map((group) => (
-                <li
-                  key={group.id}
-                  className="rounded-2xl border border-massa-border bg-fm-yellow-light p-3"
-                >
+                <li key={group.id} className="rounded-xl bg-fm-yellow p-3">
                   <div className="flex gap-3">
                     <img
                       src={group.avatarUrl}
@@ -86,39 +82,42 @@ export function ExploreGroupsPage() {
                       className="size-14 shrink-0 rounded-xl object-cover"
                     />
                     <div className="min-w-0 flex-1">
-                      <p className="font-semibold text-massa-text">{group.title}</p>
-                      <p className="mt-0.5 line-clamp-2 text-sm text-massa-muted">
+                      <p className="font-black text-massa-text">{group.title}</p>
+                      <p className="mt-0.5 line-clamp-2 text-xs font-semibold text-massa-muted">
                         {group.description}
-                      </p>
-                      <p className="mt-1 inline-flex items-center gap-1 text-xs text-massa-muted">
-                        <Users className="size-3" />
-                        {group.memberCount.toLocaleString("pt-BR")} membros
                       </p>
                     </div>
                   </div>
                   <div className="mt-3 flex justify-end">
-                    {group.joined ? (
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        onPress={() => navigate(`/messages/${group.id}`)}
-                      >
-                        Abrir conversa
-                      </Button>
-                    ) : (
-                      <Button
-                        size="sm"
-                        className="bg-massa-gold text-[#1a100b]"
-                        isPending={join.isPending}
-                        onPress={() => {
-                          join.mutate(group.id, {
-                            onSuccess: () => navigate(`/messages/${group.id}`),
-                          });
-                        }}
-                      >
-                        Entrar
-                      </Button>
-                    )}
+                    <div className="flex max-w-full items-center gap-3">
+                      <p className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-fm-blue">
+                        <Users className="size-3.5 shrink-0 text-fm-blue" aria-hidden />
+                        {group.memberCount.toLocaleString("pt-BR")} membros
+                      </p>
+                      {group.joined ? (
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          className="shrink-0"
+                          onPress={() => navigate(`/messages/${group.id}`)}
+                        >
+                          Abrir conversa
+                        </Button>
+                      ) : (
+                        <Button
+                          size="sm"
+                          className="shrink-0 bg-massa-gold text-[#1a100b]"
+                          isPending={join.isPending}
+                          onPress={() => {
+                            join.mutate(group.id, {
+                              onSuccess: () => navigate(`/messages/${group.id}`),
+                            });
+                          }}
+                        >
+                          Entrar
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </li>
               ))}

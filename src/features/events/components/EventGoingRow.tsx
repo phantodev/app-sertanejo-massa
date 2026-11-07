@@ -30,9 +30,7 @@ export function EventGoingRow({ count, preview, compact = false }: EventGoingRow
           ))}
         </div>
       ) : null}
-      <span className="truncate text-[13px] font-semibold text-massa-muted">
-        {goingLabel(count)}
-      </span>
+      <span className="truncate text-xs font-semibold text-massa-muted">{goingLabel(count)}</span>
     </div>
   );
 }

@@ -101,7 +101,7 @@ export function EventsPage() {
             </div>
 
             <div className="border-b border-massa-border px-4 py-4">
-              <p className="text-[15px] font-semibold leading-relaxed text-massa-muted">
+              <p className="massa-description text-massa-muted">
                 Shows, rodeios, encontros e noites da comunidade. Filtre por período e cidade e
                 marque presença com um toque.
               </p>
@@ -116,7 +116,7 @@ export function EventsPage() {
             {!sections.isLoading && (sections.data?.length ?? 0) === 0 ? (
               <div className="space-y-3 px-6 py-16 text-center">
                 <p className="text-lg font-bold text-fm-blue">Nenhum evento por aqui</p>
-                <p className="text-sm font-semibold text-massa-muted">
+                <p className="text-xs font-semibold text-massa-muted">
                   Ajuste os filtros ou limpe pra ver a agenda completa da Massa.
                 </p>
                 {filterActive ? (

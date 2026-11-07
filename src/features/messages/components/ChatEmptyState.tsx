@@ -8,7 +8,7 @@ export function ChatEmptyState() {
       </div>
       <div className="max-w-sm space-y-2">
         <h2 className="text-2xl font-bold tracking-tight text-massa-text">Mensagens Massa</h2>
-        <p className="text-sm font-semibold leading-relaxed text-massa-muted">
+        <p className="massa-description text-massa-muted">
           Selecione uma conversa à esquerda para ler e responder. No celular, a lista abre o chat em
           tela cheia.
         </p>

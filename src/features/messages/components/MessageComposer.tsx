@@ -92,7 +92,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
             }}
             rows={1}
             placeholder="Digite a mensagem"
-            className="chat-composer-textarea max-h-32 min-h-11 min-w-0 flex-1 resize-none overflow-hidden bg-transparent py-2.5 text-[15px] font-semibold leading-relaxed text-fm-purple outline-none scrollbar-none placeholder:font-semibold placeholder:text-fm-purple"
+            className="chat-composer-textarea max-h-32 min-h-11 min-w-0 flex-1 resize-none overflow-hidden bg-transparent py-2.5 massa-description text-fm-purple outline-none scrollbar-none placeholder:font-semibold placeholder:text-fm-purple"
           />
         </div>
 

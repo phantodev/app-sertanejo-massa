@@ -406,7 +406,7 @@ const exploreGroups: ExploreGroup[] = [
   {
     id: "explore-rodeio-sp",
     title: "Rodeio SP",
-    avatarUrl: unsplash.photo("1540039154509-5cddc0b15f19", 200, 200),
+    avatarUrl: unsplash.photo("1540039155733-5bb30b53aa14", 200, 200),
     description: "Agenda de rodeios e camarotes no interior paulista.",
     memberCount: 1204,
     joined: false,

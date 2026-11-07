@@ -19,7 +19,7 @@ export function MessagesPage() {
 
   if (!currentUser.data || !sideNav.data || !mobileNav.data) {
     return (
-      <div className="grid min-h-dvh place-items-center bg-massa-bg text-sm text-massa-muted">
+      <div className="grid min-h-dvh place-items-center bg-massa-bg text-xs font-semibold text-massa-muted">
         Carregando mensagens…
       </div>
     );

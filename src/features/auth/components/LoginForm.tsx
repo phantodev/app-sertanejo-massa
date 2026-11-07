@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth.ts";
 
 const fieldClass =
-  "h-12 w-full rounded-xl border border-fm-purple/25 bg-fm-yellow-bright px-3 text-[15px] font-semibold text-fm-purple outline-none placeholder:font-semibold placeholder:text-fm-purple focus:border-fm-purple focus:ring-2 focus:ring-fm-purple/25";
+  "h-12 w-full rounded-xl border border-fm-purple/25 bg-fm-yellow-bright px-3 text-xs font-semibold text-fm-purple outline-none placeholder:font-semibold placeholder:text-fm-purple focus:border-fm-purple focus:ring-2 focus:ring-fm-purple/25";
 
 export function LoginForm() {
   const auth = useAuth();

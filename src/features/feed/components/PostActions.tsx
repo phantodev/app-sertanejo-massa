@@ -15,18 +15,18 @@ export function PostActions({ post, showLikedBy = true }: PostActionsProps) {
         <button
           type="button"
           aria-label="Curtir publicação"
-          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm text-massa-muted transition-colors hover:bg-fm-blue/10 hover:text-fm-blue"
+          className="massa-description inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-massa-muted transition-colors hover:bg-fm-blue/10 hover:text-fm-blue"
         >
           <ThumbsUp className="size-4" />
-          <span className="font-bold text-fm-blue">{post.likes}</span>
+          <span className="massa-description text-fm-blue">{post.likes}</span>
         </button>
         <Link
           to={`/${post.author.handle}/status/${post.id}`}
           aria-label="Abrir comentários da publicação"
-          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm text-massa-muted transition-colors hover:bg-fm-purple/10 hover:text-massa-text"
+          className="massa-description inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-massa-muted transition-colors hover:bg-fm-purple/10 hover:text-massa-text"
         >
           <MessageCircle className="size-4" />
-          <span className="font-bold text-fm-blue">{post.comments}</span>
+          <span className="massa-description text-fm-blue">{post.comments}</span>
         </Link>
         <button
           type="button"
