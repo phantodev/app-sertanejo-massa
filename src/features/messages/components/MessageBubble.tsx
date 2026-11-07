@@ -106,7 +106,7 @@ export function MessageBubble({
           ) : null}
 
           {message.kind === "text" ? (
-            <p className="break-words whitespace-pre-wrap px-3 pt-2 pb-1 text-[14px] leading-snug">
+            <p className="break-words whitespace-pre-wrap px-3 pt-2 pb-1 text-[14px] font-semibold leading-snug">
               {message.body}
             </p>
           ) : null}

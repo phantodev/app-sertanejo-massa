@@ -35,7 +35,7 @@ export function MessagesPage() {
           user={currentUser.data}
         />
       }
-      bottomNav={<MobileBottomNav items={mobileNav.data} />}
+      bottomNav={hasChat ? undefined : <MobileBottomNav items={mobileNav.data} />}
       main={
         <div className="grid h-full min-h-0 w-full flex-1 overflow-hidden lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,380px)_minmax(0,1fr)]">
           <div

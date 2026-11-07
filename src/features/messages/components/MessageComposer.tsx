@@ -1,5 +1,5 @@
 import { Mic, Paperclip, SendHorizontal, Smile, X } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSendAudio, useSendMessage } from "../hooks/use-conversation.ts";
 import type { MessageReplyPreview } from "../types/messages.types.ts";
 import { MessageReplyCard } from "./MessageReplyCard.tsx";
@@ -12,14 +12,29 @@ type MessageComposerProps = {
 
 export function MessageComposer({ conversationId, replyTo, onCancelReply }: MessageComposerProps) {
   const [text, setText] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const send = useSendMessage(conversationId);
   const sendAudio = useSendAudio(conversationId);
   const canSend = text.trim().length > 0 && !send.isPending;
+
+  function adjustHeight() {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, 128)}px`;
+  }
+
+  useEffect(() => {
+    adjustHeight();
+  }, [text]);
 
   function submitText() {
     if (!canSend) return;
     const body = text.trim();
     setText("");
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+    }
     send.mutate({ body, replyTo: replyTo ?? undefined }, { onSuccess: () => onCancelReply() });
   }
 
@@ -62,6 +77,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
             <Paperclip className="size-4" />
           </button>
           <textarea
+            ref={textareaRef}
             value={text}
             onChange={(event) => setText(event.target.value)}
             onKeyDown={(event) => {
@@ -72,7 +88,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
             }}
             rows={1}
             placeholder="Digite a mensagem"
-            className="max-h-28 min-h-11 min-w-0 flex-1 resize-none bg-transparent py-3 text-[15px] font-semibold text-fm-purple outline-none placeholder:font-semibold placeholder:text-fm-purple"
+            className="max-h-32 min-h-11 min-w-0 flex-1 resize-none bg-transparent py-2.5 text-[15px] font-semibold leading-relaxed text-fm-purple outline-none placeholder:font-semibold placeholder:text-fm-purple"
           />
         </div>
 

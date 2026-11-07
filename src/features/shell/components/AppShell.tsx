@@ -28,8 +28,9 @@ export function AppShell({
   bottomNav,
   stretchMain = false,
 }: AppShellProps) {
+  const hasBottomNav = Boolean(bottomNav);
   const mainClasses = stretchMain
-    ? `flex h-[calc(100dvh-3.25rem)] w-full min-w-0 flex-col overflow-hidden border-fm-purple/20 bg-fm-yellow-light lg:h-dvh lg:border-x ${APP_SHELL_STRETCH_MAIN_CLASS}`
+    ? `flex ${hasBottomNav ? "h-[calc(100dvh-3.25rem)]" : "h-dvh"} w-full min-w-0 flex-col overflow-hidden border-fm-purple/20 bg-fm-yellow-light lg:h-dvh lg:border-x ${APP_SHELL_STRETCH_MAIN_CLASS}`
     : "w-full max-w-[598px] border-fm-purple/20 bg-fm-yellow-light lg:border-x";
 
   return (
