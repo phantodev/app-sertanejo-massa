@@ -45,7 +45,7 @@ export function MessagesPage() {
           </div>
 
           <div
-            className={`min-h-0 min-w-0 overflow-hidden ${hasChat ? "block" : "hidden lg:block"}`}
+            className={`flex h-full min-h-0 min-w-0 flex-col overflow-hidden ${hasChat ? "block" : "hidden lg:block"}`}
           >
             {conversationId ? <ChatPanel conversationId={conversationId} /> : <ChatEmptyState />}
           </div>

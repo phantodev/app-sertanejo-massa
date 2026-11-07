@@ -20,6 +20,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
   function adjustHeight() {
     const el = textareaRef.current;
     if (!el) return;
+    el.style.overflow = "hidden";
     el.style.height = "auto";
     el.style.height = `${Math.min(el.scrollHeight, 128)}px`;
   }
@@ -44,7 +45,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
   }
 
   return (
-    <div className="shrink-0 border-t border-massa-border bg-fm-yellow-light">
+    <div className="z-10 shrink-0 border-t border-massa-border bg-fm-yellow-light">
       {replyTo ? (
         <div className="flex items-center gap-2 border-b border-massa-border/70 px-3 py-2">
           <MessageReplyCard reply={replyTo} mine className="min-w-0 flex-1" />
@@ -59,7 +60,10 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
         </div>
       ) : null}
 
-      <form onSubmit={handleSubmit} className="flex items-end gap-2 px-3 py-3">
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-end gap-2 px-3 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+      >
         <button
           type="button"
           aria-label="Emoji"
@@ -88,7 +92,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
             }}
             rows={1}
             placeholder="Digite a mensagem"
-            className="max-h-32 min-h-11 min-w-0 flex-1 resize-none bg-transparent py-2.5 text-[15px] font-semibold leading-relaxed text-fm-purple outline-none placeholder:font-semibold placeholder:text-fm-purple"
+            className="chat-composer-textarea max-h-32 min-h-11 min-w-0 flex-1 resize-none overflow-hidden bg-transparent py-2.5 text-[15px] font-semibold leading-relaxed text-fm-purple outline-none scrollbar-none placeholder:font-semibold placeholder:text-fm-purple"
           />
         </div>
 

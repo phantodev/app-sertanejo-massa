@@ -30,16 +30,26 @@ export function AppShell({
 }: AppShellProps) {
   const hasBottomNav = Boolean(bottomNav);
   const mainClasses = stretchMain
-    ? `flex ${hasBottomNav ? "h-[calc(100dvh-3.25rem)]" : "h-dvh"} w-full min-w-0 flex-col overflow-hidden border-fm-purple/20 bg-fm-yellow-light lg:h-dvh lg:border-x ${APP_SHELL_STRETCH_MAIN_CLASS}`
+    ? [
+        "flex w-full min-w-0 flex-col overflow-hidden border-fm-purple/20 bg-fm-yellow-light lg:border-x",
+        APP_SHELL_STRETCH_MAIN_CLASS,
+        hasBottomNav
+          ? "max-lg:h-[calc(100%-3.25rem)] max-lg:max-h-[calc(100%-3.25rem)] lg:h-[calc(100dvh-3.25rem)]"
+          : "max-lg:min-h-0 max-lg:flex-1 lg:h-dvh",
+      ].join(" ")
     : "w-full max-w-[598px] border-fm-purple/20 bg-fm-yellow-light lg:border-x";
 
+  const rootClasses = stretchMain
+    ? "fixed inset-0 z-30 flex min-h-0 flex-col overflow-hidden bg-massa-bg text-massa-text lg:static lg:z-auto lg:min-h-dvh lg:overflow-visible"
+    : "min-h-dvh bg-massa-bg text-massa-text";
+
   return (
-    <div className="min-h-dvh bg-massa-bg text-massa-text">
+    <div className={rootClasses}>
       {topBar}
-      <div className="mx-auto flex w-full max-w-[1280px] justify-center gap-0 lg:px-4">
+      <div className="mx-auto flex min-h-0 w-full max-w-[1280px] flex-1 justify-center gap-0 overflow-hidden lg:px-4">
         {sideNav}
         <div
-          className={`flex min-w-0 flex-1 justify-center gap-6 ${
+          className={`flex min-h-0 min-w-0 flex-1 justify-center gap-6 overflow-hidden ${
             stretchMain ? "" : "pb-16 lg:pb-0"
           }`}
         >

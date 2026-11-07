@@ -83,7 +83,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
       />
 
       {searchOpen ? (
-        <div className="flex items-center gap-2 border-b border-massa-border bg-fm-yellow-light px-3 py-2">
+        <div className="flex shrink-0 items-center gap-2 border-b border-massa-border bg-fm-yellow-light px-3 py-2">
           <Search className="size-4 shrink-0 text-massa-muted" />
           <input
             autoFocus

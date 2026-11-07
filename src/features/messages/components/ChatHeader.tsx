@@ -37,7 +37,7 @@ export function ChatHeader({ conversation, searchOpen, onToggleSearch }: ChatHea
       : `/messages/${conversation.id}/info`;
 
   return (
-    <header className="flex h-14 items-center gap-2 border-b border-massa-border bg-fm-yellow-light/95 px-2 backdrop-blur-md">
+    <header className="sticky top-0 z-20 flex h-14 shrink-0 items-center gap-2 border-b border-massa-border bg-fm-yellow-light/95 px-2 backdrop-blur-md">
       <Link
         to="/messages"
         aria-label="Voltar para conversas"

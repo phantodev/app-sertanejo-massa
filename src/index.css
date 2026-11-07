@@ -289,4 +289,16 @@ h2 em {
     opacity: 1 !important;
     color: color-mix(in srgb, var(--fm-purple) 70%, transparent) !important;
   }
+
+  /* Chat composer — altura automática sem barra roxa herdada do tema */
+  .chat-composer-textarea {
+    overflow: hidden !important;
+    scrollbar-width: none !important;
+  }
+
+  .chat-composer-textarea::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
 }
