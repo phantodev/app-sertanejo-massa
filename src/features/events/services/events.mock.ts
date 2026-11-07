@@ -65,7 +65,7 @@ const SEEDS: EventSeed[] = [
     featured: true,
     goingCount: 48,
     goingUserIds: ["u-andre", "u-namu", "u-gold", "u-admin"],
-    organizer: { ...organizerFrom("u-hotbar", "venue"), displayName: "HotBar" },
+    organizer: { ...organizerFrom("u-hotbar", "venue"), displayName: "Woods Bar" },
     description:
       "Noite especial de viola e voz na Casa da Viola. Mesa posta, som afinado e a galera Massa reunida pra viver o sertanejo de perto. Chegue cedo — a fila na porta costuma aquecer rápido.",
     disclaimer:
@@ -136,7 +136,7 @@ const SEEDS: EventSeed[] = [
     featured: true,
     goingCount: 89,
     goingUserIds: ["u-gold", "u-carlos", "u-sulsp", "u-hotbar"],
-    organizer: { ...organizerFrom("u-hotbar", "venue"), displayName: "HotBar" },
+    organizer: { ...organizerFrom("u-hotbar", "venue"), displayName: "Woods Bar" },
     description:
       "A pista esquenta com o melhor do sertanejo universitário e raiz. Welcome drink pra quem chega até 23h. Vista o seu melhor look de boteco chique.",
     disclaimer:
@@ -174,7 +174,7 @@ const SEEDS: EventSeed[] = [
     title: "After da Viola",
     coverUrl: unsplash.photo("1492684223066-81342ee5ff30", 1200, 1200),
     startsAt: atLocal(2, 1, 0),
-    venueName: "Hotbar Massa",
+    venueName: "Woods Bar",
     city: "Curitiba",
     state: "PR",
     addressLine: "Rua XV de Novembro, 450 — Centro — Curitiba/PR",

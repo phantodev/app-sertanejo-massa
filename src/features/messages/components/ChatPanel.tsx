@@ -133,7 +133,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
       ) : null}
 
       <div
-        className="relative min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto"
+        className="relative min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain"
         style={{
           backgroundImage: `
             radial-gradient(ellipse at top, rgba(233,179,111,0.06), transparent 50%),

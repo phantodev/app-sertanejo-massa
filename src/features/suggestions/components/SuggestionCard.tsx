@@ -49,7 +49,7 @@ export function SuggestionCard({ suggestion, onDismiss, compact = false }: Sugge
             <p className="truncate text-sm font-semibold text-massa-text">{user.displayName}</p>
             {user.verified ? <VerifiedBadge size="md" /> : null}
           </div>
-          <p className="truncate text-[11px] text-massa-muted">
+          <p className="truncate text-[11px] font-semibold text-massa-muted">
             {locationLabel(user.city, user.state)}
           </p>
         </div>

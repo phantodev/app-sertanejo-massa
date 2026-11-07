@@ -1,5 +1,5 @@
 import { Button } from "@heroui/react";
-import { Check } from "lucide-react";
+import { Check, ThumbsUp } from "lucide-react";
 import { useState } from "react";
 import { useEventRsvp } from "../hooks/use-event.ts";
 import type { EventRsvpStatus } from "../types/events.types.ts";
@@ -28,8 +28,8 @@ export function EventRsvpButton({
       isPending={rsvp.isPending}
       className={
         going
-          ? "border border-massa-gold/40 bg-massa-gold/15 font-semibold text-massa-gold"
-          : "bg-massa-gold font-semibold text-[#1a100b]"
+          ? "border border-fm-purple/40 bg-fm-purple/15 font-bold text-fm-purple"
+          : "btn-fm-purple bg-fm-purple font-bold text-white"
       }
       variant={going ? "secondary" : "primary"}
       onPress={() => {
@@ -43,10 +43,13 @@ export function EventRsvpButton({
       {going ? (
         <>
           <Check className="size-4" />
-          Vou
+          Eu vou
         </>
       ) : (
-        "Vou"
+        <>
+          <ThumbsUp className="size-4" />
+          Eu vou
+        </>
       )}
     </Button>
   );

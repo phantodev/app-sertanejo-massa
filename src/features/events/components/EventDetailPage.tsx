@@ -81,14 +81,14 @@ export function EventDetailPage() {
               <div className="hidden items-center justify-between gap-3 border-b border-massa-border px-4 py-3 lg:flex">
                 <Link
                   to="/events"
-                  className="text-sm font-semibold text-massa-gold hover:text-massa-gold-light"
+                  className="text-sm font-bold text-fm-blue transition-colors hover:text-fm-blue-dark"
                 >
                   ← Eventos
                 </Link>
                 <button
                   type="button"
                   aria-label="Opções do evento"
-                  className="grid size-9 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10"
+                  className="grid size-9 place-items-center rounded-full text-fm-blue transition-colors hover:bg-fm-blue/10"
                 >
                   <Ellipsis className="size-4" />
                 </button>
@@ -105,13 +105,13 @@ export function EventDetailPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(233,179,111,0.18),_transparent_55%)]" />
               </div>
 
-              <div className="relative z-10 -mt-10 space-y-5 px-4">
+              <div className="relative z-10 space-y-5 px-4 pt-4">
                 <div className="flex items-start gap-3">
-                  <div className="grid size-14 shrink-0 place-items-center rounded-xl border border-massa-gold/35 bg-fm-yellow-light text-center shadow-lg shadow-black/30">
-                    <span className="text-[10px] font-bold tracking-[0.12em] text-massa-gold">
+                  <div className="flex size-14 shrink-0 flex-col items-center justify-center rounded-xl bg-fm-blue text-center shadow-md">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-white/90">
                       {badge.month}
                     </span>
-                    <span className="text-xl font-extrabold leading-none text-massa-text">
+                    <span className="-mt-0.5 text-2xl font-black leading-none text-white">
                       {badge.day}
                     </span>
                   </div>
@@ -120,7 +120,7 @@ export function EventDetailPage() {
                       {event.title}
                     </h1>
                     {event.featured ? (
-                      <span className="mt-2 inline-flex rounded-full bg-massa-gold/15 px-2.5 py-0.5 text-[11px] font-semibold text-massa-gold">
+                      <span className="mt-2 inline-flex rounded-full bg-fm-teal-dark px-2.5 py-0.5 text-[11px] font-bold text-white shadow-xs">
                         Em destaque
                       </span>
                     ) : null}
@@ -129,56 +129,58 @@ export function EventDetailPage() {
 
                 <Link
                   to={`/${event.organizer.handle}`}
-                  className="flex items-center gap-3 rounded-2xl border border-massa-border bg-fm-yellow-light p-3 transition-colors hover:border-massa-gold/35"
+                  className="flex items-center gap-3 rounded-2xl border border-massa-border bg-fm-yellow-light p-3 transition-colors hover:border-fm-purple/35"
                 >
                   <img
                     src={event.organizer.avatarUrl}
                     alt=""
-                    className="size-12 rounded-full object-cover ring-2 ring-massa-gold/30"
+                    className="size-12 rounded-full object-cover ring-2 ring-fm-purple/20"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs text-massa-muted">
+                    <p className="text-xs font-semibold text-fm-blue">
                       {event.organizer.kind === "venue" ? "Organizado no" : "Organizado por"}
                     </p>
-                    <p className="flex items-center gap-1.5 truncate font-semibold text-massa-text">
+                    <p className="flex items-center gap-1.5 truncate font-bold text-fm-purple">
                       {event.organizer.displayName}
                       {event.organizer.verified ? <VerifiedBadge size="md" /> : null}
                     </p>
-                    <p className="truncate text-xs text-massa-muted">
+                    <p className="truncate text-xs font-semibold text-fm-blue">
                       {event.organizer.kind === "venue" ? "Conta de empresa" : "Perfil Massa"} ·{" "}
                       {event.organizer.city}, {event.organizer.state}
                     </p>
                   </div>
                   {event.organizer.kind === "venue" ? (
-                    <Building2 className="size-4 shrink-0 text-massa-gold/70" />
+                    <Building2 className="size-4 shrink-0 text-fm-blue" />
                   ) : null}
                 </Link>
 
                 <ul className="space-y-3 rounded-2xl border border-massa-border bg-fm-yellow-light p-4">
                   <li className="flex gap-3">
-                    <CalendarDays className="mt-0.5 size-5 shrink-0 text-massa-gold" />
+                    <CalendarDays className="mt-0.5 size-5 shrink-0 text-fm-blue" />
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-massa-muted">
+                      <p className="text-xs font-black uppercase tracking-[0.12em] text-fm-purple">
                         Quando
                       </p>
-                      <p className="mt-0.5 text-[15px] text-massa-text">
+                      <p className="mt-0.5 text-[15px] font-semibold text-massa-text">
                         {formatEventDetailWhen(event.startsAt)}
                       </p>
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <MapPin className="mt-0.5 size-5 shrink-0 text-massa-gold" />
+                    <MapPin className="mt-0.5 size-5 shrink-0 text-fm-blue" />
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-massa-muted">
+                      <p className="text-xs font-black uppercase tracking-[0.12em] text-fm-purple">
                         Onde
                       </p>
-                      <p className="mt-0.5 text-[15px] text-massa-text">{event.addressLine}</p>
+                      <p className="mt-0.5 text-[15px] font-semibold text-massa-text">
+                        {event.addressLine}
+                      </p>
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <Users className="mt-0.5 size-5 shrink-0 text-massa-gold" />
+                    <Users className="mt-0.5 size-5 shrink-0 text-fm-blue" />
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-massa-muted">
+                      <p className="text-xs font-black uppercase tracking-[0.12em] text-fm-purple">
                         Convidados
                       </p>
                       <div className="mt-1.5">
@@ -188,27 +190,45 @@ export function EventDetailPage() {
                   </li>
                 </ul>
 
-                <a
-                  href={event.mapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-11 items-center justify-center rounded-full border border-massa-border bg-fm-yellow-light text-sm font-semibold text-massa-gold transition-colors hover:border-massa-gold/40"
-                >
-                  Abrir no mapa
-                </a>
+                <div className="overflow-hidden rounded-2xl border border-massa-border bg-fm-yellow shadow-sm">
+                  <div className="relative h-44 w-full bg-fm-yellow/30">
+                    <iframe
+                      title={`Mapa de ${event.venueName}`}
+                      src={`https://www.openstreetmap.org/export/embed.html?bbox=-49.35%2C-25.48%2C-49.20%2C-25.40&layer=mapnik&marker=-25.4372%2C-49.2700`}
+                      className="size-full border-0 opacity-90 transition-opacity hover:opacity-100"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between gap-3 p-3">
+                    <div className="min-w-0">
+                      <p className="truncate text-xs font-bold text-fm-purple">{event.venueName}</p>
+                      <p className="truncate text-xs font-semibold text-fm-purple/80">
+                        {event.city}/{event.state}
+                      </p>
+                    </div>
+                    <a
+                      href={event.mapUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-fm-blue px-3.5 text-xs font-bold text-white transition-opacity hover:opacity-90"
+                    >
+                      Abrir no mapa
+                    </a>
+                  </div>
+                </div>
 
                 <section className="space-y-2">
-                  <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-massa-gold/80">
+                  <h2 className="text-xs font-black uppercase tracking-[0.14em] text-fm-purple">
                     Sobre
                   </h2>
-                  <p className="whitespace-pre-line text-[15px] leading-relaxed text-massa-text/90">
+                  <p className="whitespace-pre-line text-[15px] font-semibold leading-relaxed text-massa-text/90">
                     {event.description}
                   </p>
                 </section>
 
                 {event.gallery.length > 0 ? (
                   <section className="space-y-3">
-                    <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-massa-gold/80">
+                    <h2 className="text-xs font-black uppercase tracking-[0.14em] text-fm-purple">
                       Galeria
                     </h2>
                     <ul className="grid grid-cols-3 gap-1">
@@ -224,20 +244,20 @@ export function EventDetailPage() {
                   </section>
                 ) : null}
 
-                <p className="pb-2 text-xs leading-relaxed text-massa-muted">{event.disclaimer}</p>
-              </div>
-
-              <div className="fixed inset-x-0 bottom-13 z-30 border-t border-massa-border bg-fm-yellow-light/95 px-4 py-3 backdrop-blur-md lg:sticky lg:bottom-0 lg:inset-x-auto">
-                <div className="mx-auto flex w-full max-w-[598px] items-center gap-2">
+                <div className="flex items-center gap-2 pt-2">
                   <EventRsvpButton eventId={event.id} status={event.userRsvp} fullWidth />
                   <button
                     type="button"
                     aria-label="Compartilhar evento"
-                    className="grid size-11 shrink-0 place-items-center rounded-full border border-massa-border bg-fm-yellow-light text-massa-gold hover:border-massa-gold/40"
+                    className="grid size-11 shrink-0 place-items-center rounded-full bg-fm-blue text-white shadow-xs transition-opacity hover:opacity-90"
                   >
-                    <Share2 className="size-4" />
+                    <Share2 className="size-5 text-white" />
                   </button>
                 </div>
+
+                <p className="pb-4 text-xs font-semibold leading-relaxed text-massa-muted">
+                  {event.disclaimer}
+                </p>
               </div>
             </div>
           ) : null}

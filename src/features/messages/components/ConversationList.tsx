@@ -19,7 +19,7 @@ export function ConversationList({ className = "" }: ConversationListProps) {
 
   return (
     <aside
-      className={`flex h-full min-h-0 w-full flex-col border-r border-massa-border bg-fm-yellow-light ${className}`}
+      className={`flex h-full min-h-0 w-full flex-col border-r border-massa-border bg-fm-yellow-light overscroll-contain ${className}`}
     >
       <header className="flex items-center justify-between gap-2 px-4 pb-2 pt-4">
         <h1 className="text-xl font-bold tracking-tight text-massa-text">Conversas</h1>

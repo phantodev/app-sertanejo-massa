@@ -31,6 +31,6 @@ export const mockMobileNavItems: MobileNavItem[] = [
   { id: "for-you", label: "Para você", href: "/feed", icon: "home", active: true },
   { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
   { id: "messages", label: "Mensagens", href: "/messages", icon: "messages" },
-  { id: "notifications", label: "Notificações", href: "/notifications", icon: "notifications" },
+  { id: "events", label: "Eventos", href: "/events", icon: "events" },
   { id: "top-hits", label: "Top Hits", href: "/top-hits", icon: "music" },
 ];
