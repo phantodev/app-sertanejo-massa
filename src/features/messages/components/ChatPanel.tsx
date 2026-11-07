@@ -80,11 +80,13 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
       id: message.id,
       authorName: message.mine ? "Você" : (message.authorName ?? "Contato"),
       body: replyPreviewBody(message),
+      kind: message.kind,
+      mediaUrl: message.kind === "image" ? message.mediaUrl : undefined,
     });
   }
 
   return (
-    <section className="flex h-full min-h-0 flex-col bg-fm-yellow-light">
+    <section className="flex h-full min-h-0 min-w-0 flex-col overflow-hidden bg-fm-yellow-light">
       <ChatHeader
         conversation={conversation.data}
         searchOpen={searchOpen}
@@ -131,7 +133,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
       ) : null}
 
       <div
-        className="relative min-h-0 flex-1 overflow-y-auto"
+        className="relative min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto"
         style={{
           backgroundImage: `
             radial-gradient(ellipse at top, rgba(233,179,111,0.06), transparent 50%),
@@ -139,7 +141,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
           `,
         }}
       >
-        <div className="space-y-1 py-3 pb-4">
+        <div className="min-w-0 space-y-1 py-3 pb-4">
           {visibleMessages.map((message, index) => {
             const previous = visibleMessages[index - 1];
             const showDate =
@@ -157,7 +159,7 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
               <div key={message.id} id={`msg-${message.id}`}>
                 {showDate ? (
                   <div className="flex justify-center px-4 py-3">
-                    <span className="rounded-full border border-massa-border bg-fm-yellow-light/95 px-3 py-1 text-[11px] font-medium text-massa-muted shadow-sm">
+                    <span className="rounded-full border border-fm-blue bg-fm-blue px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
                       {formatDateDivider(message.createdAt)}
                     </span>
                   </div>
@@ -187,11 +189,6 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
         conversationId={conversation.data.id}
         replyTo={replyTo}
         onCancelReply={() => setReplyTo(null)}
-        placeholder={
-          conversation.data.type === "group"
-            ? `Mensagem para ${conversation.data.title}`
-            : "Digite uma mensagem"
-        }
       />
     </section>
   );

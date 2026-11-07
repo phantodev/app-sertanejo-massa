@@ -42,7 +42,7 @@ export function SideNav({ items, publish, user }: SideNavProps) {
                 }}
                 className="flex min-h-10 w-full items-center gap-3 rounded-full px-3.5 py-2 text-[15px] font-bold text-fm-purple transition-colors hover:bg-fm-yellow-light/60 hover:text-fm-purple-dark"
               >
-                <NavIcon name={item.icon} className="size-5 shrink-0" />
+                <NavIcon name={item.icon} className="size-5 shrink-0 text-fm-blue" />
                 <span>{item.label}</span>
               </button>
             ) : (
@@ -57,8 +57,15 @@ export function SideNav({ items, publish, user }: SideNavProps) {
                   }`
                 }
               >
-                <NavIcon name={item.icon} className="size-5 shrink-0" />
-                <span>{item.label}</span>
+                {({ isActive }) => (
+                  <>
+                    <NavIcon
+                      name={item.icon}
+                      className={`size-5 shrink-0 ${isActive ? "text-white" : "text-fm-blue"}`}
+                    />
+                    <span>{item.label}</span>
+                  </>
+                )}
               </NavLink>
             )}
           </li>

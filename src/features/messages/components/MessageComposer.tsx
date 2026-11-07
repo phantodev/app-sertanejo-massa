@@ -2,20 +2,15 @@ import { Mic, Paperclip, SendHorizontal, Smile, X } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { useSendAudio, useSendMessage } from "../hooks/use-conversation.ts";
 import type { MessageReplyPreview } from "../types/messages.types.ts";
+import { MessageReplyCard } from "./MessageReplyCard.tsx";
 
 type MessageComposerProps = {
   conversationId: string;
-  placeholder?: string;
   replyTo: MessageReplyPreview | null;
   onCancelReply: () => void;
 };
 
-export function MessageComposer({
-  conversationId,
-  placeholder = "Digite uma mensagem",
-  replyTo,
-  onCancelReply,
-}: MessageComposerProps) {
+export function MessageComposer({ conversationId, replyTo, onCancelReply }: MessageComposerProps) {
   const [text, setText] = useState("");
   const send = useSendMessage(conversationId);
   const sendAudio = useSendAudio(conversationId);
@@ -34,15 +29,10 @@ export function MessageComposer({
   }
 
   return (
-    <div className="border-t border-massa-border bg-fm-yellow-light">
+    <div className="shrink-0 border-t border-massa-border bg-fm-yellow-light">
       {replyTo ? (
         <div className="flex items-center gap-2 border-b border-massa-border/70 px-3 py-2">
-          <div className="min-w-0 flex-1 rounded-lg border-l-2 border-massa-gold bg-black/20 px-2.5 py-1.5">
-            <p className="text-[11px] font-semibold text-massa-gold">
-              Respondendo a {replyTo.authorName}
-            </p>
-            <p className="truncate text-[12px] text-massa-muted">{replyTo.body}</p>
-          </div>
+          <MessageReplyCard reply={replyTo} mine className="min-w-0 flex-1" />
           <button
             type="button"
             aria-label="Cancelar resposta"
@@ -63,7 +53,7 @@ export function MessageComposer({
           <Smile className="size-5" />
         </button>
 
-        <div className="flex min-w-0 flex-1 items-end rounded-3xl border border-massa-border bg-fm-yellow-light px-2">
+        <div className="flex min-w-0 flex-1 items-end rounded-xl border border-fm-purple/25 bg-fm-yellow-bright px-2">
           <button
             type="button"
             aria-label="Anexar"
@@ -81,8 +71,8 @@ export function MessageComposer({
               }
             }}
             rows={1}
-            placeholder={placeholder}
-            className="max-h-28 min-h-11 w-full resize-none bg-transparent py-3 text-[15px] text-massa-text outline-none placeholder:text-massa-muted"
+            placeholder="Digite a mensagem"
+            className="max-h-28 min-h-11 min-w-0 flex-1 resize-none bg-transparent py-3 text-[15px] font-semibold text-fm-purple outline-none placeholder:font-semibold placeholder:text-fm-purple"
           />
         </div>
 

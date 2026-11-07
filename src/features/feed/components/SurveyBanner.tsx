@@ -13,9 +13,7 @@ export function SurveyBanner({ survey }: SurveyBannerProps) {
 
   return (
     <div className="mx-4 my-3 flex items-start gap-3 rounded-2xl bg-fm-teal px-4 py-3">
-      <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-fm-teal-dark/25 text-fm-purple">
-        <Heart className="size-4 fill-current" />
-      </span>
+      <Heart className="mt-0.5 size-6 shrink-0 fill-current text-fm-purple" aria-hidden />
       <div className="min-w-0 flex-1">
         <p className="text-sm font-semibold text-massa-text">{survey.title}</p>
         <p className="mt-0.5 text-xs text-massa-muted">{survey.description}</p>
@@ -30,9 +28,9 @@ export function SurveyBanner({ survey }: SurveyBannerProps) {
         type="button"
         aria-label="Dispensar pesquisa"
         onClick={() => setVisible(false)}
-        className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-fm-teal-dark text-fm-purple transition hover:brightness-110"
+        className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-fm-purple text-white transition hover:bg-fm-purple-dark"
       >
-        <X className="size-3.5" strokeWidth={2.5} />
+        <X className="size-3.5 text-white" strokeWidth={2.5} />
       </button>
     </div>
   );

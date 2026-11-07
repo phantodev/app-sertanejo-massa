@@ -1,4 +1,4 @@
-import { Bookmark, Flame, MessageCircle } from "lucide-react";
+import { Bookmark, MessageCircle, ThumbsUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { FeedPost } from "../types/feed.types.ts";
 import { LikedByRow } from "./LikedByRow.tsx";
@@ -15,10 +15,10 @@ export function PostActions({ post, showLikedBy = true }: PostActionsProps) {
         <button
           type="button"
           aria-label="Curtir publicação"
-          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm text-massa-muted transition-colors hover:bg-massa-gold/10 hover:text-massa-gold"
+          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm text-massa-muted transition-colors hover:bg-fm-blue/10 hover:text-fm-blue"
         >
-          <Flame className="size-4" />
-          <span>{post.likes}</span>
+          <ThumbsUp className="size-4" />
+          <span className="font-bold text-fm-blue">{post.likes}</span>
         </button>
         <Link
           to={`/${post.author.handle}/status/${post.id}`}
@@ -26,14 +26,16 @@ export function PostActions({ post, showLikedBy = true }: PostActionsProps) {
           className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm text-massa-muted transition-colors hover:bg-fm-purple/10 hover:text-massa-text"
         >
           <MessageCircle className="size-4" />
-          <span>{post.comments}</span>
+          <span className="font-bold text-fm-blue">{post.comments}</span>
         </Link>
         <button
           type="button"
           aria-label="Salvar publicação"
-          className="ml-auto grid size-9 place-items-center rounded-full text-massa-muted transition-colors hover:bg-fm-purple/10 hover:text-massa-gold"
+          className="ml-auto grid size-9 place-items-center rounded-full text-fm-teal-dark transition-colors hover:bg-fm-teal-dark/10"
         >
-          <Bookmark className={`size-4 ${post.bookmarked ? "fill-current text-massa-gold" : ""}`} />
+          <Bookmark
+            className={`size-4 text-fm-teal-dark ${post.bookmarked ? "fill-current" : ""}`}
+          />
         </button>
       </div>
       {showLikedBy ? <LikedByRow likes={post.likedByPreview} totalLikes={post.likes} /> : null}

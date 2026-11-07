@@ -40,7 +40,7 @@ export function ConversationList({ className = "" }: ConversationListProps) {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Pesquisar ou começar uma nova conversa"
-            className="h-10 w-full rounded-full border border-massa-border bg-fm-yellow-light py-2 pr-3 pl-10 text-sm text-massa-text outline-none placeholder:text-massa-muted focus:border-massa-gold/40"
+            className="h-10 w-full rounded-full border border-massa-border bg-fm-yellow-light py-2 pr-3 pl-10 text-sm font-semibold text-massa-text outline-none placeholder:text-massa-muted focus:border-massa-gold/40"
           />
         </label>
       </div>
@@ -57,7 +57,7 @@ export function ConversationList({ className = "" }: ConversationListProps) {
         ) : null}
 
         {!conversations.isLoading && (conversations.data?.length ?? 0) === 0 ? (
-          <p className="px-4 py-10 text-center text-sm text-massa-muted">
+          <p className="px-4 py-10 text-center text-sm font-semibold text-massa-muted">
             Nenhuma conversa por aqui.
           </p>
         ) : null}

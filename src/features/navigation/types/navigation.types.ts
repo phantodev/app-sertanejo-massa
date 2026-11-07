@@ -3,7 +3,7 @@ export type NavIcon =
   | "shorts"
   | "messages"
   | "notifications"
-  | "radar"
+  | "music"
   | "latest"
   | "events"
   | "ranking"

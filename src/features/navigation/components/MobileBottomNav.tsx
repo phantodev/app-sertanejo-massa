@@ -1,3 +1,4 @@
+import { Menu } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import type { MobileNavItem } from "../types/navigation.types.ts";
 import { NavIcon } from "./NavIcon.tsx";
@@ -10,7 +11,7 @@ export function MobileBottomNav({ items }: MobileBottomNavProps) {
   return (
     <nav
       aria-label="Principal"
-      className="fixed bottom-0 z-40 flex h-13 w-full items-center justify-between border-t border-fm-purple/20 bg-fm-yellow-light px-2 lg:hidden"
+      className="fixed bottom-0 z-40 flex h-13 w-full items-center justify-between border-t border-fm-purple-dark/40 bg-fm-purple px-2 lg:hidden"
     >
       {items.map((item) => (
         <NavLink
@@ -20,7 +21,7 @@ export function MobileBottomNav({ items }: MobileBottomNavProps) {
           aria-label={item.label}
           className={({ isActive }) =>
             `grid size-11 place-items-center rounded-xl transition-colors ${
-              isActive ? "text-fm-purple" : "text-massa-muted hover:text-fm-purple"
+              isActive ? "bg-white/15 text-white" : "text-white hover:bg-white/10"
             }`
           }
         >
@@ -28,6 +29,19 @@ export function MobileBottomNav({ items }: MobileBottomNavProps) {
           <span className="sr-only">{item.label}</span>
         </NavLink>
       ))}
+      <NavLink
+        to="/menu"
+        end
+        aria-label="Menu"
+        className={({ isActive }) =>
+          `grid size-11 place-items-center rounded-xl transition-colors ${
+            isActive ? "bg-white/15 text-white" : "text-white hover:bg-white/10"
+          }`
+        }
+      >
+        <Menu className="size-5" />
+        <span className="sr-only">Menu</span>
+      </NavLink>
     </nav>
   );
 }

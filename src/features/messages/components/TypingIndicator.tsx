@@ -10,7 +10,7 @@ export function TypingIndicator({ name }: TypingIndicatorProps) {
         <span className="size-1.5 animate-bounce rounded-full bg-massa-gold [animation-delay:-0.15s]" />
         <span className="size-1.5 animate-bounce rounded-full bg-massa-gold" />
       </div>
-      <span className="text-[11px] text-massa-muted">
+      <span className="text-[11px] font-semibold text-fm-purple">
         {name ? `${name} está digitando…` : "digitando…"}
       </span>
     </div>

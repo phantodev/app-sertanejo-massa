@@ -33,20 +33,14 @@ export function ConversationListItem({ conversation }: ConversationListItemProps
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline justify-between gap-2">
           <div className="flex min-w-0 items-center gap-1">
-            <p className="truncate text-[15px] font-semibold text-massa-text">
-              {conversation.title}
-            </p>
+            <p className="truncate text-[15px] font-semibold text-fm-blue">{conversation.title}</p>
             {conversation.verified ? <VerifiedBadge size="md" /> : null}
             {conversation.muted ? <VolumeX className="size-3.5 shrink-0 text-massa-muted" /> : null}
             {conversation.pinned ? (
               <Pin className="size-3 shrink-0 fill-massa-muted text-massa-muted" />
             ) : null}
           </div>
-          <span
-            className={`shrink-0 text-[11px] ${
-              conversation.unreadCount > 0 ? "font-semibold text-massa-gold" : "text-massa-muted"
-            }`}
-          >
+          <span className="shrink-0 text-[11px] font-semibold text-fm-blue">
             {formatInboxTime(conversation.lastMessageAt)}
           </span>
         </div>
@@ -55,16 +49,16 @@ export function ConversationListItem({ conversation }: ConversationListItemProps
           <p
             className={`truncate text-[13px] ${
               conversation.typing
-                ? "font-medium text-massa-gold"
+                ? "font-semibold text-fm-purple"
                 : conversation.unreadCount > 0
-                  ? "font-medium text-massa-text/85"
-                  : "text-massa-muted"
+                  ? "font-semibold text-massa-text/85"
+                  : "font-semibold text-massa-muted"
             }`}
           >
             {conversation.typing ? "digitando…" : conversation.lastMessagePreview}
           </p>
           {conversation.unreadCount > 0 ? (
-            <span className="grid min-w-5 place-items-center rounded-full bg-massa-gold px-1.5 py-0.5 text-[10px] font-bold text-[#1a100b]">
+            <span className="grid min-w-5 place-items-center rounded-full bg-fm-purple px-1.5 py-0.5 text-[10px] font-bold text-white">
               {conversation.unreadCount > 99 ? "99+" : conversation.unreadCount}
             </span>
           ) : null}

@@ -19,6 +19,8 @@ export type MessageReplyPreview = {
   id: string;
   authorName: string;
   body: string;
+  kind?: MessageKind;
+  mediaUrl?: string;
 };
 
 export type ChatMessage = {

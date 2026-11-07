@@ -49,8 +49,12 @@ export function ChatHeader({ conversation, searchOpen, onToggleSearch }: ChatHea
       <Link to={profileHref} className="flex min-w-0 flex-1 items-center gap-2.5 px-1">
         <img src={conversation.avatarUrl} alt="" className="size-9 rounded-full object-cover" />
         <div className="min-w-0">
-          <p className="truncate text-[15px] font-semibold text-massa-text">{conversation.title}</p>
-          <p className="truncate text-[12px] text-massa-muted">
+          <p className="truncate text-[15px] font-semibold text-fm-blue">{conversation.title}</p>
+          <p
+            className={`truncate text-[12px] font-semibold ${
+              conversation.typing ? "text-fm-purple" : "text-massa-muted"
+            }`}
+          >
             {conversation.typing
               ? "digitando…"
               : isGroup

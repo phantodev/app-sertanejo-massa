@@ -3,6 +3,7 @@ import { EllipsisVertical, Pin, Play, Reply } from "lucide-react";
 import { Link } from "react-router-dom";
 import { formatMessageTime } from "../lib/format-chat-time.ts";
 import { REACTION_EMOJIS, type ChatMessage } from "../types/messages.types.ts";
+import { MessageReplyCard } from "./MessageReplyCard.tsx";
 
 type MessageBubbleProps = {
   message: ChatMessage;
@@ -14,7 +15,7 @@ type MessageBubbleProps = {
 
 function replyPreviewBody(message: ChatMessage) {
   if (message.kind === "audio") return "Áudio";
-  if (message.kind === "image") return message.body ?? "Imagem";
+  if (message.kind === "image") return "Foto";
   return message.body ?? "";
 }
 
@@ -37,7 +38,7 @@ export function MessageBubble({
 
   const bubbleClass = message.mine
     ? "rounded-2xl rounded-br-md bg-fm-purple text-white"
-    : "rounded-2xl rounded-bl-md border border-fm-purple/20 bg-fm-yellow-light text-massa-text";
+    : "rounded-2xl rounded-bl-md bg-fm-yellow text-massa-text";
 
   return (
     <div
@@ -54,7 +55,7 @@ export function MessageBubble({
         <span className="size-8 shrink-0" />
       ) : null}
 
-      <div className="relative max-w-[min(78%,420px)]">
+      <div className="relative min-w-0 max-w-[min(78%,420px)]">
         <div className={bubbleClass}>
           {!message.mine && showAuthor && message.authorName ? (
             <Link
@@ -73,12 +74,7 @@ export function MessageBubble({
           ) : null}
 
           {message.replyTo ? (
-            <div className="mx-2 mt-2 rounded-lg border-l-2 border-massa-gold/70 bg-black/25 px-2.5 py-1.5">
-              <p className="text-[11px] font-semibold text-massa-gold">
-                {message.replyTo.authorName}
-              </p>
-              <p className="truncate text-[12px] text-massa-muted">{message.replyTo.body}</p>
-            </div>
+            <MessageReplyCard reply={message.replyTo} mine={message.mine} className="mx-2 mt-2" />
           ) : null}
 
           {message.kind === "image" && message.mediaUrl ? (
@@ -110,7 +106,7 @@ export function MessageBubble({
           ) : null}
 
           {message.kind === "text" ? (
-            <p className="whitespace-pre-wrap px-3 pt-2 pb-1 text-[14px] leading-snug">
+            <p className="break-words whitespace-pre-wrap px-3 pt-2 pb-1 text-[14px] leading-snug">
               {message.body}
             </p>
           ) : null}
@@ -141,8 +137,8 @@ export function MessageBubble({
         </div>
 
         <div
-          className={`absolute top-1 flex items-center gap-0.5 opacity-0 transition group-hover:opacity-100 ${
-            message.mine ? "right-full mr-1" : "left-full ml-1"
+          className={`absolute top-1 z-10 flex items-center gap-0.5 opacity-0 transition group-hover:opacity-100 max-lg:right-1 ${
+            message.mine ? "lg:right-full lg:mr-1" : "lg:left-full lg:ml-1"
           }`}
         >
           <button

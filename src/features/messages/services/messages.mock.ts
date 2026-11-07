@@ -123,7 +123,9 @@ const conversations: ConversationDetail[] = [
         replyTo: {
           id: "m4",
           authorName: "HotBar",
-          body: "Cartaz da noite",
+          body: "Foto",
+          kind: "image",
+          mediaUrl: unsplash.photo("1492684223066-81342ee5ff30", 900, 1200),
         },
       },
       {

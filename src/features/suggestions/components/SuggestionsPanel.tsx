@@ -19,10 +19,7 @@ export function SuggestionsPanel({ suggestions }: SuggestionsPanelProps) {
         </SearchField.Group>
       </SearchField>
 
-      <section
-        aria-label="Sugestões de amizade"
-        className="rounded-2xl border border-fm-purple/20 bg-fm-yellow-light p-4"
-      >
+      <section aria-label="Sugestões de amizade" className="rounded-2xl bg-fm-yellow-light p-4">
         <div className="mb-3 flex items-center justify-between gap-2">
           <h2 className="text-base font-semibold text-massa-text">Sugestões para você</h2>
           <a

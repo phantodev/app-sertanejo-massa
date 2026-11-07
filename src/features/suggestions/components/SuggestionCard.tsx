@@ -16,7 +16,7 @@ export function SuggestionCard({ suggestion, onDismiss, compact = false }: Sugge
 
   return (
     <div
-      className={`relative overflow-hidden rounded-xl border border-fm-purple/25 bg-fm-yellow transition-all hover:border-fm-purple/50 ${
+      className={`relative overflow-hidden rounded-xl bg-fm-yellow transition-all ${
         compact ? "w-[160px] shrink-0" : ""
       }`}
     >

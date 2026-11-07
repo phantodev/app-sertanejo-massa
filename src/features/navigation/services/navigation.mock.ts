@@ -5,7 +5,7 @@ export const mockSideNavItems: NavItem[] = [
   { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
   { id: "messages", label: "Mensagens", href: "/messages", icon: "messages" },
   { id: "notifications", label: "Notificações", href: "/notifications", icon: "notifications" },
-  { id: "radar", label: "Radar", href: "/radar", icon: "radar" },
+  { id: "top-hits", label: "Top Hits", href: "/top-hits", icon: "music" },
   { id: "latest", label: "Últimas", href: "/latest", icon: "latest" },
   { id: "events", label: "Eventos", href: "/events", icon: "events" },
   { id: "ranking", label: "Ranking", href: "/ranking", icon: "ranking" },
@@ -32,5 +32,5 @@ export const mockMobileNavItems: MobileNavItem[] = [
   { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
   { id: "messages", label: "Mensagens", href: "/messages", icon: "messages" },
   { id: "notifications", label: "Notificações", href: "/notifications", icon: "notifications" },
-  { id: "radar", label: "Radar", href: "/radar", icon: "radar" },
+  { id: "top-hits", label: "Top Hits", href: "/top-hits", icon: "music" },
 ];

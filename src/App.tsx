@@ -10,6 +10,9 @@ import { FeedPage } from "./features/feed/components/FeedPage.tsx";
 import { ExploreGroupsPage } from "./features/messages/components/ExploreGroupsPage.tsx";
 import { GroupInfoPage } from "./features/messages/components/GroupInfoPage.tsx";
 import { MessagesPage } from "./features/messages/components/MessagesPage.tsx";
+import { MenuPage } from "./features/menu/components/MenuPage.tsx";
+import { MenuPlaceholderPage } from "./features/menu/components/MenuPlaceholderPage.tsx";
+import { NotificationsPage } from "./features/notifications/components/NotificationsPage.tsx";
 import { ProfilePage } from "./features/profile/components/ProfilePage.tsx";
 
 export function App() {
@@ -27,6 +30,9 @@ export function App() {
             <Route path="/messages/explore" element={<ExploreGroupsPage />} />
             <Route path="/messages/:conversationId/info" element={<GroupInfoPage />} />
             <Route path="/messages/:conversationId" element={<MessagesPage />} />
+            <Route path="/notifications" element={<NotificationsPage />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/menu/:feature" element={<MenuPlaceholderPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route
               path="/events/create"

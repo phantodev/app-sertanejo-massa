@@ -60,11 +60,22 @@ export function PostCard({ post }: PostCardProps) {
       {post.kind === "verified" || post.kind === "text" ? (
         <>
           <div
-            className={`mt-3 overflow-hidden rounded-2xl border border-massa-border ${
+            className={`mt-3 overflow-hidden rounded-2xl ${
               post.kind === "verified"
-                ? "bg-gradient-to-br from-[#2a2118] via-[#1b1714] to-[#12100e]"
-                : "bg-gradient-to-br from-[#3a2a1c] via-[#241910] to-[#16120f]"
+                ? "bg-fm-purple"
+                : "border border-massa-border bg-gradient-to-br from-[#3a2a1c] via-[#241910] to-[#16120f]"
             }`}
+            style={
+              post.kind === "verified"
+                ? {
+                    backgroundImage: `
+                      radial-gradient(ellipse 80% 55% at 50% 0%, color-mix(in srgb, var(--fm-yellow) 35%, transparent) 0%, transparent 70%),
+                      radial-gradient(circle, color-mix(in srgb, var(--fm-yellow) 18%, transparent) 1px, transparent 1px)
+                    `,
+                    backgroundSize: "auto, 14px 14px",
+                  }
+                : undefined
+            }
           >
             {post.coverUrl ? (
               <div className="relative aspect-[16/9] overflow-hidden">
@@ -74,7 +85,7 @@ export function PostCard({ post }: PostCardProps) {
                   className="size-full object-cover opacity-80"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0b]/ to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0b] to-transparent" />
               </div>
             ) : null}
             <div className="relative flex flex-col items-center gap-3 px-5 py-6 text-center">
@@ -82,15 +93,31 @@ export function PostCard({ post }: PostCardProps) {
                 name={author.displayName}
                 size="lg"
                 src={author.avatarUrl}
-                className="ring-2 ring-massa-gold/40"
+                className={
+                  post.kind === "verified"
+                    ? "ring-2 ring-fm-yellow/70"
+                    : "ring-2 ring-massa-gold/40"
+                }
               />
               <div>
-                <h3 className="text-lg font-semibold text-massa-text">{post.title}</h3>
-                <p className="mt-1 text-sm text-massa-muted">{post.body}</p>
+                <h3
+                  className={`text-lg font-semibold ${
+                    post.kind === "verified" ? "text-white" : "text-massa-text"
+                  }`}
+                >
+                  {post.title}
+                </h3>
+                <p
+                  className={`mt-1 text-sm ${
+                    post.kind === "verified" ? "text-white/75" : "text-massa-muted"
+                  }`}
+                >
+                  {post.body}
+                </p>
               </div>
               {post.ctaLabel ? (
                 post.kind === "verified" ? (
-                  <span className="rounded-full border border-massa-gold/40 bg-massa-gold/10 px-3 py-1 text-xs font-semibold text-massa-gold">
+                  <span className="rounded-full border border-fm-yellow bg-fm-yellow-light px-3 py-1 text-xs font-semibold text-fm-purple">
                     {post.ctaLabel}
                   </span>
                 ) : (

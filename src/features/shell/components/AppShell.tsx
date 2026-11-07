@@ -29,7 +29,7 @@ export function AppShell({
   stretchMain = false,
 }: AppShellProps) {
   const mainClasses = stretchMain
-    ? `flex h-dvh w-full min-w-0 flex-col overflow-hidden border-fm-purple/20 bg-fm-yellow-light lg:border-x ${APP_SHELL_STRETCH_MAIN_CLASS}`
+    ? `flex h-[calc(100dvh-3.25rem)] w-full min-w-0 flex-col overflow-hidden border-fm-purple/20 bg-fm-yellow-light lg:h-dvh lg:border-x ${APP_SHELL_STRETCH_MAIN_CLASS}`
     : "w-full max-w-[598px] border-fm-purple/20 bg-fm-yellow-light lg:border-x";
 
   return (
@@ -37,7 +37,11 @@ export function AppShell({
       {topBar}
       <div className="mx-auto flex w-full max-w-[1280px] justify-center gap-0 lg:px-4">
         {sideNav}
-        <div className="flex min-w-0 flex-1 justify-center gap-6 pb-16 lg:pb-0">
+        <div
+          className={`flex min-w-0 flex-1 justify-center gap-6 ${
+            stretchMain ? "" : "pb-16 lg:pb-0"
+          }`}
+        >
           <main className={mainClasses}>{main}</main>
           {!stretchMain && rightRail ? (
             <aside className="sticky top-0 hidden h-dvh w-[350px] shrink-0 overflow-y-auto py-2 xl:block">
