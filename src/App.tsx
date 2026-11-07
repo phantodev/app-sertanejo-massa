@@ -14,6 +14,7 @@ import { MenuPage } from "./features/menu/components/MenuPage.tsx";
 import { MenuPlaceholderPage } from "./features/menu/components/MenuPlaceholderPage.tsx";
 import { NotificationsPage } from "./features/notifications/components/NotificationsPage.tsx";
 import { ProfilePage } from "./features/profile/components/ProfilePage.tsx";
+import { TopHitsPage } from "./features/top-hits/components/TopHitsPage.tsx";
 
 export function App() {
   return (
@@ -33,6 +34,7 @@ export function App() {
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/menu/:feature" element={<MenuPlaceholderPage />} />
+            <Route path="/top-hits" element={<TopHitsPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route
               path="/events/create"
