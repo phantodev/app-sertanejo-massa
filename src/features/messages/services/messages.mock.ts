@@ -54,12 +54,10 @@ const conversations: ConversationDetail[] = [
     lastMessagePreview: `${jemhot.displayName}: Quem vai no Viola ao Vivo?`,
     lastMessageAt: hoursAgo(0.4),
     unreadCount: 3,
-    pinned: true,
     muted: false,
     favorite: true,
     typing: false,
     description: "Grupo oficial da galera Massa de Curitiba. Churrasco, rodeio, viola e rolê.",
-    pinnedMessageId: "m4",
     messages: [
       {
         id: "m1",
@@ -106,7 +104,6 @@ const conversations: ConversationDetail[] = [
         mediaUrl: unsplash.photo("1492684223066-81342ee5ff30", 900, 1200),
         createdAt: daysAgo(2, 21, 5),
         mine: false,
-        pinned: true,
         reactions: [{ emoji: "❤️", count: 12, reactedByMe: false }],
       },
       {
@@ -153,7 +150,6 @@ const conversations: ConversationDetail[] = [
     lastMessagePreview: "Você: Fechado, te vejo no rodeio!",
     lastMessageAt: hoursAgo(1.2),
     unreadCount: 0,
-    pinned: true,
     muted: false,
     favorite: true,
     messages: [
@@ -217,7 +213,6 @@ const conversations: ConversationDetail[] = [
     lastMessagePreview: `${sulsp.displayName}: Playlist da viagem no comentário`,
     lastMessageAt: hoursAgo(5),
     unreadCount: 8,
-    pinned: false,
     muted: false,
     favorite: false,
     description: "Modão na estrada, carona e playlist da viagem.",
@@ -278,7 +273,6 @@ const conversations: ConversationDetail[] = [
     lastMessagePreview: `${namu.displayName}: Te mando o endereço do sítio`,
     lastMessageAt: hoursAgo(8),
     unreadCount: 2,
-    pinned: false,
     muted: false,
     favorite: true,
     typing: true,
@@ -331,7 +325,6 @@ const conversations: ConversationDetail[] = [
     lastMessagePreview: "HotBar: Sua mesa está reservada 🔥",
     lastMessageAt: daysAgo(2, 14, 0),
     unreadCount: 1,
-    pinned: false,
     muted: false,
     favorite: false,
     messages: [
@@ -370,7 +363,6 @@ const conversations: ConversationDetail[] = [
     lastMessagePreview: "Você: Combinado!",
     lastMessageAt: daysAgo(5, 22, 10),
     unreadCount: 0,
-    pinned: false,
     muted: true,
     favorite: false,
     messages: [
@@ -439,13 +431,8 @@ const exploreGroups: ExploreGroup[] = [
 
 export function getMockConversations(): ConversationSummary[] {
   return conversations
-    .map(
-      ({ messages: _messages, pinnedMessageId: _pin, description: _desc, ...summary }) => summary,
-    )
-    .sort((a, b) => {
-      if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
-      return +new Date(b.lastMessageAt) - +new Date(a.lastMessageAt);
-    });
+    .map(({ messages: _messages, description: _desc, ...summary }) => summary)
+    .sort((a, b) => +new Date(b.lastMessageAt) - +new Date(a.lastMessageAt));
 }
 
 export function getMockConversation(id: string): ConversationDetail | null {
@@ -540,34 +527,11 @@ export function toggleMockReaction(
   return structuredClone(message);
 }
 
-export function pinMockMessage(
-  conversationId: string,
-  messageId: string,
-): ConversationDetail | null {
-  const conversation = conversations.find((item) => item.id === conversationId);
-  if (!conversation) return null;
-  const message = conversation.messages.find((item) => item.id === messageId);
-  if (!message || message.kind === "system") return null;
-
-  for (const item of conversation.messages) item.pinned = false;
-  message.pinned = true;
-  conversation.pinnedMessageId = messageId;
-  return structuredClone(conversation);
-}
-
-export function unpinMockMessage(conversationId: string): ConversationDetail | null {
-  const conversation = conversations.find((item) => item.id === conversationId);
-  if (!conversation) return null;
-  for (const item of conversation.messages) item.pinned = false;
-  conversation.pinnedMessageId = null;
-  return structuredClone(conversation);
-}
-
 export function toggleMockMute(conversationId: string): ConversationSummary | null {
   const conversation = conversations.find((item) => item.id === conversationId);
   if (!conversation) return null;
   conversation.muted = !conversation.muted;
-  const { messages: _m, pinnedMessageId: _p, description: _d, ...summary } = conversation;
+  const { messages: _m, description: _d, ...summary } = conversation;
   return structuredClone(summary);
 }
 
@@ -575,7 +539,7 @@ export function toggleMockFavorite(conversationId: string): ConversationSummary 
   const conversation = conversations.find((item) => item.id === conversationId);
   if (!conversation) return null;
   conversation.favorite = !conversation.favorite;
-  const { messages: _m, pinnedMessageId: _p, description: _d, ...summary } = conversation;
+  const { messages: _m, description: _d, ...summary } = conversation;
   return structuredClone(summary);
 }
 
@@ -583,7 +547,6 @@ export function clearMockConversation(conversationId: string): ConversationDetai
   const conversation = conversations.find((item) => item.id === conversationId);
   if (!conversation) return null;
   conversation.messages = [];
-  conversation.pinnedMessageId = null;
   conversation.lastMessagePreview = "Sem mensagens";
   conversation.lastMessageAt = new Date().toISOString();
   conversation.unreadCount = 0;
@@ -652,7 +615,6 @@ export function joinMockExploreGroup(exploreId: string): ExploreGroup | null {
       lastMessagePreview: "Você entrou no grupo",
       lastMessageAt: new Date().toISOString(),
       unreadCount: 0,
-      pinned: false,
       muted: false,
       favorite: false,
       messages: [

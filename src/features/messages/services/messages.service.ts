@@ -20,11 +20,9 @@ import {
   getMockGroupInfo,
   joinMockExploreGroup,
   mockConversationFilters,
-  pinMockMessage,
   toggleMockFavorite,
   toggleMockMute,
   toggleMockReaction,
-  unpinMockMessage,
 } from "./messages.mock.ts";
 
 void messagesApi;
@@ -92,23 +90,6 @@ export async function reactToMessage(
   const message = toggleMockReaction(conversationId, messageId, emoji);
   if (!message) throw new Error("Mensagem não encontrada");
   return message;
-}
-
-export async function pinMessage(
-  conversationId: string,
-  messageId: string,
-): Promise<ConversationDetail> {
-  await delay(100);
-  const conversation = pinMockMessage(conversationId, messageId);
-  if (!conversation) throw new Error("Não foi possível fixar a mensagem");
-  return conversation;
-}
-
-export async function unpinMessage(conversationId: string): Promise<ConversationDetail> {
-  await delay(80);
-  const conversation = unpinMockMessage(conversationId);
-  if (!conversation) throw new Error("Conversa não encontrada");
-  return conversation;
 }
 
 export async function toggleMute(conversationId: string): Promise<ConversationSummary> {

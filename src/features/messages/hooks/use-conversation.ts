@@ -2,13 +2,11 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   clearConversation,
   getConversationById,
-  pinMessage,
   reactToMessage,
   sendAudioMessage,
   sendTextMessage,
   toggleFavorite,
   toggleMute,
-  unpinMessage,
 } from "../services/messages.service.ts";
 import type { ConversationDetail, MessageReplyPreview } from "../types/messages.types.ts";
 import { messagesKeys } from "./messages.keys.ts";
@@ -93,28 +91,6 @@ export function useReactToMessage(conversationId: string) {
           };
         },
       );
-    },
-  });
-}
-
-export function usePinMessage(conversationId: string) {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: (messageId: string) => pinMessage(conversationId, messageId),
-    onSuccess: (conversation) => {
-      queryClient.setQueryData(messagesKeys.detail(conversationId), conversation);
-    },
-  });
-}
-
-export function useUnpinMessage(conversationId: string) {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: () => unpinMessage(conversationId),
-    onSuccess: (conversation) => {
-      queryClient.setQueryData(messagesKeys.detail(conversationId), conversation);
     },
   });
 }

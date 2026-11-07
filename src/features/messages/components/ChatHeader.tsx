@@ -41,7 +41,7 @@ export function ChatHeader({ conversation, searchOpen, onToggleSearch }: ChatHea
       <Link
         to="/messages"
         aria-label="Voltar para conversas"
-        className="grid size-10 place-items-center rounded-full text-massa-gold hover:bg-fm-purple/10 lg:hidden"
+        className="grid size-10 place-items-center rounded-full text-fm-blue hover:bg-fm-purple/10"
       >
         <ArrowLeft className="size-5" />
       </Link>

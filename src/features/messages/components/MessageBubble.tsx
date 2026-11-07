@@ -1,5 +1,5 @@
 import { Dropdown, Label } from "@heroui/react";
-import { EllipsisVertical, Pin, Play, Reply } from "lucide-react";
+import { EllipsisVertical, Play, Reply } from "lucide-react";
 import { Link } from "react-router-dom";
 import { formatMessageTime } from "../lib/format-chat-time.ts";
 import { REACTION_EMOJIS, type ChatMessage } from "../types/messages.types.ts";
@@ -10,7 +10,6 @@ type MessageBubbleProps = {
   showAuthor: boolean;
   onReply: (message: ChatMessage) => void;
   onReact: (messageId: string, emoji: string) => void;
-  onPin: (messageId: string) => void;
 };
 
 function replyPreviewBody(message: ChatMessage) {
@@ -19,13 +18,7 @@ function replyPreviewBody(message: ChatMessage) {
   return message.body ?? "";
 }
 
-export function MessageBubble({
-  message,
-  showAuthor,
-  onReply,
-  onReact,
-  onPin,
-}: MessageBubbleProps) {
+export function MessageBubble({ message, showAuthor, onReply, onReact }: MessageBubbleProps) {
   if (message.kind === "system") {
     return (
       <div className="flex justify-center px-4 py-2">
@@ -64,13 +57,6 @@ export function MessageBubble({
             >
               {message.authorName}
             </Link>
-          ) : null}
-
-          {message.pinned ? (
-            <div className="flex items-center gap-1 px-3 pt-2 text-[10px] font-semibold text-massa-gold">
-              <Pin className="size-2.5 fill-current" />
-              Fixada
-            </div>
           ) : null}
 
           {message.replyTo ? (
@@ -162,7 +148,6 @@ export function MessageBubble({
                 onAction={(key) => {
                   if (typeof key !== "string") return;
                   if (key === "reply") onReply(message);
-                  else if (key === "pin") onPin(message.id);
                   else if (REACTION_EMOJIS.includes(key as (typeof REACTION_EMOJIS)[number])) {
                     onReact(message.id, key);
                   }
@@ -171,10 +156,6 @@ export function MessageBubble({
                 <Dropdown.Item id="reply" textValue="Responder">
                   <Reply className="size-4 shrink-0 text-massa-gold" />
                   <Label>Responder</Label>
-                </Dropdown.Item>
-                <Dropdown.Item id="pin" textValue="Fixar">
-                  <Pin className="size-4 shrink-0 text-massa-gold" />
-                  <Label>Fixar mensagem</Label>
                 </Dropdown.Item>
                 {REACTION_EMOJIS.map((emoji) => (
                   <Dropdown.Item key={emoji} id={emoji} textValue={`Reagir ${emoji}`}>

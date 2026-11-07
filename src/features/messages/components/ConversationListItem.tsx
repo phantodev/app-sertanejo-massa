@@ -1,4 +1,4 @@
-import { Pin, VolumeX } from "lucide-react";
+import { VolumeX } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import { formatInboxTime } from "../lib/format-chat-time.ts";
@@ -36,9 +36,6 @@ export function ConversationListItem({ conversation }: ConversationListItemProps
             <p className="truncate text-[15px] font-semibold text-fm-blue">{conversation.title}</p>
             {conversation.verified ? <VerifiedBadge size="md" /> : null}
             {conversation.muted ? <VolumeX className="size-3.5 shrink-0 text-massa-muted" /> : null}
-            {conversation.pinned ? (
-              <Pin className="size-3 shrink-0 fill-massa-muted text-massa-muted" />
-            ) : null}
           </div>
           <span className="shrink-0 text-[11px] font-semibold text-fm-blue">
             {formatInboxTime(conversation.lastMessageAt)}

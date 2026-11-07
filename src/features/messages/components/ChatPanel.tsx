@@ -2,16 +2,10 @@ import { Spinner } from "@heroui/react";
 import { Search, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  useConversation,
-  usePinMessage,
-  useReactToMessage,
-  useUnpinMessage,
-} from "../hooks/use-conversation.ts";
+import { useConversation, useReactToMessage } from "../hooks/use-conversation.ts";
 import { formatDateDivider, sameDay } from "../lib/format-chat-time.ts";
 import type { ChatMessage, MessageReplyPreview } from "../types/messages.types.ts";
 import { ChatHeader } from "./ChatHeader.tsx";
-import { ChatPinnedBar } from "./ChatPinnedBar.tsx";
 import { MessageBubble, replyPreviewBody } from "./MessageBubble.tsx";
 import { MessageComposer } from "./MessageComposer.tsx";
 import { TypingIndicator } from "./TypingIndicator.tsx";
@@ -23,8 +17,6 @@ type ChatPanelProps = {
 export function ChatPanel({ conversationId }: ChatPanelProps) {
   const conversation = useConversation(conversationId);
   const react = useReactToMessage(conversationId);
-  const pin = usePinMessage(conversationId);
-  const unpin = useUnpinMessage(conversationId);
   const endRef = useRef<HTMLDivElement>(null);
   const [replyTo, setReplyTo] = useState<MessageReplyPreview | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -39,12 +31,6 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [conversation.data?.messages.length, conversation.data?.typing, conversationId]);
-
-  const pinnedMessage = useMemo(() => {
-    const data = conversation.data;
-    if (!data?.pinnedMessageId) return null;
-    return data.messages.find((item) => item.id === data.pinnedMessageId) ?? null;
-  }, [conversation.data]);
 
   const visibleMessages = useMemo(() => {
     const messages = conversation.data?.messages ?? [];
@@ -120,18 +106,6 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
         </div>
       ) : null}
 
-      {pinnedMessage ? (
-        <ChatPinnedBar
-          message={pinnedMessage}
-          onUnpin={() => unpin.mutate()}
-          onJump={() => {
-            document
-              .getElementById(`msg-${pinnedMessage.id}`)
-              ?.scrollIntoView({ behavior: "smooth", block: "center" });
-          }}
-        />
-      ) : null}
-
       <div
         className="relative min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain"
         style={{
@@ -169,7 +143,6 @@ export function ChatPanel({ conversationId }: ChatPanelProps) {
                   showAuthor={showAuthor}
                   onReply={handleReply}
                   onReact={(messageId, emoji) => react.mutate({ messageId, emoji })}
-                  onPin={(messageId) => pin.mutate(messageId)}
                 />
               </div>
             );

@@ -36,7 +36,6 @@ export type ChatMessage = {
   audioDurationSec?: number;
   replyTo?: MessageReplyPreview;
   reactions?: MessageReaction[];
-  pinned?: boolean;
   createdAt: string;
   mine: boolean;
 };
@@ -51,7 +50,6 @@ export type ConversationSummary = {
   lastMessagePreview: string;
   lastMessageAt: string;
   unreadCount: number;
-  pinned: boolean;
   muted: boolean;
   favorite: boolean;
   memberCount?: number;
@@ -61,7 +59,6 @@ export type ConversationSummary = {
 
 export type ConversationDetail = ConversationSummary & {
   messages: ChatMessage[];
-  pinnedMessageId?: string | null;
   description?: string;
 };
 
