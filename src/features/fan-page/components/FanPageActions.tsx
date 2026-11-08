@@ -45,17 +45,17 @@ export function FanPageActions({ displayName, initialFollowing }: FanPageActions
       <Button
         isIconOnly
         aria-label="Ativar notificações da Fan Page"
-        className="size-10 shrink-0 rounded-full border border-massa-border bg-fm-yellow-light text-fm-purple"
+        className="btn-fm-purple btn-fm-icon shrink-0 text-white"
       >
-        <Bell className="size-4" />
+        <Bell className="size-4 text-white" />
       </Button>
 
       <Button
         isIconOnly
         aria-label="Mais opções"
-        className="size-10 shrink-0 rounded-full border border-massa-border bg-fm-yellow-light text-fm-purple"
+        className="btn-fm-purple btn-fm-icon shrink-0 text-white"
       >
-        <Ellipsis className="size-4" />
+        <Ellipsis className="size-4 text-white" />
       </Button>
     </div>
   );

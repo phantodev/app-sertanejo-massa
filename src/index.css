@@ -295,6 +295,19 @@ h2 em {
     color: #ffffff !important;
   }
 
+  /* Ícone-only — círculo perfeito (anula min-height pill dos CTAs) */
+  .btn-fm-icon.button,
+  .btn-fm-icon.button--primary,
+  .btn-fm-icon.button--secondary {
+    min-height: 0 !important;
+    height: 40px !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    padding: 0 !important;
+    border-radius: 9999px !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+
   .search-field__group .input,
   [data-slot="search-field-group"] .input {
     height: auto !important;
