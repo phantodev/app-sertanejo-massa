@@ -15,7 +15,7 @@ export const mockUsers: User[] = [
     id: "u-alagoanos",
     handle: "alagoanos",
     displayName: "Alagoanos",
-    avatarUrl: unsplash.avatar("1529626455594-4ff0802cfb7e"),
+    avatarUrl: "/assets/foto-alagoanos-avatar.png",
     verified: false,
     city: "Maceió",
     state: "AL",

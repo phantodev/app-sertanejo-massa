@@ -58,7 +58,7 @@ export function AppShell({
         >
           <main className={mainClasses}>{main}</main>
           {!stretchMain && rightRail ? (
-            <aside className="sticky top-0 hidden h-dvh w-[350px] shrink-0 overflow-y-auto py-2 xl:block">
+            <aside className="hidden w-[350px] shrink-0 self-start overflow-visible py-2 xl:block">
               {rightRail}
             </aside>
           ) : null}

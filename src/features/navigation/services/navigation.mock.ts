@@ -2,10 +2,10 @@ import type { MobileNavItem, NavItem } from "../types/navigation.types.ts";
 
 export const mockSideNavItems: NavItem[] = [
   { id: "for-you", label: "Para você", href: "/feed", icon: "home", active: true },
-  { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
+  // Shorts — oculto por enquanto; voltamos com esse item no menu em breve.
+  // { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
   { id: "messages", label: "Mensagens", href: "/messages", icon: "messages" },
   { id: "notifications", label: "Notificações", href: "/notifications", icon: "notifications" },
-  { id: "top-hits", label: "Top Hits", href: "/top-hits", icon: "music" },
   { id: "latest", label: "Últimas", href: "/latest", icon: "latest" },
   { id: "events", label: "Eventos", href: "/events", icon: "events" },
   { id: "ranking", label: "Ranking", href: "/ranking", icon: "ranking" },
@@ -29,8 +29,9 @@ export const mockPublishItem: NavItem = {
 
 export const mockMobileNavItems: MobileNavItem[] = [
   { id: "for-you", label: "Para você", href: "/feed", icon: "home", active: true },
-  { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
+  // Shorts — oculto por enquanto; voltamos com esse item no menu em breve.
+  // { id: "shorts", label: "Shorts", href: "/shorts", icon: "shorts" },
   { id: "messages", label: "Mensagens", href: "/messages", icon: "messages" },
   { id: "events", label: "Eventos", href: "/events", icon: "events" },
-  { id: "top-hits", label: "Top Hits", href: "/top-hits", icon: "music" },
+  { id: "ranking", label: "Ranking", href: "/ranking", icon: "ranking" },
 ];

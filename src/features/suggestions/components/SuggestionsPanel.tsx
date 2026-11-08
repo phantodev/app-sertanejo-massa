@@ -1,6 +1,7 @@
 import { SearchField } from "@heroui/react";
 import type { Suggestion } from "../types/suggestions.types.ts";
 import { SuggestionCard } from "./SuggestionCard.tsx";
+import { TopSongsRailRanking } from "./TopSongsRailRanking.tsx";
 
 type SuggestionsPanelProps = {
   suggestions: Suggestion[];
@@ -18,6 +19,8 @@ export function SuggestionsPanel({ suggestions }: SuggestionsPanelProps) {
           />
         </SearchField.Group>
       </SearchField>
+
+      <TopSongsRailRanking />
 
       <section aria-label="Sugestões de amizade" className="rounded-2xl bg-fm-yellow-light p-4">
         <div className="mb-3 flex items-center justify-between gap-2">

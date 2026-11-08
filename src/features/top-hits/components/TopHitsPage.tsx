@@ -1,5 +1,5 @@
 import { Spinner } from "@heroui/react";
-import { MapPin, Music2 } from "lucide-react";
+import { MapPin, Trophy } from "lucide-react";
 import { useState } from "react";
 import { MobileBottomNav } from "../../navigation/components/MobileBottomNav.tsx";
 import { SideNav } from "../../navigation/components/SideNav.tsx";
@@ -68,8 +68,8 @@ export function TopHitsPage() {
                   Massa Charts
                 </p>
                 <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight text-fm-purple">
-                  <Music2 className="size-6" aria-hidden />
-                  Top Hits
+                  <Trophy className="size-6" aria-hidden />
+                  Ranking
                 </h1>
                 <p className="massa-description mt-1 text-massa-muted">
                   Músicas mais escutadas e clipes mais vistos pelos fãs

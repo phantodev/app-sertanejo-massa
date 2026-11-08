@@ -58,8 +58,8 @@ const MENU_SECTIONS: MenuSection[] = [
   {
     title: "Descobrir",
     items: [
-      { label: "Últimas", href: "/menu/ultimas", icon: Flame },
-      { label: "Ranking", href: "/menu/ranking", icon: Trophy },
+      { label: "Últimas", href: "/latest", icon: Flame },
+      { label: "Ranking", href: "/ranking", icon: Trophy },
       { label: "Shorts", href: "/menu/shorts", icon: Clapperboard },
       { label: "Sugestões de amizade", href: "/feed", icon: UserPlus },
     ],

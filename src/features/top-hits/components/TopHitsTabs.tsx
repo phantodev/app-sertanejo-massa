@@ -14,7 +14,7 @@ export function TopHitsTabs({ selected, onChange }: TopHitsTabsProps) {
   return (
     <div
       role="tablist"
-      aria-label="Ranking Top Hits"
+      aria-label="Ranking: músicas e clipes"
       className="flex shrink-0 border-b border-massa-border bg-fm-yellow-light lg:hidden"
     >
       {TABS.map((tab) => {
@@ -28,8 +28,8 @@ export function TopHitsTabs({ selected, onChange }: TopHitsTabsProps) {
             onClick={() => onChange(tab.id)}
             className={`-mb-px flex h-12 min-w-0 flex-1 items-center justify-center border-b-2 text-sm font-semibold transition-colors ${
               isSelected
-                ? "border-fm-purple text-fm-purple"
-                : "border-transparent text-massa-muted hover:text-fm-purple"
+                ? "border-fm-blue text-fm-blue"
+                : "border-transparent text-massa-muted hover:text-fm-blue"
             }`}
           >
             {tab.label}

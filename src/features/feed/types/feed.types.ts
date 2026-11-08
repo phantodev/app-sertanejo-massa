@@ -7,7 +7,12 @@ export type FeedTab = {
   label: string;
 };
 
-export type PostKind = "welcome" | "verified" | "text" | "media";
+export type PostKind = "welcome" | "verified" | "fan-page" | "text" | "media";
+
+export type FeedPostFanPage = {
+  handle: string;
+  displayName: string;
+};
 
 export type PostAuthor = Pick<
   User,
@@ -35,6 +40,8 @@ export type FeedPost = {
   body: string;
   coverUrl?: string;
   ctaLabel?: string;
+  /** Página oficial do artista (quando kind === "fan-page"). */
+  fanPage?: FeedPostFanPage;
   likes: number;
   comments: number;
   bookmarked: boolean;

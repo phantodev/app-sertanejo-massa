@@ -10,6 +10,8 @@ import { useCurrentUser } from "../../session/hooks/use-current-user.ts";
 import { AppShell } from "../../shell/components/AppShell.tsx";
 import { SuggestionsPanel } from "../../suggestions/components/SuggestionsPanel.tsx";
 import { useSuggestions } from "../../suggestions/hooks/use-suggestions.ts";
+import { FanPagePage } from "../../fan-page/components/FanPagePage.tsx";
+import { isFanPageHandle } from "../../fan-page/lib/fan-page-handles.ts";
 import { useProfile } from "../hooks/use-profile.ts";
 import { isReservedHandle } from "../lib/reserved-handles.ts";
 import type { ProfileTab, ProfileTabId } from "../types/profile.types.ts";
@@ -28,6 +30,11 @@ const PROFILE_TABS: ProfileTab[] = [
 export function ProfilePage() {
   const { handle } = useParams<{ handle: string }>();
   const [tab, setTab] = useState<ProfileTabId>("posts");
+
+  if (isFanPageHandle(handle)) {
+    return <FanPagePage handle={handle!} />;
+  }
+
   const reserved = isReservedHandle(handle);
 
   useEffect(() => {

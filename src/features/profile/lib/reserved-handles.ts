@@ -6,7 +6,6 @@ export const RESERVED_HANDLES = new Set([
   "messages",
   "notifications",
   "radar",
-  "top-hits",
   "latest",
   "events",
   "ranking",

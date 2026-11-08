@@ -22,7 +22,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
     if (!el) return;
     el.style.overflow = "hidden";
     el.style.height = "auto";
-    el.style.height = `${Math.min(el.scrollHeight, 128)}px`;
+    el.style.height = `${Math.min(Math.max(el.scrollHeight, 48), 128)}px`;
   }
 
   useEffect(() => {
@@ -62,21 +62,21 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
 
       <form
         onSubmit={handleSubmit}
-        className="flex items-end gap-2 px-3 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+        className="flex items-center gap-2 px-3 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
       >
         <button
           type="button"
           aria-label="Emoji"
-          className="mb-1 grid size-10 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10 hover:text-massa-gold"
+          className="grid size-10 shrink-0 place-items-center rounded-full text-massa-muted hover:bg-fm-purple/10 hover:text-massa-gold"
         >
           <Smile className="size-5" />
         </button>
 
-        <div className="flex min-w-0 flex-1 items-end rounded-xl border border-fm-purple/25 bg-fm-yellow-bright px-2">
+        <div className="flex min-h-12 min-w-0 flex-1 items-center rounded-xl border border-fm-purple/25 bg-fm-yellow-bright px-2">
           <button
             type="button"
             aria-label="Anexar"
-            className="mb-1 grid size-9 place-items-center rounded-full text-massa-muted hover:text-massa-gold"
+            className="grid size-9 shrink-0 place-items-center rounded-full text-massa-muted hover:text-massa-gold"
           >
             <Paperclip className="size-4" />
           </button>
@@ -92,7 +92,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
             }}
             rows={1}
             placeholder="Digite a mensagem"
-            className="chat-composer-textarea max-h-32 min-h-11 min-w-0 flex-1 resize-none overflow-hidden bg-transparent py-2.5 massa-description text-fm-purple outline-none scrollbar-none placeholder:font-semibold placeholder:text-fm-purple"
+            className="chat-composer-textarea max-h-32 min-h-12 min-w-0 flex-1 resize-none overflow-hidden bg-transparent px-1 py-[15px] text-xs font-semibold leading-[18px] text-fm-purple outline-none scrollbar-none placeholder:font-semibold placeholder:text-fm-purple"
           />
         </div>
 
@@ -101,7 +101,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
             type="submit"
             disabled={!canSend}
             aria-label="Enviar"
-            className="mb-1 grid size-11 place-items-center rounded-full bg-fm-purple text-white transition disabled:opacity-40"
+            className="grid size-11 shrink-0 place-items-center rounded-full bg-fm-purple text-white transition disabled:opacity-40"
           >
             <SendHorizontal className="size-5" />
           </button>
@@ -111,7 +111,7 @@ export function MessageComposer({ conversationId, replyTo, onCancelReply }: Mess
             aria-label="Enviar áudio (mock)"
             disabled={sendAudio.isPending}
             onClick={() => sendAudio.mutate(8 + Math.floor(Math.random() * 12))}
-            className="mb-1 grid size-11 place-items-center rounded-full bg-fm-purple text-white transition disabled:opacity-40"
+            className="grid size-11 shrink-0 place-items-center rounded-full bg-fm-purple text-white transition disabled:opacity-40"
           >
             <Mic className="size-5" />
           </button>

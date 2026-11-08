@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { VerifiedBadge } from "../../../shared/ui/VerifiedBadge.tsx";
 import { formatChartMetric, formatDuration } from "../lib/format-chart-metric.ts";
 import type { TopSong, TopVideo } from "../types/top-hits.types.ts";
-import { TopHitsTrendBadge } from "./TopHitsTrendBadge.tsx";
+import { TopHitsNewBadge } from "./TopHitsTrendBadge.tsx";
 
 type TopHitRankRowProps =
   | { kind: "song"; item: TopSong; onOpen?: () => void }
@@ -22,13 +22,12 @@ export function TopHitRankRow({ kind, item, onOpen }: TopHitRankRowProps) {
         onClick={onOpen}
         className="flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors hover:bg-fm-yellow/60"
       >
-        <div className="flex w-9 shrink-0 flex-col items-center gap-0.5">
+        <div className="flex w-9 shrink-0 items-center justify-center">
           <span
             className={`text-base font-black tabular-nums ${isTopThree ? "text-fm-purple" : "text-massa-muted"}`}
           >
             {item.rank}
           </span>
-          <TopHitsTrendBadge trend={item.trend} delta={item.trendDelta} />
         </div>
 
         <div className="relative shrink-0">
@@ -42,8 +41,17 @@ export function TopHitRankRow({ kind, item, onOpen }: TopHitRankRowProps) {
           </span>
         </div>
 
-        <div className="min-w-0 flex-1">
-          <p className="truncate font-black text-massa-text">{item.title}</p>
+        <div className="relative min-w-0 flex-1 pr-1">
+          {item.trend === "new" ? (
+            <span className="absolute right-0 top-0">
+              <TopHitsNewBadge />
+            </span>
+          ) : null}
+          <p
+            className={`truncate font-black text-massa-text ${item.trend === "new" ? "pr-14" : ""}`}
+          >
+            {item.title}
+          </p>
           <div className="mt-0.5 flex min-w-0 items-center gap-1">
             <Link
               to={`/${item.artistHandle}`}

@@ -25,7 +25,7 @@ export function TopHitsMobileBar({ scopeLabel }: TopHitsMobileBarProps) {
         <ArrowLeft className="size-5" />
       </button>
       <div className="min-w-0 flex-1">
-        <h1 className="truncate text-center text-[17px] font-bold text-fm-purple">Top Hits</h1>
+        <h1 className="truncate text-center text-[17px] font-bold text-fm-purple">Ranking</h1>
       </div>
       <div
         className="flex max-w-[42%] items-center gap-1 rounded-full border border-fm-purple/25 bg-fm-yellow-bright px-2.5 py-1"
